@@ -1,0 +1,5 @@
+.gradient-background {
+  background-image: -webkit-gradient(linear, right top, left top, from(#ee3efe), to(#2e32fb));
+  background-image: linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%);
+}
+/*# sourceMappingURL=styles-theme2.css.map */

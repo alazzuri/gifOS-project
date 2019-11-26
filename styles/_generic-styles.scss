@@ -107,13 +107,20 @@ $dark-blue: #110038;
   align-items: center;
 }
 
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 7px solid $dark-blue;
+}
+
 .my-gifos-tag {
   width: 95px;
   height: 32px;
   padding: 1px;
   font-family: $chakra;
   display: flex;
-  border: 1px solid $white;
   align-items: center;
   margin-left: 16.5px;
   letter-spacing: 0px;
@@ -131,14 +138,4 @@ $dark-blue: #110038;
   margin-left: 7px;
 }
 
-.theme-selector:hover {
-  .dotted-border-131, .dotted-border-36 {
-    width: 127px;
-    height: 32px;
-    border: 1px dotted $dark-blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #e6bbe2;
-  }
-}
+

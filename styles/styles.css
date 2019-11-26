@@ -559,6 +559,14 @@ fieldset {
           align-items: center;
 }
 
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 7px solid #110038;
+}
+
 .my-gifos-tag {
   width: 95px;
   height: 32px;
@@ -567,7 +575,6 @@ fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #ffffff;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -591,22 +598,6 @@ fieldset {
   margin-left: 7px;
 }
 
-.theme-selector:hover .dotted-border-131, .theme-selector:hover .dotted-border-36 {
-  width: 127px;
-  height: 32px;
-  border: 1px dotted #110038;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #e6bbe2;
-}
-
 header {
   max-width: 1440px;
   height: 23px;
@@ -626,7 +617,6 @@ header {
 }
 
 main {
-  border: 1px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -634,6 +624,11 @@ main {
       -ms-flex-align: start;
           align-items: flex-start;
   margin-top: 44px;
+}
+
+#gifos-img {
+  width: 100px;
+  height: 60px;
 }
 
 .create-gifos {
@@ -715,5 +710,12 @@ main {
       -ms-flex-pack: left;
           justify-content: left;
   padding-left: 16px;
+}
+
+.button-container {
+  width: 1100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -16,10 +16,14 @@ header {
 }
 
 main {
-  border: 1px solid black;
   display: flex;
   align-items: flex-start;
   margin-top: 44px;
+}
+
+#gifos-img {
+  width: 100px;
+  height: 60px;
 }
 
 .create-gifos {
@@ -69,4 +73,11 @@ main {
   margin-bottom: 10px;
   justify-content: left;
   padding-left: 16px;
+}
+
+
+.button-container {
+
+  width: 1100px;
+  display: flex;
 }

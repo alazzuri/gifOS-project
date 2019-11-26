@@ -1,3 +1,70 @@
+$chakra: "Chakra Petch", sans-serif;
+$white: #ffffff;
+$dark-blue: #110038;
+
+body {
+  background-color: $dark-blue;
+}
+
 .gradient-background {
   background-image: linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%);
+}
+
+.button-pink {
+  background: #ee3efe;
+  box-shadow: inset -1px -1px 0 0 #a72cb3, inset 1px 1px 0 0 $white;
+  border: 1px solid $dark-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  & :hover {
+    background: #ce36db;
+  }
+}
+
+.my-gifos-tag {
+  color: $white;
+  &:hover {
+    border: 1px dotted white;
+    cursor: pointer;
+  }
+}
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 7px solid $white;
+}
+
+.theme-selector:hover {
+  .dotted-border-131,
+  .dotted-border-36 {
+    width: 127px;
+    height: 32px;
+    border: 1px dotted $dark-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ce36db;
+  }
+}
+
+.themes-list {
+  background: #b4b4b4;
+  box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 $white;
+}
+
+.theme-day {
+  background: #cccccc;
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
+}
+
+.theme-night {
+  background: #2e32fb;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0;
+  color: $white;
 }

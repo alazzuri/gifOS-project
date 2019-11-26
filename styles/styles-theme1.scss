@@ -27,6 +27,18 @@ $dark-blue: #110038;
   border: $white;
   color: grey;
 }
+.theme-selector:hover {
+  .dotted-border-131,
+  .dotted-border-36 {
+    width: 127px;
+    height: 32px;
+    border: 1px dotted $dark-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6bbe2;
+  }
+}
 
 .themes-list {
   background: #e6e6e6;

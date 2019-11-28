@@ -4,7 +4,7 @@ const $SEARCHBUTTON = document.querySelector("#search");
 // VALIDAR API
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 // TODO COORREGIR CON LA CLASE CORRECTA DEL SELECTOR - ASIGNAR EN HTML
-const $MAINCONTAINER = document.querySelector(".mainContainer");
+const $MAINCONTAINER = document.querySelector(".main-container");
 
 
 // EJECUTA FUNCION AL HACER CLICK AL BOTON DE BUSQUEDA - VER COMO HACER PARA QUE TOME EL ENTER COMO INPUT
@@ -19,7 +19,7 @@ $SEARCHBUTTON.onclick = function () {
 
 // FUNCION PARA LIMPIAR EL ARRAY
 function cleanSearchHistory() {
-    const $GIFSTOREMOVE = document.querySelectorAll(".gifContainer")
+    const $GIFSTOREMOVE = document.querySelectorAll(".gif-container")
     $GIFSTOREMOVE.forEach($GIFSTOREMOVE => {
         $GIFSTOREMOVE.remove()
     });
@@ -46,7 +46,7 @@ const obtainUrls = async function sacarUrls(userRequest) {
 // FUNCION PARA IMPRIMIR LAS IMAGENES
 function printGifs(urlAImprimir) {
     $CONTENEDORIMG = document.createElement("img");
-    $CONTENEDORIMG.className = "gifContainer";
+    $CONTENEDORIMG.className = "gif-container";
     $CONTENEDORIMG.src = `${urlAImprimir}`;
     $MAINCONTAINER.appendChild($CONTENEDORIMG);
 }

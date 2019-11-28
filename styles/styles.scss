@@ -15,12 +15,27 @@ header {
   text-align: left;
 }
 
+.navbar {
+  height: 60px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 44px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
 nav {
+  width: auto;
   height: 60px;
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 44px;
+  @media screen and (max-width: 768px) {
+    margin-top: 30px;
+  }
 }
 
 #gifos-img {
@@ -29,7 +44,6 @@ nav {
 }
 
 .create-gifos {
-  margin-left: 53%;
   margin-right: 16px;
 }
 
@@ -55,6 +69,9 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    width: 132px;
+  }
 }
 
 .themes-list {
@@ -64,6 +81,10 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    width: 122px;
+    top: 38px;
+  }
 }
 
 .theme-day {
@@ -79,9 +100,7 @@ nav {
   padding-left: 16px;
 }
 
-
 .button-container {
-
   width: 1100px;
   display: flex;
 }

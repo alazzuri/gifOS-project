@@ -398,10 +398,27 @@ fieldset {
   margin: 0;
 }
 
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
 .container {
   width: auto;
-  margin-left: 100px;
-  margin-right: 140px;
+  margin-left: 7%;
+  margin-right: 9%;
+  max-width: 1200px;
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    margin: 0 auto;
+  }
 }
 
 .chakra {
@@ -439,6 +456,12 @@ fieldset {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .button-150 {
+    width: 110px;
+  }
+}
+
 .button-144 {
   width: 144px;
   height: 36px;
@@ -454,6 +477,12 @@ fieldset {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .button-144 {
+    width: 100px;
+  }
+}
+
 .button-131 {
   width: 131px;
   height: 36px;
@@ -467,6 +496,12 @@ fieldset {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .button-131 {
+    width: 100px;
+  }
 }
 
 .button-102 {
@@ -514,6 +549,12 @@ fieldset {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .button-36 {
+    width: 25px;
+  }
+}
+
 .dotted-border-144:hover {
   width: 140px;
   height: 32px;
@@ -529,6 +570,13 @@ fieldset {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .dotted-border-144:hover {
+    width: 98px;
+    padding: 5px;
+  }
+}
+
 .dotted-border-102:hover {
   width: 98px;
   height: 32px;
@@ -542,6 +590,13 @@ fieldset {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .dotted-border-102:hover {
+    width: 100px;
+    padding: 5px;
+  }
 }
 
 .dotted-border-36:hover {
@@ -583,6 +638,13 @@ fieldset {
   line-height: 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .my-gifos-tag {
+    width: 62px;
+    margin-left: auto;
+  }
+}
+
 .gif-heading {
   width: 280px;
   height: 24px;
@@ -616,7 +678,32 @@ header {
   text-align: left;
 }
 
+.navbar {
+  height: 60px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 44px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 nav {
+  width: auto;
   height: 60px;
   position: relative;
   display: -webkit-box;
@@ -625,7 +712,12 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 44px;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    margin-top: 30px;
+  }
 }
 
 #gifos-img {
@@ -634,7 +726,6 @@ nav {
 }
 
 .create-gifos {
-  margin-left: 53%;
   margin-right: 16px;
 }
 
@@ -683,6 +774,12 @@ nav {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .theme-selector {
+    width: 132px;
+  }
+}
+
 .themes-list {
   width: 167px;
   position: absolute;
@@ -697,6 +794,13 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .themes-list {
+    width: 122px;
+    top: 38px;
+  }
 }
 
 .theme-day {

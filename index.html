@@ -23,33 +23,35 @@
       visitas: 12.765.803
     </header>
     <div class="container">
-      <nav>
-        <img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img"/>
-        <a href="#" class="create-gifos button-pink button-144">
-          <span class="dotted-border-144 font-big">Crear Guifos</span>
-        </a>
-        <section class="theme-selector">
-          <button href="#" class="button-pink button-131">
-            <span class="dotted-border-131 font-big">Elegir Tema</span>
-          </button>
-          <button class="button-pink button-36" id="drop-down">
-            <span class="dotted-border-36">
-              <div class="arrow-down"></div>
-            </span>
-          </button>
-          <ul class="hidden" id="theme-list">
-            <button class="button-150 theme-day">
-              <span class="underlined" id="day-theme">S</span>ailor Day
+      <section class="navbar">
+        <img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
+        <nav>
+          <a href="#" class="create-gifos button-pink button-144">
+            <span class="dotted-border-144 font-big">Crear Guifos</span>
+          </a>
+          <section class="theme-selector">
+            <button href="#" class="button-pink button-131">
+              <span class="dotted-border-131 font-big">Elegir Tema</span>
             </button>
-            <button class="button-150 theme-night">
-              <span id="night-theme">S</span>ailor Night
+            <button class="button-pink button-36" id="drop-down">
+              <span class="dotted-border-36">
+                <div class="arrow-down"></div>
+              </span>
             </button>
-          </ul>
-        </section>
-        <a href="#drop-down" class="my-gifos-tag font-big">
-          <span class="underlined">M</span>is Guifos
-        </a>
-      </nav>
+            <ul class="hidden" id="theme-list">
+              <button class="button-150 theme-day">
+                <span class="underlined" id="day-theme">S</span>ailor Day
+              </button>
+              <button class="button-150 theme-night">
+                <span id="night-theme">S</span>ailor Night
+              </button>
+            </ul>
+          </section>
+          <a href="#drop-down" class="my-gifos-tag font-big">
+            <span class="underlined">M</span>is Guifos
+          </a>
+        </nav>
+      </section>
     </div>
     <script src="./js/theme-handling.js"></script>
     <script src="./js/api-giphy.js"></script>

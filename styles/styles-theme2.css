@@ -1,5 +1,85 @@
+body {
+  background-color: #110038;
+}
+
 .gradient-background {
   background-image: -webkit-gradient(linear, right top, left top, from(#ee3efe), to(#2e32fb));
   background-image: linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%);
+}
+
+.button-pink {
+  background: #ee3efe;
+  -webkit-box-shadow: inset -1px -1px 0 0 #a72cb3, inset 1px 1px 0 0 #ffffff;
+          box-shadow: inset -1px -1px 0 0 #a72cb3, inset 1px 1px 0 0 #ffffff;
+  border: 1px solid #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+}
+
+.button-pink :hover {
+  background: #ce36db;
+}
+
+.my-gifos-tag {
+  color: #ffffff;
+}
+
+.my-gifos-tag:hover {
+  border: 1px dotted white;
+  cursor: pointer;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 7px solid #ffffff;
+}
+
+.theme-selector:hover .dotted-border-131,
+.theme-selector:hover .dotted-border-36 {
+  width: 127px;
+  height: 32px;
+  border: 1px dotted #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ce36db;
+}
+
+.themes-list {
+  background: #b4b4b4;
+  -webkit-box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff;
+}
+
+.theme-day {
+  background: #cccccc;
+  border: 1px solid #808080;
+  -webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+          box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+}
+
+.theme-night {
+  background: #2e32fb;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  -webkit-box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0;
+          box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0;
+  color: #ffffff;
 }
 /*# sourceMappingURL=styles-theme2.css.map */

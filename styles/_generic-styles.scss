@@ -80,6 +80,13 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1439px) {
+    width: 15%;
+    max-width: 102px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 25%;
+  }
 }
 
 .button-81 {
@@ -119,9 +126,7 @@ html {
 .dotted-border-102:hover {
   width: 98px;
   height: 32px;
-  display: flex;
   border: 1px dotted $dark-blue;
-  justify-content: center;
   align-items: center;
   @media screen and (max-width: 768px) {
     width: 100px;
@@ -195,26 +200,38 @@ html {
 
 .search-bar {
   display: flex;
-  align-items: center;
-  margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 #searchbar {
   width: 88.5%;
   height: 48px;
-  margin-left: 12px;
+  margin-left: 15px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 8px;
   padding-left: 16px;
   background: $white;
   border: 1px solid #979797;
   box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
   letter-spacing: 0;
   line-height: 22px;
+  @media screen and (max-width: 1439px) {
+    width: 80%;
+    margin-right: 2%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 65%;
+  }
 }
 
 #search {
-  display: flex;
-  justify-content: space-around;
-  margin-left: 8px;
+  align-self: center;
+  span {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 .main-container {

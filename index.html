@@ -53,10 +53,10 @@
         </nav>
       </section>
       <section class="gifs-search">
-        <label for="searchbar" class="gradient-background chakra font-medium"
-          >Buscar</label
-        >
         <figure class="search-bar">
+          <label for="searchbar" class="gradient-background chakra font-medium"
+            >Buscar</label
+          >
           <input
             type="text"
             id="searchbar"
@@ -64,8 +64,10 @@
             class="chakra font-big"
           />
           <button id="search" class="button-102 btn-disabled">
-            <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
-            <p class="chakra font-big">Buscar</p>
+            <span class="dotted-border-102">
+              <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
+              <p class="chakra font-big">Buscar</p>
+            </span>
           </button>
         </figure>
       </section>
@@ -73,5 +75,6 @@
     </div>
     <script src="./js/theme-handling.js"></script>
     <script src="./js/api-giphy.js"></script>
+    <script src="./js/btn-changes.js"></script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+// CAMBIO ENTRE TEMAS CON SELECTOR
+
 const $THEMEBUTTON = document.querySelector("#drop-down");
 const $THEMELIST = document.querySelector("#theme-list");
 const $DAYTHEMESPAN = document.querySelector("#day-theme");
@@ -22,13 +24,13 @@ function applyTheme(theme) {
         $DAYTHEMESPAN.className = "underlined"
         $NIGHTTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo.png"
-        $LENS.src = "./assets/lupa_inactive.svg";
+        changeBtnStatus($INPUT);
     } else if (theme.className.includes("theme-night")) {
         $THEMESHEET.href = "./styles/styles-theme2.css"
         $NIGHTTHEMESPAN.className = "underlined"
         $DAYTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo_dark.png"
-        $LENS.src = "./assets/Combined_Shape.svg";
+        changeBtnStatus($INPUT);
     }
 }
 

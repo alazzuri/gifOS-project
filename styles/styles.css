@@ -528,7 +528,7 @@ html {
 
 @media screen and (max-width: 767px) {
   .button-102 {
-    width: 25%;
+    width: 10%;
   }
 }
 
@@ -621,6 +621,12 @@ html {
           align-items: center;
 }
 
+.btn-disabled {
+  letter-spacing: 0;
+  line-height: 18px;
+  cursor: auto;
+}
+
 .arrow-down {
   width: 0;
   height: 0;
@@ -698,6 +704,8 @@ html {
           align-items: center;
   padding-left: 6px;
   font-weight: 600;
+  margin: 2px;
+  margin-bottom: 12px;
 }
 
 .search-bar {
@@ -731,12 +739,6 @@ html {
   }
 }
 
-@media screen and (max-width: 767px) {
-  #searchbar {
-    width: 65%;
-  }
-}
-
 #search {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -750,6 +752,12 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+@media screen and (max-width: 767px) {
+  #search span p {
+    display: none;
+  }
 }
 
 .main-container {
@@ -924,5 +932,38 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.suggested-results {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-top: 17px;
+}
+
+.suggested-results p {
+  width: 88.5%;
+  height: 36px;
+  margin-left: 15px;
+  margin-bottom: 12px;
+  padding-left: 16px;
+  color: #110038;
+  letter-spacing: 0;
+  line-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 1439px) {
+  .suggested-results p {
+    width: 80%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -104,3 +104,25 @@ nav {
   width: 1100px;
   display: flex;
 }
+
+.suggested-results {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 17px;
+  p {
+    width: 88.5%;
+    height: 36px;
+    margin-left: 15px;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 1439px) {
+      width: 80%;
+    }
+  }
+}

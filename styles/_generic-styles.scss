@@ -85,7 +85,7 @@ html {
     max-width: 102px;
   }
   @media screen and (max-width: 767px) {
-    width: 25%;
+    width: 10%;
   }
 }
 
@@ -143,6 +143,12 @@ html {
   align-items: center;
 }
 
+.btn-disabled {
+  letter-spacing: 0;
+  line-height: 18px;
+  cursor: auto;
+}
+
 .arrow-down {
   width: 0;
   height: 0;
@@ -195,6 +201,8 @@ html {
     align-items: center;
     padding-left: 6px;
     font-weight: 600;
+    margin: 2px;
+    margin-bottom: 12px;
   }
 }
 
@@ -220,9 +228,6 @@ html {
     width: 80%;
     margin-right: 2%;
   }
-  @media screen and (max-width: 767px) {
-    width: 65%;
-  }
 }
 
 #search {
@@ -231,6 +236,11 @@ html {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    p {
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
   }
 }
 

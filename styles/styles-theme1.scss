@@ -57,11 +57,7 @@ $dark-blue: #110038;
   box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
 }
 
-.gifs-search {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  padding: 3px;
+.search-bar {
   background: #e6e6e6;
   box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
 }
@@ -71,6 +67,14 @@ $dark-blue: #110038;
   border: 1px solid #808080;
   box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
   color: #b4b4b4;
-  letter-spacing: 0;
-  line-height: 18px;
+}
+
+.suggested-results {
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  p {
+    background: #f0f0f0;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+  }
 }

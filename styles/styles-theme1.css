@@ -90,10 +90,14 @@
           box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
 }
 
-.suggested-results p {
+.suggested-results button {
   background: #f0f0f0;
   border: 1px solid #808080;
   -webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
           box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+}
+
+.suggested-results button span:hover {
+  background: #dbdbdb;
 }
 /*# sourceMappingURL=styles-theme1.css.map */

@@ -944,12 +944,11 @@ nav {
   padding-top: 17px;
 }
 
-.suggested-results p {
+.suggested-results button {
   width: 88.5%;
   height: 36px;
   margin-left: 15px;
   margin-bottom: 12px;
-  padding-left: 16px;
   color: #110038;
   letter-spacing: 0;
   line-height: 22px;
@@ -962,8 +961,25 @@ nav {
 }
 
 @media screen and (max-width: 1439px) {
-  .suggested-results p {
+  .suggested-results button {
     width: 80%;
   }
+}
+
+.suggested-results button span {
+  padding-left: 16px;
+  width: 99.9%;
+  height: 99%;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.suggested-results button span:hover {
+  border: 1px dotted #110038;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -29,7 +29,7 @@ function applyTheme(theme) {
         $THEMESHEET.href = "./styles/styles-theme2.css"
         $NIGHTTHEMESPAN.className = "underlined"
         $DAYTHEMESPAN.classList.remove("underlined");
-        $GIFOSLOGO.src = "./assets/gifOF_logo_dark.png"
+        $GIFOSLOGO.src = "./assets/gifOF_logo_dark.png";
         changeBtnStatus($INPUT);
     }
 }

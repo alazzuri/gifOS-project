@@ -1,6 +1,6 @@
 
 // CAMBIO BOTON BUSCAR
-let $INPUT;
+let $INPUT = "";
 const $KEYBOARD = document.querySelector("#searchbar");
 const $GIFOSIMG = document.querySelector("#lens")
 const $BTNHOVER = document.querySelector("#search-hover");

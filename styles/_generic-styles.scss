@@ -96,6 +96,12 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 0;
+  line-height: 18px;
+  color: $white;
+  position: absolute;
+  bottom: 15px;
+  left: 7px;
 }
 
 .button-36 {
@@ -134,6 +140,15 @@ html {
   }
 }
 
+.dotted-border-81:hover {
+  width: 75px;
+  height: 28px;
+  border: 1px dotted $dark-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .dotted-border-36:hover {
   width: 32px;
   height: 32px;
@@ -170,6 +185,28 @@ html {
   @media screen and (max-width: 768px) {
     width: 62px;
     margin-left: auto;
+  }
+}
+
+.gifs-on-search {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.gif-container-on-search {
+  width: 280px;
+  height: 280px;
+  padding: 4px;
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 

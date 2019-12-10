@@ -545,6 +545,12 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  letter-spacing: 0;
+  line-height: 18px;
+  color: #ffffff;
+  position: absolute;
+  bottom: 15px;
+  left: 7px;
 }
 
 .button-36 {
@@ -606,6 +612,21 @@ html {
   }
 }
 
+.dotted-border-81:hover {
+  width: 75px;
+  height: 28px;
+  border: 1px dotted #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .dotted-border-36:hover {
   width: 32px;
   height: 32px;
@@ -656,6 +677,34 @@ html {
     width: 62px;
     margin-left: auto;
   }
+}
+
+.gifs-on-search {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.gif-container-on-search {
+  width: 280px;
+  height: 280px;
+  padding: 4px;
+  background: #e6e6e6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  position: relative;
+}
+
+.gif-container-on-search img {
+  width: 100%;
+  height: 100%;
 }
 
 .gif-heading {

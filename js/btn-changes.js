@@ -1,12 +1,14 @@
 
+
 // CAMBIO BOTON BUSCAR
 let $INPUT = "";
-const $KEYBOARD = document.querySelector("#searchbar");
+const $SEARCHFIELD = document.querySelector("#searchbar");
 const $GIFOSIMG = document.querySelector("#lens")
 const $BTNHOVER = document.querySelector("#search-hover");
+const $RESULTSFIELD = document.querySelector("#suggested-results");
 $SEARCHBUTTON.disabled = true;
 
-$KEYBOARD.onkeyup = function () {
+$SEARCHFIELD.onkeyup = function () {
     $INPUT = document.querySelector("#searchbar").value;
     changeBtnStatus($INPUT);
     return $INPUT;
@@ -23,7 +25,10 @@ function changeBtnStatus(input) {
         } else {
             $GIFOSIMG.src = "./assets/lupa_light.svg";
         }
+        obtainNames($INPUT);
+        $RESULTSFIELD.className = "suggested-results";
     } else {
+        $RESULTSFIELD.className = "hidden";
         $SEARCHBUTTON.disabled = true;
         $SEARCHBUTTON.classList.remove("button-pink");
         $SEARCHBUTTON.classList.add("btn-disabled");

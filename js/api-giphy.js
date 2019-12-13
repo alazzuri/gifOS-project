@@ -45,6 +45,7 @@ const obtainUrls = async function (userRequest) {
     URLS.data.forEach(data => {
         printGifs(data.images.original.url)
     });
+    resetSearchField();
 }
 
 // FUNCION PARA IMPRIMIR LAS IMAGENES
@@ -63,7 +64,7 @@ const obtainNames = async function (input) {
     const PREVIOUSRESULTS = [];
     NAMES.data.forEach(data => {
         const TITLE = data.title.toUpperCase();
-        if (TITLE != " " && counter < 4 && !PREVIOUSRESULTS.includes(TITLE)) {
+        if (TITLE != " " && TITLE != "" && counter < 4 && !PREVIOUSRESULTS.includes(TITLE)) {
             printSuggestedResults(TITLE, counter);
             PREVIOUSRESULTS.push(TITLE);
             return counter++;
@@ -77,6 +78,5 @@ function printSuggestedResults(title, counter) {
     $SUGGESTEDRESULT.textContent = title;
 }
 
-function cleanText(tag) {
-    tag.textContent = "";
-}
+
+

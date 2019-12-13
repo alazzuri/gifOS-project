@@ -17,7 +17,7 @@
     />
     <script src="./js/theme-selector.js"></script>
   </head>
-  <body>
+  <body onload="resetSearchField()">
     <header class="chakra font-small gradient-background">
       ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de
       visitas: 12.765.803
@@ -82,7 +82,7 @@
           </button>
         </figure>
       </section>
-      <section class="gifs-on-search">
+      <section class=" hidden">
         <div class="gif-container-on-search">
           <img src="../../índice.jpg" alt="Resultado1" id="onsearch1" />
           <button class="button-81 chakra font-medium see-more">

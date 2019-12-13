@@ -724,6 +724,7 @@ html {
 
 .gifs-search {
   width: 100%;
+  height: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -731,6 +732,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  position: relative;
   margin-top: 19px;
   padding: 3px;
 }
@@ -950,6 +952,7 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 3;
 }
 
 @media screen and (max-width: 768px) {
@@ -984,13 +987,16 @@ nav {
 }
 
 .suggested-results {
-  width: 100%;
+  width: 99.5%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding-top: 17px;
+  position: absolute;
+  top: 112px;
+  z-index: 2;
 }
 
 .suggested-results button {

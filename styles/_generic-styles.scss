@@ -223,8 +223,10 @@ html {
 
 .gifs-search {
   width: 100%;
+  height: 110px;
   display: flex;
   flex-flow: column;
+  position: relative;
   margin-top: 19px;
   padding: 3px;
   @media screen and (max-width: 768px) {

@@ -8,6 +8,11 @@ const $BTNHOVER = document.querySelector("#search-hover");
 const $RESULTSFIELD = document.querySelector("#suggested-results");
 $SEARCHBUTTON.disabled = true;
 
+function resetSearchField() {
+    $SEARCHFIELD.value = "";
+    $RESULTSFIELD.className = "hidden"
+}
+
 $SEARCHFIELD.onkeyup = function () {
     $INPUT = document.querySelector("#searchbar").value;
     changeBtnStatus($INPUT);

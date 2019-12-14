@@ -1,7 +1,7 @@
 
 
 // URL PARA HACER SEARCH REQUEST
-const searchUrl = "https:/api.giphy.com/v1/gifs/search?q=";
+const searchUrl = "https://api.giphy.com/v1/gifs/search?q=";
 // VALIDAR API
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 // TODO COORREGIR CON LA CLASE CORRECTA DEL SELECTOR - ASIGNAR EN HTML

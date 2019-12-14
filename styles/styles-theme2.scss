@@ -69,6 +69,11 @@ body {
   color: $white;
 }
 
+.subtitle {
+  border: 1px solid #2e32fb;
+  box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038;
+}
+
 .search-bar {
   background: #b4b4b4;
   box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 $white;
@@ -88,5 +93,18 @@ body {
     background: #cccccc;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+  }
+}
+
+.gif-suggested-container {
+  background: #b4b4b4;
+  box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
+  button {
+    background: #2e32fb;
+    border: 1px solid #4c2f99;
+    box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
+    span:hover {
+      background: #2629cc;
+    }
   }
 }

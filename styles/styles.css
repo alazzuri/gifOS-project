@@ -695,11 +695,39 @@ html {
   padding-right: 4px;
 }
 
+@media screen and (max-width: 1439px) {
+  .suggested-gifs {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .gif-suggested-container {
-  width: 280px;
-  height: 280px;
-  padding: 4px;
+  width: 288px;
+  height: 288px;
+  padding: 3px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2px;
+}
+
+@media screen and (max-width: 1439px) {
+  .gif-suggested-container {
+    margin-right: 24px;
+  }
 }
 
 .gif-heading {
@@ -828,7 +856,8 @@ html {
   grid-auto-flow: row dense;
 }
 
-.gif-title {
+.suggested-gif-title {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -840,15 +869,17 @@ html {
           justify-content: space-between;
   padding: 3px;
   color: #ffffff;
+  font-weight: 800;
 }
 
-.gif-title span {
-  font-weight: 700;
-}
-
-.gif-title img {
+.suggested-gif-title img {
   width: 16px;
   height: 14px;
+}
+
+.gif-img {
+  width: 278px;
+  height: 257px;
 }
 
 header {

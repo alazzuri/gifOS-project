@@ -197,13 +197,24 @@ html {
   margin-top: 64px;
   padding-left: 4px;
   padding-right: 4px;
+  @media screen and (max-width: 1439px) {
+    justify-content: center;
+  }
 }
 
 .gif-suggested-container {
-  width: 280px;
-  height: 280px;
-  padding: 4px;
+  width: 288px;
+  height: 288px;
+  padding: 3px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px;
+  @media screen and (max-width: 1439px) {
+    margin-right: 24px;
+  }
 }
 
 .gif-heading {
@@ -296,17 +307,21 @@ html {
   grid-auto-flow: row dense;
 }
 
-.gif-title {
+.suggested-gif-title {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 3px;
   color: $white;
-  span {
-    font-weight: 700;
-  }
+  font-weight: 800;
   img {
     width: 16px;
     height: 14px;
   }
+}
+
+.gif-img {
+  width: 278px;
+  height: 257px;
 }

@@ -17,7 +17,7 @@
     />
     <script src="./js/theme-selector.js"></script>
   </head>
-  <body onload="resetSearchField()">
+  <body onload="resetSearchField(), printSuggestedGifs()">
     <header class="chakra font-small gradient-background">
       ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de
       visitas: 12.765.803
@@ -85,41 +85,61 @@
       <section class="suggested-gifs">
         <h2 class="chakra font-medium subtitle">Hoy te sugerimos:</h2>
         <figure class="gif-suggested-container">
-          <figcaption class="gradient-background gif-title">
-            <span class="chakra font-medium">titulo</span>
+          <figcaption class="gradient-background suggested-gif-title">
+            <span class="chakra font-medium" id="suggested-title-1"></span>
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
-          <img src="../../índice.jpg" alt="Resultado1" id="onsearch1" />
+          <img
+            src="./assets/gif-loading-image.gif"
+            alt="Resultado1"
+            class="gif-img"
+            id="suggested-gif-1"
+          />
           <button class="button-81 chakra font-medium see-more">
             <span class="dotted-border-81"> Ver Mas... </span>
           </button>
         </figure>
         <figure class="gif-suggested-container">
-          <figcaption class="gradient-background gif-title">
-            <span class="chakra font-medium">titulo</span>
+          <figcaption class="gradient-background suggested-gif-title">
+            <span class="chakra font-medium" id="suggested-title-2"></span>
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
-          <img src="../../índice.jpg" alt="Resultado1" id="onsearch2" />
+          <img
+            src="./assets/gif-loading-image.gif"
+            alt="Resultado1"
+            class="gif-img"
+            id="suggested-gif-2"
+          />
           <button class="button-81 chakra font-medium see-more">
             <span class="dotted-border-81"> Ver Mas... </span>
           </button>
         </figure>
         <figure class="gif-suggested-container">
-          <figcaption class="gradient-background gif-title">
-            <span class="chakra font-medium">titulo</span>
+          <figcaption class="gradient-background suggested-gif-title">
+            <span class="chakra font-medium" id="suggested-title-3"></span>
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
-          <img src="../../índice.jpg" alt="Resultado1" id="onsearch3" />
+          <img
+            src="./assets/gif-loading-image.gif"
+            alt="Resultado1"
+            class="gif-img"
+            id="suggested-gif-3"
+          />
           <button class="button-81 chakra font-medium see-more">
             <span class="dotted-border-81"> Ver Mas... </span>
           </button>
         </figure>
         <figure class="gif-suggested-container">
-          <figcaption class="gradient-background gif-title">
-            <span class="chakra font-medium">titulo</span>
+          <figcaption class="gradient-background suggested-gif-title">
+            <span class="chakra font-medium" id="suggested-title-4"></span>
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
-          <img src="../../índice.jpg" alt="Resultado1" id="onsearch4" />
+          <img
+            src="./assets/gif-loading-image.gif"
+            alt="Resultado1"
+            class="gif-img"
+            id="suggested-gif-4"
+          />
           <button class="button-81 chakra font-medium see-more">
             <span class="dotted-border-81"> Ver Mas... </span>
           </button>

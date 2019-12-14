@@ -71,12 +71,78 @@ const obtainNames = async function (input) {
         }
     }
     );
+    $RESULTSFIELD.className = "suggested-results";
 }
 
 function printSuggestedResults(title, counter) {
-    let $SUGGESTEDRESULT = document.querySelector(`#suggested${counter}`);
-    $SUGGESTEDRESULT.textContent = title;
+    let $SUGGESTED_RESULT = document.querySelector(`#suggested${counter}`);
+    $SUGGESTED_RESULT.textContent = title;
 }
+
+// FUNCTION PARA TRAER GIFS SUGERIDOS
+
+
+const getSuggestedGifs = async function (gifContainer, topic, tag, counter) {
+    const SUGGESTED_GIF = await getSearchResults(searchUrl, topic, 1);
+    SUGGESTED_GIF.data.forEach(data => {
+        const URL = data.images.original.url;
+        let container = document.querySelector(gifContainer);
+        container.src = URL;
+        printGifTitle(data, tag, counter)
+    })
+}
+
+
+const printGifTitle = async function (object, tag, counter) {
+    const gifTitle = document.querySelector(tag + counter);
+    const NAMES = object.title.toLowerCase();
+    const SPLIT_NAME = NAMES.split(" ");
+    const printName = (splitName) => {
+        let nameToPrint = "";
+        counter = 0;
+        for (let i = 0; i < splitName.length; i++) {
+            if (nameToPrint.length < 20 && splitName[counter] !== "gif") {
+                const LOWER_WORD = splitName[counter];
+                const WORD_TO_PRINT = LOWER_WORD.split("");
+                const UPPER_LETTER = WORD_TO_PRINT[0].toUpperCase();
+                WORD_TO_PRINT[0] = `${UPPER_LETTER}`;
+                nameToPrint = nameToPrint + WORD_TO_PRINT.join("");
+                counter++;
+            }
+        }
+        return nameToPrint;
+    }
+    gifTitle.textContent = `#${printName(SPLIT_NAME)}`;
+}
+
+
+
+
+
+
+
+function printSuggestedGifs() {
+    const RANDOM_TOPICS = ["cat", "sherlock", "sailor moon", "pokemon", "homer", "love",
+        "puppy", "funny", "awesome", "no", "avengers", "floss dance", "unicorns", "hifive", "harry-potter", "lion-king"];
+    let usedTopics = [];
+    let counter = 1
+    for (let i = 1; i <= RANDOM_TOPICS.length; i++) {
+        if ((counter <= 4)) {
+            const TOPIC_INDEX = Math.floor(Math.random() * RANDOM_TOPICS.length);
+            const CHOSEN_TOPIC = RANDOM_TOPICS[TOPIC_INDEX];
+            let gifContainer = `#suggested-gif-${counter}`;
+            if (!usedTopics.includes(CHOSEN_TOPIC)) {
+                getSuggestedGifs(gifContainer, CHOSEN_TOPIC, "#suggested-title-", counter);
+                usedTopics.push(CHOSEN_TOPIC);
+                counter++;
+            }
+        } else {
+            return true;
+        }
+    }
+}
+
+
 
 
 

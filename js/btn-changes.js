@@ -36,7 +36,6 @@ function changeBtnStatus(input) {
             $GIFOSIMG.src = "./assets/lupa_light.svg";
         }
         obtainNames(INPUT);
-        $RESULTSFIELD.className = "suggested-results";
     } else {
         $RESULTSFIELD.className = "hidden";
         $SEARCHBUTTON.disabled = true;

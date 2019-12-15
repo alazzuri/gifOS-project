@@ -2,10 +2,11 @@
 
 // URL PARA HACER SEARCH REQUEST
 const searchUrl = "https://api.giphy.com/v1/gifs/search?q=";
+const trendUrl = "https://api.giphy.com/v1/gifs/trending";
 // VALIDAR API
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 // TODO COORREGIR CON LA CLASE CORRECTA DEL SELECTOR - ASIGNAR EN HTML
-const $MAINCONTAINER = document.querySelector(".main-container");
+const $TRENDCONTAINER = document.querySelector(".trending-gifs-container");
 const $SEARCHBUTTON = document.querySelector("#search");
 // TODO ==> REASIGNAR NOMBRE PARA USAR UNO SOLO
 const $SEARCHBAR = document.querySelector("#searchbar");
@@ -18,7 +19,7 @@ $SEARCHBUTTON.onclick = function () {
     //LIMPIO ARRAY
     cleanSearchHistory();
     //EJECUTO BUSQUEDA E IMPRIMO
-    obtainUrls(userRequest);
+    obtainUrls(searchUrl, userRequest, 10);
 }
 
 // FUNCION PARA LIMPIAR EL ARRAY
@@ -40,21 +41,70 @@ function getSearchResults(url, request, limit) {
 
 // TOMO EL RESPONSE DE GIPHY Y LLAMO A LA FUNCION PARA IMPRIMIR POR CADA ITERACION.
 // PASO URLS COMO PARAMETRO.
-const obtainUrls = async function (userRequest) {
-    const URLS = await getSearchResults(searchUrl, userRequest)
+const obtainUrls = async function (url, request, limit, container, gifClass, type) {
+    const URLS = await getSearchResults(url, request, limit);
+    let counter = 0;
     URLS.data.forEach(data => {
-        printGifs(data.images.original.url)
+        const URL_GIF = data.images.original.url;
+        const WIDHT_GIF = data.images.original.width
+        const GIF_DESCRIPTION = data.title.toLowerCase();
+        printGifs(URL_GIF, container, gifClass, type, counter);
+        printGifTags(GIF_DESCRIPTION, type, counter);
+        if (counter % 2 === 0) {
+            applySpan(WIDHT_GIF, type, counter);
+        }
+        counter++;
     });
-    resetSearchField();
 }
 
 // FUNCION PARA IMPRIMIR LAS IMAGENES
-function printGifs(urlAImprimir) {
-    $CONTENEDORIMG = document.createElement("img");
-    $CONTENEDORIMG.className = "gif-container";
-    $CONTENEDORIMG.src = `${urlAImprimir}`;
-    $MAINCONTAINER.appendChild($CONTENEDORIMG);
+function printGifs(url, container, gifClass, type, counter) {
+    $CONTENEDORIMG = document.createElement("figure");
+    $GIF_IMG = document.createElement("img");
+    $CONTENEDORIMG.className = `${gifClass}`;
+    $CONTENEDORIMG.setAttribute("id", `${type}-${counter}`);
+    $GIF_IMG.style.backgroundColor = `rgb(${Math.random() * 200}, ${Math.random() * 200}, ${Math.random() * 200})`;
+    $GIF_IMG.src = `${url}`;
+    $CONTENEDORIMG.appendChild($GIF_IMG);
+    container.appendChild($CONTENEDORIMG);
+    //TODO VER QUE EL RESET DEL SEARCHFIELD DEBERIA IR EN OTRO LADO
+    resetSearchField();
 }
+
+// HAGO UNA FUNCION PARA PASAR SPAN
+function applySpan(gifWidth, type, counter) {
+    const $GIFTOSPAN = document.querySelector(`#${type}-${counter}`);
+    if (+gifWidth > 288) {
+        $GIFTOSPAN.classList.add("gif-span");
+    }
+};
+
+
+// FUNCiON PARA IMPIRMIR LOS TAGS DE LOS GIFS 
+const printGifTags = function (gifName, type, counter) {
+    const GIF_TAG = document.querySelector(`#${type}-${counter}`);
+    const $TAG_CONTAINER = document.createElement("figcaption");
+    const SPLIT_NAME = gifName.split(" ");
+    let nameToPrint = "";
+    const printTag = (splitName) => {
+        counter = 0;
+        for (let i = 0; i < splitName.length; i++) {
+            if (nameToPrint.length < 20 && splitName[counter] !== "gif") {
+                const TAG_TO_PRINT = splitName[counter];
+                nameToPrint = nameToPrint + ` #${TAG_TO_PRINT}`;
+                counter++;
+            }
+        }
+        if (nameToPrint === "" || nameToPrint === " ") {
+            nameToPrint = "#trending #popular";
+        }
+    }
+    printTag(SPLIT_NAME);
+    $TAG_CONTAINER.textContent = `${nameToPrint}`;
+    $TAG_CONTAINER.classList.add("gradient-background");
+    GIF_TAG.appendChild($TAG_CONTAINER);
+}
+
 
 //FUNCION PARA OBTENER NOMBRES PREDICTIVOS
 
@@ -93,9 +143,9 @@ const getSuggestedGifs = async function (gifContainer, topic, tag, counter) {
 }
 
 
-const printGifTitle = async function (object, tag, counter) {
+const printGifTitle = function (gifName, tag, counter) {
     const gifTitle = document.querySelector(tag + counter);
-    const NAMES = object.title.toLowerCase();
+    const NAMES = gifName.title.toLowerCase();
     const SPLIT_NAME = NAMES.split(" ");
     const printName = (splitName) => {
         let nameToPrint = "";
@@ -115,15 +165,10 @@ const printGifTitle = async function (object, tag, counter) {
     gifTitle.textContent = `#${printName(SPLIT_NAME)}`;
 }
 
-
-
-
-
-
-
 function printSuggestedGifs() {
     const RANDOM_TOPICS = ["cat", "sherlock", "sailor moon", "pokemon", "homer", "love",
-        "puppy", "funny", "awesome", "no", "avengers", "floss dance", "unicorns", "hifive", "harry-potter", "lion-king"];
+        "puppy", "funny", "awesome", "no", "avengers", "floss dance", "unicorns", "hifive",
+        "harry-potter", "lion-king", "wedding"];
     let usedTopics = [];
     let counter = 1
     for (let i = 1; i <= RANDOM_TOPICS.length; i++) {
@@ -142,6 +187,12 @@ function printSuggestedGifs() {
     }
 }
 
+// FUNCTION PARA OBTENER TRENDING GIFS
+
+const getTrendingGifs = async function () {
+    const TRENDING_GIFS = await obtainUrls(trendUrl, "?", 16, $TRENDCONTAINER, "trend-gif", "trend");
+    return TRENDING_GIFS;
+}
 
 
 

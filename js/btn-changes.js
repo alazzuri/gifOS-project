@@ -57,7 +57,7 @@ $PREDICTIVE1.onclick = function () {
     //LIMPIO ARRAY
     cleanSearchHistory();
     //EJECUTO BUSQUEDA E IMPRIMO
-    obtainUrls(BUTTONTEXT);
+    obtainUrls(searchUrl, BUTTONTEXT, 10);
 }
 
 $PREDICTIVE2.onclick = function () {
@@ -65,7 +65,7 @@ $PREDICTIVE2.onclick = function () {
     //LIMPIO ARRAY
     cleanSearchHistory();
     //EJECUTO BUSQUEDA E IMPRIMO
-    obtainUrls(BUTTONTEXT);
+    obtainUrls(searchUrl, BUTTONTEXT, 10);
 }
 
 $PREDICTIVE3.onclick = function () {
@@ -73,5 +73,5 @@ $PREDICTIVE3.onclick = function () {
     //LIMPIO ARRAY
     cleanSearchHistory();
     //EJECUTO BUSQUEDA E IMPRIMO
-    obtainUrls(BUTTONTEXT);
+    obtainUrls(searchUrl, BUTTONTEXT, 10);
 }

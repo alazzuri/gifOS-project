@@ -304,7 +304,7 @@ html {
 .main-container {
   width: 100%;
   display: grid;
-  grid-auto-flow: row dense;
+  grid-auto-flow: dense;
 }
 
 .suggested-gif-title {
@@ -324,4 +324,54 @@ html {
 .gif-img {
   width: 278px;
   height: 257px;
+}
+
+.trending-gifs {
+  margin-top: 64px;
+}
+
+.trending-gifs-container {
+  width: 100%;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: repeat (4, 1fr);
+  grid-auto-flow: dense;
+}
+
+.trend-gif {
+  width: 288px;
+  height: 298px;
+  position: relative;
+  padding: 4px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  img:hover ~ figcaption {
+    width: 97.5%;
+    height: 22px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: 4px;
+    padding: 3px;
+    color: $white;
+    font-weight: 800;
+  }
+  figcaption {
+    display: none;
+  }
+}
+
+.gif-span {
+  grid-column: span 2;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  img:hover ~ figcaption {
+    width: 98.7%;
+  }
 }

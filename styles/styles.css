@@ -853,7 +853,7 @@ html {
   width: 100%;
   display: -ms-grid;
   display: grid;
-  grid-auto-flow: row dense;
+  grid-auto-flow: dense;
 }
 
 .suggested-gif-title {

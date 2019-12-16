@@ -24,13 +24,13 @@ function applyTheme(theme) {
         $DAYTHEMESPAN.className = "underlined"
         $NIGHTTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo.png"
-        changeBtnStatus($INPUT);
+        changeBtnStatus(INPUT);
     } else if (theme.className.includes("theme-night")) {
         $THEMESHEET.href = "./styles/styles-theme2.css"
         $NIGHTTHEMESPAN.className = "underlined"
         $DAYTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo_dark.png";
-        changeBtnStatus($INPUT);
+        changeBtnStatus(INPUT);
     }
 }
 

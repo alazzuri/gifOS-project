@@ -7,6 +7,7 @@ const trendUrl = "https://api.giphy.com/v1/gifs/trending";
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 // TODO COORREGIR CON LA CLASE CORRECTA DEL SELECTOR - ASIGNAR EN HTML
 const $TRENDCONTAINER = document.querySelector(".trending-gifs-container");
+const $RESULTSCONTAINER = document.querySelector(".main-container");
 const $SEARCHBUTTON = document.querySelector("#search");
 // TODO ==> REASIGNAR NOMBRE PARA USAR UNO SOLO
 const $SEARCHBAR = document.querySelector("#searchbar");
@@ -19,12 +20,12 @@ $SEARCHBUTTON.onclick = function () {
     //LIMPIO ARRAY
     cleanSearchHistory();
     //EJECUTO BUSQUEDA E IMPRIMO
-    obtainUrls(searchUrl, userRequest, 10);
+    obtainUrls(searchUrl, userRequest, 20, $TRENDCONTAINER, "trend-gif", "trend");
 }
 
 // FUNCION PARA LIMPIAR EL ARRAY
 function cleanSearchHistory() {
-    const $GIFSTOREMOVE = document.querySelectorAll(".gif-container")
+    const $GIFSTOREMOVE = document.querySelectorAll(".trend-gif")
     $GIFSTOREMOVE.forEach($GIFSTOREMOVE => {
         $GIFSTOREMOVE.remove()
     });
@@ -43,17 +44,20 @@ function getSearchResults(url, request, limit) {
 // PASO URLS COMO PARAMETRO.
 const obtainUrls = async function (url, request, limit, container, gifClass, type) {
     const URLS = await getSearchResults(url, request, limit);
-    let counter = 0;
+    let gifCounter = 0;
+    spanCounter = 0;
     URLS.data.forEach(data => {
         const URL_GIF = data.images.original.url;
         const WIDHT_GIF = data.images.original.width
         const GIF_DESCRIPTION = data.title.toLowerCase();
-        printGifs(URL_GIF, container, gifClass, type, counter);
-        printGifTags(GIF_DESCRIPTION, type, counter);
-        if (counter % 2 === 0) {
-            applySpan(WIDHT_GIF, type, counter);
+        let randomNumber = Math.ceil(Math.random() * 10)
+        printGifs(URL_GIF, container, gifClass, type, gifCounter);
+        printGifTags(GIF_DESCRIPTION, type, gifCounter);
+        if (randomNumber % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 200) {
+            applySpan(type, gifCounter);
+            spanCounter++;
         }
-        counter++;
+        gifCounter++;
     });
 }
 
@@ -72,11 +76,9 @@ function printGifs(url, container, gifClass, type, counter) {
 }
 
 // HAGO UNA FUNCION PARA PASAR SPAN
-function applySpan(gifWidth, type, counter) {
+function applySpan(type, counter) {
     const $GIFTOSPAN = document.querySelector(`#${type}-${counter}`);
-    if (+gifWidth > 288) {
-        $GIFTOSPAN.classList.add("gif-span");
-    }
+    $GIFTOSPAN.classList.add("gif-span");
 };
 
 
@@ -91,11 +93,11 @@ const printGifTags = function (gifName, type, counter) {
         for (let i = 0; i < splitName.length; i++) {
             if (nameToPrint.length < 20 && splitName[counter] !== "gif") {
                 const TAG_TO_PRINT = splitName[counter];
-                nameToPrint = nameToPrint + ` #${TAG_TO_PRINT}`;
+                nameToPrint = nameToPrint + `#${TAG_TO_PRINT} `;
                 counter++;
             }
         }
-        if (nameToPrint === "" || nameToPrint === " ") {
+        if (nameToPrint === "# " || nameToPrint === "" || nameToPrint === " ") {
             nameToPrint = "#trending #popular";
         }
     }
@@ -168,7 +170,7 @@ const printGifTitle = function (gifName, tag, counter) {
 function printSuggestedGifs() {
     const RANDOM_TOPICS = ["cat", "sherlock", "sailor moon", "pokemon", "homer", "love",
         "puppy", "funny", "awesome", "no", "avengers", "floss dance", "unicorns", "hifive",
-        "harry-potter", "lion-king", "wedding"];
+        "harry-potter", "lion-king", "the office", "wedding", "goku", "star wars", "silicon valley"];
     let usedTopics = [];
     let counter = 1
     for (let i = 1; i <= RANDOM_TOPICS.length; i++) {
@@ -190,7 +192,7 @@ function printSuggestedGifs() {
 // FUNCTION PARA OBTENER TRENDING GIFS
 
 const getTrendingGifs = async function () {
-    const TRENDING_GIFS = await obtainUrls(trendUrl, "?", 16, $TRENDCONTAINER, "trend-gif", "trend");
+    const TRENDING_GIFS = await obtainUrls(trendUrl, "?", 20, $TRENDCONTAINER, "trend-gif", "trend");
     return TRENDING_GIFS;
 }
 

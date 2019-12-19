@@ -11,12 +11,8 @@ const $LENS = document.querySelector("#lens")
 
 
 function openThemeSelector() {
-    if ($THEMELIST.className === "hidden") {
-        $THEMELIST.className = "themes-list";
-    } else if ($THEMELIST.className === "themes-list") {
-        $THEMELIST.className = "hidden";
+    $THEMELIST.classList.toggle("themes-list");
     }
-}
 
 function applyTheme(theme) {
     if (theme.className.includes("theme-day")) {
@@ -44,4 +40,14 @@ $THEMEDAYBUTTON.onclick = function () {
 
 $THEMENIGHTBUTTON.onclick = function () {
     applyTheme($THEMENIGHTBUTTON);
+};
+
+window.onclick = function (event) {
+    if ($THEMELIST.classList[1] === "themes-list") {
+        if (event.target.closest(".theme-selector")) {
+            return
+        } else {
+            this.openThemeSelector();
+        }
 }
+};

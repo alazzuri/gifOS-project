@@ -19,8 +19,11 @@ $SEARCHBUTTON.onclick = function () {
     const userRequest = document.querySelector("#searchbar").value;
     //LIMPIO ARRAY
     cleanSearchHistory();
+    //CAMBIO TITULO
+    printSearchTitle(userRequest);
     //EJECUTO BUSQUEDA E IMPRIMO
     obtainUrls(searchUrl, userRequest, 20, $TRENDCONTAINER, "trend-gif", "trend");
+    printResultButton();
 }
 
 // FUNCION PARA LIMPIAR EL ARRAY
@@ -53,7 +56,7 @@ const obtainUrls = async function (url, request, limit, container, gifClass, typ
         let randomNumber = Math.ceil(Math.random() * 10)
         printGifs(URL_GIF, container, gifClass, type, gifCounter);
         printGifTags(GIF_DESCRIPTION, type, gifCounter);
-        if (randomNumber % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 200) {
+        if (randomNumber % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 300) {
             applySpan(type, gifCounter);
             spanCounter++;
         }
@@ -170,7 +173,8 @@ const printGifTitle = function (gifName, tag, counter) {
 function printSuggestedGifs() {
     const RANDOM_TOPICS = ["cat", "sherlock", "sailor moon", "pokemon", "homer", "love",
         "puppy", "funny", "awesome", "no", "avengers", "floss dance", "unicorns", "hifive",
-        "harry-potter", "lion-king", "the office", "wedding", "goku", "star wars", "silicon valley"];
+        "harry potter", "lion-king", "the office", "futurama", "wedding", "goku", "star wars",
+        "silicon valley"];
     let usedTopics = [];
     let counter = 1
     for (let i = 1; i <= RANDOM_TOPICS.length; i++) {
@@ -195,7 +199,5 @@ const getTrendingGifs = async function () {
     const TRENDING_GIFS = await obtainUrls(trendUrl, "?", 20, $TRENDCONTAINER, "trend-gif", "trend");
     return TRENDING_GIFS;
 }
-
-
 
 

@@ -24,7 +24,9 @@
     </header>
     <div class="container">
       <section class="navbar">
-        <img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
+        <a href="index.html"
+          ><img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
+        </a>
         <nav>
           <a href="#" class="create-gifos button-pink button-144">
             <span class="dotted-border-144 font-big">Crear Guifos</span>
@@ -70,6 +72,17 @@
             </span>
           </button>
         </figure>
+        <figure class="hidden" id="result_buttons">
+          <button class="chakra font-medium">
+            #<span id="result3"></span>
+          </button>
+          <button class="chakra font-medium">
+            #<span id="result2"></span>
+          </button>
+          <button class="chakra font-medium">
+            #<span id="result1"></span>
+          </button>
+        </figure>
         <figure class="hidden" id="suggested-results">
           <button class="chakra font-big">
             <span id="suggested1"></span>
@@ -82,7 +95,7 @@
           </button>
         </figure>
       </section>
-      <section class="suggested-gifs">
+      <section class="suggested-gifs" id="sugg-gifs">
         <h2 class="chakra font-medium subtitle">Hoy te sugerimos:</h2>
         <figure class="gif-suggested-container">
           <figcaption class="gradient-background suggested-gif-title">
@@ -146,7 +159,9 @@
         </figure>
       </section>
       <section class="trending-gifs">
-        <h2 class="chakra font-medium subtitle">Tendencias</h2>
+        <h2 class="chakra font-medium subtitle" id="gif-container-title">
+          Tendencias
+        </h2>
         <div class="trending-gifs-container"></div>
       </section>
       <div class="main-container"></div>

@@ -943,6 +943,18 @@ html {
   width: 98.7%;
 }
 
+.related-results {
+  margin-top: 12px;
+}
+
+.related-results button {
+  color: #ffffff;
+  width: auto;
+  height: 34px;
+  padding: 8px;
+  margin-right: 8px;
+}
+
 header {
   max-width: 1440px;
   height: 23px;

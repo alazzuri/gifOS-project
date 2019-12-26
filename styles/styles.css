@@ -955,10 +955,13 @@ html {
   margin-right: 8px;
 }
 
+#result1::before {
+  content: "hola";
+}
+
 header {
-  max-width: 1440px;
   height: 23px;
-  margin: 0 auto;
+  margin-left: 1px;
   margin-top: 1px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1090,6 +1093,7 @@ nav {
       -ms-flex-align: center;
           align-items: center;
   z-index: 3;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

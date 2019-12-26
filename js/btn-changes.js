@@ -16,8 +16,9 @@ $SEARCHBUTTON.disabled = true;
 
 // RESETEAR CAMPO DE BUSQUEDA
 function resetSearchField() {
+    INPUT = "";
     $SEARCHFIELD.value = "";
-    $RESULTSFIELD.className = "hidden"
+    $RESULTSFIELD.className = "hidden";
 }
 
 // CAMBIO COLORES BOTON AL INTRODUCIR INPUT
@@ -28,7 +29,7 @@ $SEARCHFIELD.onkeyup = function () {
 }
 
 function changeBtnStatus(input) {
-    if (input.length !== 0) {
+    if (input !== "" && input !== " " && !input.includes("  ")) {
         $SEARCHBUTTON.disabled = false;
         $SEARCHBUTTON.classList.remove("btn-disabled");
         $SEARCHBUTTON.classList.add("button-pink");
@@ -63,6 +64,7 @@ document.onkeypress = function (event) {
         //EJECUTO BUSQUEDA E IMPRIMO
         obtainUrls(searchUrl, INPUT, 20, $TRENDCONTAINER, "trend-gif", "trend");
         printResultButton();
+        changeBtnStatus(INPUT);
     }
 }
 

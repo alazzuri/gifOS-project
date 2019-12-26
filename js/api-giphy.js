@@ -62,6 +62,7 @@ const obtainUrls = async function (url, request, limit, container, gifClass, typ
         }
         gifCounter++;
     });
+    resetSearchField();
 }
 
 // FUNCION PARA IMPRIMIR LAS IMAGENES
@@ -74,8 +75,6 @@ function printGifs(url, container, gifClass, type, counter) {
     $GIF_IMG.src = `${url}`;
     $CONTENEDORIMG.appendChild($GIF_IMG);
     container.appendChild($CONTENEDORIMG);
-    //TODO VER QUE EL RESET DEL SEARCHFIELD DEBERIA IR EN OTRO LADO
-    resetSearchField();
 }
 
 // HAGO UNA FUNCION PARA PASAR SPAN

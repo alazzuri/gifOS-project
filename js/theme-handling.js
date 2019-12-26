@@ -11,26 +11,22 @@ const $LENS = document.querySelector("#lens")
 
 
 function openThemeSelector() {
-    if ($THEMELIST.className === "hidden") {
-        $THEMELIST.className = "themes-list";
-    } else if ($THEMELIST.className === "themes-list") {
-        $THEMELIST.className = "hidden";
-    }
+    $THEMELIST.classList.toggle("themes-list");
 }
 
-function applyTheme(theme) {
+function applyTheme(theme, input) {
     if (theme.className.includes("theme-day")) {
         $THEMESHEET.href = "./styles/styles-theme1.css"
         $DAYTHEMESPAN.className = "underlined"
         $NIGHTTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo.png"
-        changeBtnStatus(INPUT);
+        changeBtnStatus(input);
     } else if (theme.className.includes("theme-night")) {
         $THEMESHEET.href = "./styles/styles-theme2.css"
         $NIGHTTHEMESPAN.className = "underlined"
         $DAYTHEMESPAN.classList.remove("underlined");
         $GIFOSLOGO.src = "./assets/gifOF_logo_dark.png";
-        changeBtnStatus(INPUT);
+        changeBtnStatus(input);
     }
 }
 
@@ -39,9 +35,19 @@ $THEMEBUTTON.onclick = function () {
 }
 
 $THEMEDAYBUTTON.onclick = function () {
-    applyTheme($THEMEDAYBUTTON);
+    applyTheme($THEMEDAYBUTTON, INPUT);
 }
 
 $THEMENIGHTBUTTON.onclick = function () {
-    applyTheme($THEMENIGHTBUTTON);
-}
+    applyTheme($THEMENIGHTBUTTON, INPUT);
+};
+
+window.onclick = function (event) {
+    if ($THEMELIST.classList[1] === "themes-list") {
+        if (event.target.closest(".theme-selector")) {
+            return
+        } else {
+            this.openThemeSelector();
+        }
+    }
+};

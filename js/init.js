@@ -1,0 +1,5 @@
+!function () {
+    resetSearchField();
+    printSuggestedGifs();
+    getTrendingGifs()
+}();

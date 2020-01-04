@@ -35,11 +35,11 @@ $THEMEBUTTON.onclick = function () {
 }
 
 $THEMEDAYBUTTON.onclick = function () {
-    applyTheme($THEMEDAYBUTTON, INPUT);
+    applyTheme($THEMEDAYBUTTON, getUserInput());
 }
 
 $THEMENIGHTBUTTON.onclick = function () {
-    applyTheme($THEMENIGHTBUTTON, INPUT);
+    applyTheme($THEMENIGHTBUTTON, getUserInput());
 };
 
 window.onclick = function (event) {

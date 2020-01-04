@@ -326,11 +326,11 @@ html {
   height: 257px;
 }
 
-.trending-gifs {
+.result-gifs {
   margin-top: 64px;
 }
 
-.trending-gifs-container {
+.result-gifs-container {
   width: 100%;
   display: grid;
   grid-gap: 16px;
@@ -339,7 +339,7 @@ html {
   grid-auto-flow: dense;
 }
 
-.trend-gif {
+.result-gif {
   width: 288px;
   height: 298px;
   position: relative;
@@ -385,8 +385,4 @@ html {
     padding: 8px;
     margin-right: 8px;
   }
-}
-
-#result1::before {
-  content: "hola";
 }

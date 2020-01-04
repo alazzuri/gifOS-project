@@ -133,7 +133,7 @@ body {
   background: #2629cc;
 }
 
-.trend-gif:hover {
+.result-gif:hover {
   background-color: #b4b4b4;
   -webkit-box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;

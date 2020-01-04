@@ -372,13 +372,20 @@ input::-moz-focus-inner {
   margin: 0;
 }
 
-ul, ol, dd {
+ul,
+ol,
+dd {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
@@ -439,6 +446,14 @@ html {
 
 .hidden {
   display: none;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .button-150 {
@@ -953,6 +968,92 @@ html {
   height: 34px;
   padding: 8px;
   margin-right: 8px;
+}
+
+.create-gifos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.create-gifos-start {
+  width: 684px;
+  height: 386px;
+  margin-top: 78px;
+}
+
+.create-gifos-start figcaption {
+  height: 24px;
+  padding-left: 4px;
+  margin: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create-gifos-start figcaption span {
+  color: #ffffff;
+}
+
+.description-title {
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 30px;
+  margin-left: 32px;
+}
+
+.description-title strong {
+  margin-left: 16px;
+}
+
+.description-content {
+  width: 518px;
+  height: 190px;
+  margin-top: 7px;
+  margin-left: 80px;
+}
+
+.description-content p {
+  text-align: justify;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.description-content ol li {
+  margin-top: 15px;
+}
+
+.create-gif-btn-container {
+  width: auto;
+  min-width: 304px;
+  margin-top: 28px;
+  margin-left: 271px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.create-gif-btn-container button {
+  border: 1px solid;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+          box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+}
+
+.create-gif-btn-container button:first-of-type {
+  margin-right: 16px;
+  background: #fff4fd;
 }
 
 header {

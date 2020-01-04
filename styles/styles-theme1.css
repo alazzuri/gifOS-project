@@ -136,4 +136,10 @@
   -webkit-box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
 }
+
+.create-gifos-start {
+  background: #e6e6e6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+}
 /*# sourceMappingURL=styles-theme1.css.map */

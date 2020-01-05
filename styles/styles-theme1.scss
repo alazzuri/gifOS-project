@@ -27,10 +27,12 @@ $dark-blue: #110038;
   border: $white;
   color: grey;
 }
-.theme-selector:hover {
+.theme-selector:hover,
+.double-btn:hover {
+  .dotted-border-144,
   .dotted-border-131,
   .dotted-border-36 {
-    width: 127px;
+    width: 99%;
     height: 32px;
     border: 1px dotted $dark-blue;
     display: flex;
@@ -113,7 +115,7 @@ $dark-blue: #110038;
   }
 }
 
-.create-gifos-start {
+.create-gifos-start,
+.create-gifos-preview {
   background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
 }

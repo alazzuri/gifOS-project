@@ -33,9 +33,13 @@
   color: grey;
 }
 
+.theme-selector:hover .dotted-border-144,
 .theme-selector:hover .dotted-border-131,
-.theme-selector:hover .dotted-border-36 {
-  width: 127px;
+.theme-selector:hover .dotted-border-36,
+.double-btn:hover .dotted-border-144,
+.double-btn:hover .dotted-border-131,
+.double-btn:hover .dotted-border-36 {
+  width: 99%;
   height: 32px;
   border: 1px dotted #110038;
   display: -webkit-box;
@@ -137,9 +141,8 @@
           box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
 }
 
-.create-gifos-start {
+.create-gifos-start,
+.create-gifos-preview {
   background: #e6e6e6;
-  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
-          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
 }
 /*# sourceMappingURL=styles-theme1.css.map */

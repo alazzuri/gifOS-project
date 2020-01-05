@@ -974,15 +974,21 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .create-gifos-start {
   width: 684px;
   height: 386px;
   margin-top: 78px;
+  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
 }
 
 .create-gifos-start figcaption {
@@ -1054,6 +1060,72 @@ html {
 .create-gif-btn-container button:first-of-type {
   margin-right: 16px;
   background: #fff4fd;
+}
+
+.create-gifos-preview {
+  width: 860px;
+  height: 548px;
+  margin-top: 85px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+}
+
+.create-gifos-preview figcaption {
+  width: 854px;
+  height: 24px;
+  margin: 3px;
+  padding-right: 10px;
+  padding-left: 7px;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create-gifos-preview figcaption span {
+  color: #ffffff;
+}
+
+.create-gifos-preview video {
+  width: 838px;
+  height: 440px;
+  border: 1px solid black;
+  padding: 3px;
+  background: #ffffff;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+}
+
+.double-btn {
+  width: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 21px;
+  margin-right: 16px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.double-btn button:first-of-type {
+  border-right: none;
 }
 
 header {

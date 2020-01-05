@@ -397,13 +397,15 @@ html {
 
 .create-gifos {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .create-gifos-start {
   width: 684px;
   height: 386px;
   margin-top: 78px;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
   figcaption {
     height: 24px;
     padding-left: 4px;
@@ -458,5 +460,49 @@ html {
   button:first-of-type {
     margin-right: 16px;
     background: #fff4fd;
+  }
+}
+
+.create-gifos-preview {
+  width: 860px;
+  height: 548px;
+  margin-top: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  figcaption {
+    width: 854px;
+    height: 24px;
+    margin: 3px;
+    padding-right: 10px;
+    padding-left: 7px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      color: $white;
+    }
+  }
+  video {
+    width: 838px;
+    height: 440px;
+    border: 1px solid black;
+    padding: 3px;
+    background: #ffffff;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+  }
+}
+
+.double-btn {
+  width: 180px;
+  display: flex;
+  margin-top: 21px;
+  margin-right: 16px;
+  align-self: flex-end;
+  button:first-of-type {
+    border-right: none;
   }
 }

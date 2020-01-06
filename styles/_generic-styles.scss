@@ -457,13 +457,14 @@ html {
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   }
-  button:first-of-type {
-    margin-right: 16px;
-    background: #fff4fd;
-  }
 }
 
-.create-gifos-preview {
+.button-white {
+  margin-right: 16px;
+  background: #fff4fd;
+}
+
+.create-gifos-record {
   width: 860px;
   height: 548px;
   margin-top: 85px;
@@ -504,5 +505,90 @@ html {
   align-self: flex-end;
   button:first-of-type {
     border-right: none;
+  }
+}
+
+.recording-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.time-counter {
+  min-width: 124px;
+  height: 36px;
+  margin-top: 21px;
+  margin-left: 11px;
+  padding: 7px;
+  background: #ffffff;
+  border: 1px solid #979797;
+  box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-red {
+  background: #ff6161;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
+  color: $white;
+}
+
+#btn-ready {
+  margin-left: 528px;
+}
+
+.button-play {
+  height: 20px;
+  width: 20px;
+  span {
+    display: flex;
+    align-self: center;
+  }
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-left: 7px solid $dark-blue;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+
+.player-bar {
+  width: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 28px;
+  margin-left: 24px;
+}
+.time-bar {
+  width: auto;
+  display: flex;
+  background: #b4b4b4;
+  box-shadow: inset -2px -2px 0 0 #fffcfc, inset 2px 2px 0 0 #000000;
+  margin-left: 4px;
+}
+
+.time-square {
+  width: 12px;
+  height: 20px;
+  background: #999999;
+  margin: 2px;
+}
+
+.upload-gif-btn-container {
+  width: auto;
+  min-width: 304px;
+  margin-top: 28px;
+  margin-left: 121px;
+  margin-right: 16px;
+  display: flex;
+  button {
+    border: 1px solid;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   }
 }

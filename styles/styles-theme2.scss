@@ -49,6 +49,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .dotted-pink {
     background: #ce36db;
   }
 }
@@ -125,6 +128,6 @@ body {
 }
 
 .create-gifos-start,
-.create-gifos-preview {
+.create-gifos-record {
   background: #b4b4b4;
 }

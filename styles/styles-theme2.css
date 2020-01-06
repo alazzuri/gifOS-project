@@ -63,6 +63,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.theme-selector:hover .dotted-pink,
+.double-btn:hover .dotted-pink {
   background: #ce36db;
 }
 
@@ -151,7 +155,7 @@ body {
 }
 
 .create-gifos-start,
-.create-gifos-preview {
+.create-gifos-record {
   background: #b4b4b4;
 }
 /*# sourceMappingURL=styles-theme2.css.map */

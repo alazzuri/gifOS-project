@@ -26,14 +26,14 @@
         </a>
         <nav>
           <a href="#" class="create-gifos button-pink button-144">
-            <span class="dotted-border-144 font-big">Crear Guifos</span>
+            <span class="dotted-border-144 dotted-pink font-big" id="create-gif">Crear Guifos</span>
           </a>
           <section class="theme-selector">
             <button class="button-pink button-131">
-              <span class="dotted-border-131 font-big">Elegir Tema</span>
+              <span class="dotted-border-131 dotted-pink font-big">Elegir Tema</span>
             </button>
             <button class="button-pink button-36" id="drop-down">
-              <span class="dotted-border-36">
+              <span class="dotted-border-36 dotted-pink">
                 <span class="arrow-down"></span>
               </span>
             </button>
@@ -161,8 +161,8 @@
         </h2>
         <div class="result-gifs-container"></div>
       </section>
-      <section class="create-gifos">
-        <figure class="create-gifos-start">
+      <section class="hidden" id="create-gif-section">
+        <figure class="create-gifos-start" id="start-creating">
           <figcaption class="gradient-background">
             <span class="chakra font-medium bold">Crear Guifos</span>
           </figcaption>
@@ -193,28 +193,72 @@
                 <strong class="italic">guifo</strong> ahora?
               </p>
               <figure class="create-gif-btn-container">
-                <button class="chakra font-big button-144">Cancelar</button>
-                <button class="chakra font-big button-144 button-pink" id="start-preview">Comenzar</button class="chakra font-big button-144">
+                <button class="chakra font-big button-144 button-white" id="create-abort">Cancelar</button>
+                <button class="chakra font-big button-144 button-pink" id="start-preview">Comenzar</button>
               </figure>
             </div>
           </div>
         </figure>
-        <figure class="create-gifos-preview">
+        <figure class="hidden" id="record-field">
           <figcaption class="gradient-background">
             <span class="chakra font-medium bold"> Un chequeo antes de comenzar</span>
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
             <video src="" id="video"></video>
-            <div class="double-btn">
-              <button class="button-pink button-36">
-                <span class="dotted-border-36">
-                  <img src="./assets/camera.svg" alt="">
+            <div class="double-btn" id="btn-capture">
+              <button class="button-36 button-pink">
+                <span class="dotted-border-36 dotted-pink">
+                  <img src="./assets/camera.svg" alt="camera_logo">
                 </span>
               </button>
               <button class="button-pink button-144">
-                <span class="dotted-border-144 font-big">Capturar</span>
+                <span class="dotted-border-144 dotted-pink font-big">Capturar</span>
               </button>
             </div>
+              <div class="recording-section">
+                <figure class="time-counter chakra font-big" id="video-time">
+                  00:00:00
+                </figure>
+                <figure class="player-bar">
+                  <button class="button-pink button-36 button-play" id="btn-play">
+                    <span class="dotted-border-36 dotted-pink">
+                      <span class="arrow-left"></span>
+                    </span>
+                  </button>
+                  <div class="time-bar">
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                    <span class="time-square"></span>
+                  </div>
+                </figure>
+                <figure class="upload-gif-btn-container">
+                  <button class="chakra font-big button-144 button-white" id="btn-recapture">Repetir Captura</button>
+                  <button class="chakra font-big button-144 button-pink" id="btn-upload">Subir Guifo</button>
+                </figure>
+                <div class="double-btn" id="btn-ready">
+                  <button class="button-36 btn-red">
+                    <span class="dotted-border-36">
+                      <img src="./assets/recording.svg" alt="recording_logo">
+                    </span>
+                  </button>
+                  <button class="btn-red button-144">
+                    <span class="dotted-border-144 font-big">Listo</span>
+                  </button>
+                </div>
         </figure>
             </div>
           </div>
@@ -222,6 +266,7 @@
         </figure>
       </section>
     </div>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="./js/visit-counter.js"></script>
     <script src="./js/theme-handling.js"></script>
     <script src="./js/api-giphy.js"></script>

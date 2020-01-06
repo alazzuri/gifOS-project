@@ -1057,12 +1057,12 @@ html {
           box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 }
 
-.create-gif-btn-container button:first-of-type {
+.button-white {
   margin-right: 16px;
   background: #fff4fd;
 }
 
-.create-gifos-preview {
+.create-gifos-record {
   width: 860px;
   height: 548px;
   margin-top: 85px;
@@ -1080,7 +1080,7 @@ html {
           box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
 }
 
-.create-gifos-preview figcaption {
+.create-gifos-record figcaption {
   width: 854px;
   height: 24px;
   margin: 3px;
@@ -1098,11 +1098,11 @@ html {
           align-items: center;
 }
 
-.create-gifos-preview figcaption span {
+.create-gifos-record figcaption span {
   color: #ffffff;
 }
 
-.create-gifos-preview video {
+.create-gifos-record video {
   width: 838px;
   height: 440px;
   border: 1px solid black;
@@ -1126,6 +1126,122 @@ html {
 
 .double-btn button:first-of-type {
   border-right: none;
+}
+
+.recording-section {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.time-counter {
+  min-width: 124px;
+  height: 36px;
+  margin-top: 21px;
+  margin-left: 11px;
+  padding: 7px;
+  background: #ffffff;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn-red {
+  background: #ff6161;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
+          box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
+  color: #ffffff;
+}
+
+#btn-ready {
+  margin-left: 528px;
+}
+
+.button-play {
+  height: 20px;
+  width: 20px;
+}
+
+.button-play span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-left: 7px solid #110038;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+
+.player-bar {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 28px;
+  margin-left: 24px;
+}
+
+.time-bar {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #b4b4b4;
+  -webkit-box-shadow: inset -2px -2px 0 0 #fffcfc, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #fffcfc, inset 2px 2px 0 0 #000000;
+  margin-left: 4px;
+}
+
+.time-square {
+  width: 12px;
+  height: 20px;
+  background: #999999;
+  margin: 2px;
+}
+
+.upload-gif-btn-container {
+  width: auto;
+  min-width: 304px;
+  margin-top: 28px;
+  margin-left: 121px;
+  margin-right: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.upload-gif-btn-container button {
+  border: 1px solid;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+          box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 }
 
 header {

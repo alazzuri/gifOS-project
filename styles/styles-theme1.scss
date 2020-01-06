@@ -38,6 +38,9 @@ $dark-blue: #110038;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .dotted-pink {
     background: #e6bbe2;
   }
 }
@@ -116,6 +119,6 @@ $dark-blue: #110038;
 }
 
 .create-gifos-start,
-.create-gifos-preview {
+.create-gifos-record {
   background: #e6e6e6;
 }

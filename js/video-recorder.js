@@ -12,27 +12,54 @@ const createGif = {
   readyBtn: document.querySelector("#btn-ready"),
   userVideo: document.querySelector("video"),
   timeCounter: document.querySelector("#video-time"),
+  stream: null,
+  recorder: null,
+  gifTime: null,
 
   getCurrentTime: () => {
     const video = createGif.userVideo;
+    video.currentTime = 0;
     video.ontimeupdate = function() {
-      seconds = video.currentTime;
-      createGif.timeCounter.textContent = createGif.renderTime(seconds);
+      const seconds = video.currentTime;
+      createGif.gifTime = createGif.renderTime(seconds);
+      createGif.timeCounter.textContent = createGif.gifTime;
     };
   },
 
   showUserVideo: async () => {
     const video = createGif.userVideo;
-    stream = await navigator.mediaDevices.getUserMedia({
+    createGif.stream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
         height: {max: 480},
         width: {ideal: 860}
       }
     });
-    video.srcObject = stream;
+    video.srcObject = createGif.stream;
     video.play();
+  },
+
+  recordVideo: async () => {
+    createGif.userVideo.load();
+    createGif.userVideo.play();
+    createGif.recorder = new RecordRTCPromisesHandler(createGif.stream, {
+      type: "video"
+    });
+    await createGif.recorder.startRecording();
+    createGif.recorder.stream = createGif.stream;
     createGif.getCurrentTime();
+  },
+
+  stopRecording: async () => {
+    createGif.userVideo.srcObject = null;
+    await createGif.recorder.stopRecording();
+    let blob = await createGif.recorder.getBlob();
+    createGif.userVideo.srcObject = null;
+    createGif.userVideo.src = URL.createObjectURL(blob);
+    createGif.recorder.stream.getTracks(t => t.stop());
+    await createGif.recorder.reset();
+    await createGif.recorder.destroy();
+    createGif.recorder = null;
   },
 
   renderTime: seconds => {

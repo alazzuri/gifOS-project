@@ -173,7 +173,8 @@ const printSuggestedGifs = () => {
     "star wars",
     "silicon valley",
     "disney",
-    "marvel"
+    "marvel",
+    "the mandalorian"
   ];
   let usedTopics = [];
   let counter = 1;

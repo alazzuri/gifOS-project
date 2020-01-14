@@ -205,6 +205,7 @@
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
             <video src="" id="video"></video>
+        <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo">
         <figure class="hidden" id="loading-section">
           <img src="./assets/globe_img.png" alt="">
           <strong class="chakra font-big">Estamos subiendo tu guifo…</strong>
@@ -292,8 +293,16 @@
                     <span class="dotted-border-144 font-big">Listo</span>
                   </button>
                 </div>
-          <figure class="hidden" id="upload-abort">
         </div>
+          <figure class="hidden" id="upload-abort">
+              <button class="chakra font-big button-144 button-white abort-upload">Cancelar</button>
+            </figure>
+        <figure class="hidden" id="confirm-window">
+          <strong>Guifo creado con éxito</strong>
+          <button class="button-white button-256" id="copy-btn">Copiar Enlace Guifo</button>
+          <button class="button-white button-256"><a href="#" target="_blank" id="download-btn">Descargar Guifo</a></button>
+          <button class="button-pink button-144" id="finish-btn">Listo</button>
+        </figure>
         </figure>
             </div>
           </div>

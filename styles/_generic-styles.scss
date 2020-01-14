@@ -49,10 +49,18 @@ html {
   text-decoration: line-through;
 }
 
+.button-256 {
+  width: 256px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-150 {
   width: 150px;
   height: 36px;
-  font-family: $chakra;
+  font-family: $chakra; //ESTO DEBERIA ESTAR EN SU CLASE GENERICA
   display: flex;
   justify-content: center;
   align-items: center;
@@ -466,6 +474,9 @@ html {
 .button-white {
   margin-right: 16px;
   background: #fff4fd;
+  background: #fff4fd;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 }
 
 .create-gifos-record {
@@ -639,4 +650,59 @@ html {
   box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   margin-top: 21px;
   margin-left: 702px;
+}
+
+.upload-success {
+  width: 721px;
+  height: 391px;
+  display: flex;
+  flex-wrap: wrap;
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  figcaption {
+    width: 100%;
+    height: 24px;
+    margin: 3px;
+    padding-right: 10px;
+    padding-left: 7px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      color: $white;
+    }
+  }
+}
+
+.uploaded-guifo {
+  width: 365px;
+  height: 191px;
+  margin-top: 27px;
+  margin-left: 24px;
+  margin-right: 24px;
+  background: #ffffff;
+  border: 1px solid #979797;
+  box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+}
+
+.upload-confirm {
+  width: 256px;
+  height: auto;
+  margin-top: 49px;
+  display: flex;
+  flex-direction: column;
+  strong {
+    margin-bottom: 16px;
+  }
+  button {
+    margin-bottom: 111px;
+  }
+  button:first-of-type {
+    margin-bottom: 14px;
+  }
+  button:last-of-type {
+    margin-bottom: 44px;
+    align-self: flex-end;
+  }
 }

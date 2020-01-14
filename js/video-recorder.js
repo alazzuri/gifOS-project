@@ -17,6 +17,11 @@ const createGif = {
   userVideo: document.querySelector("video"),
   timeCounter: document.querySelector("#video-time"),
   loadingSection: document.querySelector("#loading-section"),
+  confirmWindow: document.querySelector("#confirm-window"),
+  uploadedGif: document.querySelector("#final-guifo"),
+  downloadBtn: document.querySelector("#download-btn"),
+  copyBtn: document.querySelector("#copy-btn"),
+  finishBtn: document.querySelector("#finish-btn"),
   stream: null,
   recorder: null,
   gifStream: null,
@@ -147,7 +152,7 @@ const createGif = {
         setTimeout(() => {
           clearInterval(interval);
           //TODO = AGREGAR MENSAJE DE ERROR
-        }, 10000);
+        }, 30000);
       }
     };
     const interval = setInterval(printSquare, 100);
@@ -185,11 +190,36 @@ const createGif = {
     const gifUrl = await json.data.images.original.url;
     //MANDAMOS EL GIF A LOCAL STORAGE
     createGif.saveGif(gifUrl);
+    //MOSTRAMOS VENTADA DE CONFIRMACION
+    createGif.showSuccessWindows(gifUrl);
   },
 
   saveGif: url => {
     const newId = localStorage.length + 1;
     localStorage.setItem(`my-guifos-${newId}`, url);
+  },
+
+  showSuccessWindows: url => {
+    createGif.recordSectionTitle.textContent = "Guifo Subido Con Éxito";
+    createGif.userVideo.className = "hidden";
+    createGif.uploadAbort.className = "hidden";
+    createGif.uploadedGif.className = "uploaded-guifo";
+    createGif.uploadedGif.src = `${url}`;
+    createGif.confirmWindow.className = "upload-confirm";
+    createGif.recordSection.className = "upload-success";
+    createGif.loadingSection.className = "hidden";
+    createGif.setDownloadBtn(url);
+  },
+
+  setDownloadBtn: url => {
+    createGif.downloadBtn.href = `${url}`;
+  },
+
+  setCopyLink: url => {
+    const copyText = url;
+    navigator.clipboard
+      .writeText(copyText)
+      .then(response => console.log(response));
   },
 
   renderMyGuifos: () => {
@@ -205,11 +235,16 @@ const createGif = {
   BtnHandler: () => {
     createGif.createBtn.onclick = () => {
       createGif.createSection.className = "create-gifos";
+      createGif.startSection.className = "create-gifos-start";
     };
 
     createGif.startBtn.onclick = () => {
+      createGif.recordSectionTitle.textContent = "Un Chequeo Antes de Empezar";
       createGif.startSection.className = "hidden";
       createGif.recordSection.className = "create-gifos-record";
+      createGif.userVideo.style.display = "inline-block";
+      createGif.captureBtn.className = "double-btn";
+      createGif.uploadedGif.className = "hidden";
       createGif.showUserVideo();
     };
 
@@ -248,13 +283,23 @@ const createGif = {
 
     createGif.uploadBtn.onclick = () => {
       createGif.recordSectionTitle.textContent = "Subiendo Guifo";
-      createGif.timeCounter.className = "hidden";
+      createGif.recordControl.className = "hidden";
       createGif.captureConfirm.className = "hidden";
       createGif.userVideo.style.display = "none";
       createGif.loadingSection.className = "loading-section";
-      createGif.uploadAbort.classList.remove("hidden");
+      createGif.uploadAbort.classList.toggle("hidden");
+      createGif.userVideo.src = null;
       createGif.animateLoadingBar();
       createGif.postGif();
+    };
+
+    createGif.copyBtn.onclick = () => {
+      createGif.setCopyLink(createGif.uploadedGif.src);
+    };
+
+    createGif.finishBtn.onclick = () => {
+      createGif.confirmWindow.className = "hidden";
+      createGif.recordSection.className = "hidden";
     };
   },
 

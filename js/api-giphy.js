@@ -2,6 +2,7 @@ const SEARCH_URL = "https://api.giphy.com/v1/gifs/search";
 const TREND_URL = "https://api.giphy.com/v1/gifs/trending";
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 const $SEARCH_BUTTON = document.querySelector("#search");
+const suggestedTags = {};
 
 $SEARCH_BUTTON.onclick = () => {
   const userRequest = getUserInput();
@@ -125,9 +126,11 @@ const getSuggestedGifs = async function(gifContainer, topic, tag, counter) {
   });
 };
 
-const printGifTitle = (gifName, tag, counter) => {
+const printGifTitle = (gif, tag, counter) => {
   const gifTitle = document.querySelector(tag + counter);
-  const NAMES = gifName.title.toLowerCase();
+  const NAMES = gif.title.toLowerCase();
+  // ACA CREO EL OBJETO PARA GUARDAR LOS TAGS SUGERIDOS.
+  suggestedTags[`suggested-link-${counter}`] = NAMES;
   const SPLIT_NAME = NAMES.split(" ");
   gifTitle.textContent = `#${printName(SPLIT_NAME)}`;
 };
@@ -197,6 +200,20 @@ const printSuggestedGifs = () => {
       return true;
     }
   }
+};
+
+const printMoreResults = () => {
+  const linkButtons = document.querySelectorAll(".suggested-links");
+  linkButtons.forEach(element => {
+    element.onclick = e => {
+      const gifTag = suggestedTags[e.target.id].toUpperCase();
+      cleanSearchHistory();
+      printSearchTitle(gifTag);
+      obtainNames(gifTag);
+      renderResultGifs(SEARCH_URL, `?q=${gifTag}`);
+      printResultButton();
+    };
+  });
 };
 
 const getTrendingGifs = async function() {

@@ -26,11 +26,15 @@
         </a>
         <nav>
           <a href="#" class="create-gifos button-pink button-144">
-            <span class="dotted-border-144 dotted-pink font-big" id="create-gif">Crear Guifos</span>
+            <span class="dotted-border-144 dotted-pink font-big" id="create-gif"
+              >Crear Guifos</span
+            >
           </a>
           <section class="theme-selector">
             <button class="button-pink button-131">
-              <span class="dotted-border-131 dotted-pink font-big">Elegir Tema</span>
+              <span class="dotted-border-131 dotted-pink font-big"
+                >Elegir Tema</span
+              >
             </button>
             <button class="button-pink button-36" id="drop-down">
               <span class="dotted-border-36 dotted-pink">
@@ -105,8 +109,8 @@
             class="gif-img"
             id="suggested-gif-1"
           />
-          <button class="button-81 chakra font-medium see-more">
-            <span class="dotted-border-81"> Ver Mas... </span>
+          <button class="button-81 chakra font-medium see-more suggested-links">
+            <a class="dotted-border-81" id="suggested-link-1"> Ver Mas... </a>
           </button>
         </figure>
         <figure class="gif-suggested-container">
@@ -120,8 +124,8 @@
             class="gif-img"
             id="suggested-gif-2"
           />
-          <button class="button-81 chakra font-medium see-more">
-            <span class="dotted-border-81"> Ver Mas... </span>
+          <button class="button-81 chakra font-medium see-more suggested-links">
+            <a class="dotted-border-81" id="suggested-link-2"> Ver Mas... </a>
           </button>
         </figure>
         <figure class="gif-suggested-container">
@@ -135,8 +139,8 @@
             class="gif-img"
             id="suggested-gif-3"
           />
-          <button class="button-81 chakra font-medium see-more">
-            <span class="dotted-border-81"> Ver Mas... </span>
+          <button class="button-81 chakra font-medium see-more suggested-links">
+            <a class="dotted-border-81" id="suggested-link-3"> Ver Mas... </a>
           </button>
         </figure>
         <figure class="gif-suggested-container">
@@ -150,16 +154,10 @@
             class="gif-img"
             id="suggested-gif-4"
           />
-          <button class="button-81 chakra font-medium see-more">
-            <span class="dotted-border-81"> Ver Mas... </span>
+          <button class="button-81 chakra font-medium see-more suggested-links">
+            <a class="dotted-border-81" id="suggested-link-4"> Ver Mas... </a>
           </button>
         </figure>
-      </section>
-      <section class="result-gifs">
-        <h2 class="chakra font-medium subtitle" id="gif-container-title">
-          Tendencias
-        </h2>
-        <div class="result-gifs-container"></div>
       </section>
       <section class="hidden" id="create-gif-section">
         <figure class="create-gifos-start" id="start-creating">
@@ -193,23 +191,34 @@
                 <strong class="italic">guifo</strong> ahora?
               </p>
               <figure class="create-gif-btn-container">
-                <button class="chakra font-big button-144 button-white" id="create-abort">Cancelar</button>
-                <button class="chakra font-big button-144 button-pink" id="start-preview">Comenzar</button>
+                <button
+                  class="chakra font-big button-144 button-white"
+                  id="create-abort"
+                >
+                  Cancelar
+                </button>
+                <button
+                  class="chakra font-big button-144 button-pink"
+                  id="start-preview"
+                >
+                  Comenzar
+                </button>
               </figure>
             </div>
           </div>
         </figure>
         <figure class="hidden" id="record-field">
           <figcaption class="gradient-background">
-          <span class="chakra font-medium bold" id="record-title"> Un Chequeo Antes de Empezar</span>
+            <span class="chakra font-medium bold" id="record-title">
+              Un Chequeo Antes de Empezar</span
+            >
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
-            <video src="" id="video"></video>
-        <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo">
-        <figure class="hidden" id="loading-section">
-          <img src="./assets/globe_img.png" alt="">
-          <strong class="chakra font-big">Estamos subiendo tu guifo…</strong>
-          <figure>
+          <video src="" id="video"></video>
+          <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo" />
+          <figure class="hidden" id="loading-section">
+            <img src="./assets/globe_img.png" alt="" />
+            <strong class="chakra font-big">Estamos subiendo tu guifo…</strong>
             <div class="loading-bar">
               <span class="loading-square"></span>
               <span class="loading-square"></span>
@@ -234,80 +243,106 @@
               <span class="loading-square"></span>
               <span class="loading-square"></span>
             </div>
+            <p class="chakra font-small">
+              Tiempo restante: <span class="line-through">38 años</span> algunos
+              minutos
+            </p>
           </figure>
-          <p class="chakra font-small">Tiempo restante: <span class="line-through">38 años</span c> algunos minutos</p>
-        </figure>
-            <div class="double-btn" id="btn-capture">
-              <button class="button-36 button-pink">
-                <span class="dotted-border-36 dotted-pink">
-                  <img src="./assets/camera.svg" alt="camera_logo">
+          <div class="double-btn" id="btn-capture">
+            <button class="button-36 button-pink">
+              <span class="dotted-border-36 dotted-pink">
+                <img src="./assets/camera.svg" alt="camera_logo" />
+              </span>
+            </button>
+            <button class="button-pink button-144">
+              <span class="dotted-border-144 dotted-pink font-big"
+                >Capturar</span
+              >
+            </button>
+          </div>
+          <div class="hidden" id="record-control">
+            <figure class="time-counter chakra font-big" id="video-time">
+              00:00:00
+            </figure>
+            <div class="hidden" id="capture-confirm">
+              <figure class="player-bar">
+                <button class="button-pink button-36 button-play" id="btn-play">
+                  <span class="dotted-border-36 dotted-pink">
+                    <span class="arrow-left"></span>
+                  </span>
+                </button>
+                <div class="time-bar">
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                  <span class="time-square"></span>
+                </div>
+              </figure>
+              <figure class="upload-gif-btn-container">
+                <button
+                  class="chakra font-big button-144 button-white"
+                  id="btn-recapture"
+                >
+                  Repetir Captura
+                </button>
+                <button
+                  class="chakra font-big button-144 button-pink"
+                  id="btn-upload"
+                >
+                  Subir Guifo
+                </button>
+              </figure>
+            </div>
+            <div class="double-btn" id="btn-ready">
+              <button class="button-36 btn-red">
+                <span class="dotted-border-36">
+                  <img src="./assets/recording.svg" alt="recording_logo" />
                 </span>
               </button>
-              <button class="button-pink button-144">
-                <span class="dotted-border-144 dotted-pink font-big">Capturar</span>
+              <button class="btn-red button-144">
+                <span class="dotted-border-144 font-big">Listo</span>
               </button>
             </div>
-        <div class="hidden" id="record-control">
-                <figure class="time-counter chakra font-big" id="video-time">
-                  00:00:00
-                </figure>
-          <div class="hidden" id="capture-confirm">
-                <figure class="player-bar">
-                  <button class="button-pink button-36 button-play" id="btn-play">
-                    <span class="dotted-border-36 dotted-pink">
-                      <span class="arrow-left"></span>
-                    </span>
-                  </button>
-                  <div class="time-bar">
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                    <span class="time-square"></span>
-                  </div>
-                </figure>
-                <figure class="upload-gif-btn-container">
-                  <button class="chakra font-big button-144 button-white" id="btn-recapture">Repetir Captura</button>
-                  <button class="chakra font-big button-144 button-pink" id="btn-upload">Subir Guifo</button>
-                </figure>
           </div>
-                <div class="double-btn" id="btn-ready">
-                  <button class="button-36 btn-red">
-                    <span class="dotted-border-36">
-                      <img src="./assets/recording.svg" alt="recording_logo">
-                    </span>
-                  </button>
-                  <button class="btn-red button-144">
-                    <span class="dotted-border-144 font-big">Listo</span>
-                  </button>
-                </div>
-        </div>
           <figure class="hidden" id="upload-abort">
-              <button class="chakra font-big button-144 button-white abort-upload">Cancelar</button>
-            </figure>
-        <figure class="hidden" id="confirm-window">
-          <strong>Guifo creado con éxito</strong>
-          <button class="button-white button-256" id="copy-btn">Copiar Enlace Guifo</button>
-          <button class="button-white button-256"><a href="#" target="_blank" id="download-btn">Descargar Guifo</a></button>
-          <button class="button-pink button-144" id="finish-btn">Listo</button>
+            <button
+              class="chakra font-big button-144 button-white abort-upload"
+            >
+              Cancelar
+            </button>
+          </figure>
+          <figure class="hidden" id="confirm-window">
+            <strong>Guifo creado con éxito</strong>
+            <button class="button-white button-256" id="copy-btn">
+              Copiar Enlace Guifo
+            </button>
+            <button class="button-white button-256">
+              <a href="#" target="_blank" id="download-btn">Descargar Guifo</a>
+            </button>
+            <button class="button-pink button-144" id="finish-btn">
+              Listo
+            </button>
+          </figure>
         </figure>
-        </figure>
-            </div>
-          </div>
-          <video src="" id="video"></video>
-        </figure>
+      </section>
+      <section class="result-gifs">
+        <h2 class="chakra font-medium subtitle" id="gif-container-title">
+          Tendencias
+        </h2>
+        <div class="result-gifs-container"></div>
       </section>
     </div>
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>

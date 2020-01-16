@@ -14,6 +14,7 @@ const createGif = {
   recaptureBtn: document.querySelector("#btn-recapture"),
   uploadBtn: document.querySelector("#btn-upload"),
   uploadAbort: document.querySelector("#upload-abort"),
+  myGuifosBtn: document.querySelector("#my-guifos-tag"),
   userVideo: document.querySelector("video"),
   timeCounter: document.querySelector("#video-time"),
   loadingSection: document.querySelector("#loading-section"),
@@ -44,8 +45,8 @@ const createGif = {
     createGif.stream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
-        height: {max: 480},
-        width: {ideal: 860}
+        height: { ideal: 480 },
+        width: { ideal: 860 }
       }
     });
     video.srcObject = createGif.stream;
@@ -209,6 +210,7 @@ const createGif = {
     createGif.recordSection.className = "upload-success";
     createGif.loadingSection.className = "hidden";
     createGif.setDownloadBtn(url);
+    createGif.renderMyGuifos();
   },
 
   setDownloadBtn: url => {
@@ -223,10 +225,12 @@ const createGif = {
   },
 
   renderMyGuifos: () => {
+    const $CONTAINER_TITLE = document.querySelector("#gif-container-title");
     const totalGuifos = localStorage.length;
+    cleanSearchHistory();
+    $CONTAINER_TITLE.textContent = "My Guifos";
     for (let i = 1; i <= totalGuifos; i++) {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
-      console.log(gifUrl);
       //HAY QUE LIMPIAR EL HISTORIAL
       printGifs(gifUrl, i);
     }
@@ -300,6 +304,10 @@ const createGif = {
     createGif.finishBtn.onclick = () => {
       createGif.confirmWindow.className = "hidden";
       createGif.recordSection.className = "hidden";
+    };
+
+    createGif.myGuifosBtn.onclick = () => {
+      createGif.renderMyGuifos();
     };
   },
 

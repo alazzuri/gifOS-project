@@ -397,13 +397,17 @@ html {
 }
 
 .related-results {
+  width: 100%;
+  min-height: 44px;
   margin-top: 12px;
+  overflow: hidden;
   button {
     color: $white;
     width: auto;
     height: 34px;
     padding: 8px;
     margin-right: 8px;
+    margin-bottom: 10px;
   }
 }
 
@@ -514,6 +518,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    object-fit: fill;
   }
 }
 

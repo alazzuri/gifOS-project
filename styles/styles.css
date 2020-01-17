@@ -977,7 +977,10 @@ html {
 }
 
 .related-results {
+  width: 100%;
+  min-height: 44px;
   margin-top: 12px;
+  overflow: hidden;
 }
 
 .related-results button {
@@ -986,6 +989,7 @@ html {
   height: 34px;
   padding: 8px;
   margin-right: 8px;
+  margin-bottom: 10px;
 }
 
 .create-gifos {
@@ -1147,6 +1151,8 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .double-btn {

@@ -45,8 +45,8 @@ const createGif = {
     createGif.stream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
-        height: { ideal: 480 },
-        width: { ideal: 860 }
+        height: {ideal: 480},
+        width: {ideal: 860}
       }
     });
     video.srcObject = createGif.stream;
@@ -196,7 +196,7 @@ const createGif = {
   },
 
   saveGif: url => {
-    const newId = localStorage.length + 1;
+    const newId = localStorage.length;
     localStorage.setItem(`my-guifos-${newId}`, url);
   },
 
@@ -221,7 +221,6 @@ const createGif = {
     const copyText = url;
     navigator.clipboard
       .writeText(copyText)
-      .then(response => console.log(response));
   },
 
   renderMyGuifos: () => {
@@ -231,7 +230,6 @@ const createGif = {
     $CONTAINER_TITLE.textContent = "My Guifos";
     for (let i = 1; i <= totalGuifos; i++) {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
-      //HAY QUE LIMPIAR EL HISTORIAL
       printGifs(gifUrl, i);
     }
   },

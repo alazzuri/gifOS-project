@@ -9,7 +9,7 @@ $SEARCH_BUTTON.onclick = () => {
   cleanSearchHistory();
   printSearchTitle(userRequest);
   renderResultGifs(SEARCH_URL, `?q=${userRequest}`);
-  printResultButton();
+  // printResultButton();
 };
 
 const cleanSearchHistory = () => {
@@ -26,8 +26,11 @@ const getSearchResults = (url, requestType, limit = 20) => {
   return found;
 };
 
+//TENGO QUE VER DE IMPRIMIR LOS BOTONES AZULES MAS DE TRES Y QUE TOME EL INPUT PARA PODER HACERLO
+//CON EL BOTON DE VER MAS.
 const renderResultGifs = async function(url, requestType) {
   const URLS = await getSearchResults(url, requestType);
+  const printedTags = [];
   let gifCounter = 0;
   let spanCounter = 0;
   URLS.data.forEach(data => {
@@ -37,6 +40,14 @@ const renderResultGifs = async function(url, requestType) {
     const RANDOM_NUMBER = Math.ceil(Math.random() * 10);
     printGifs(URL_GIF, gifCounter);
     printGifTags(GIF_DESCRIPTION, gifCounter);
+    if (
+      url === SEARCH_URL &&
+      !printedTags.includes(GIF_DESCRIPTION) &&
+      GIF_DESCRIPTION.length > 3
+    ) {
+      printResultButton(GIF_DESCRIPTION);
+      printedTags.push(GIF_DESCRIPTION);
+    }
     if (RANDOM_NUMBER % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 250) {
       applySpan(gifCounter);
       spanCounter++;
@@ -197,6 +208,7 @@ const printSuggestedGifs = () => {
         counter++;
       }
     } else {
+      printMoreResults();
       return true;
     }
   }
@@ -209,9 +221,9 @@ const printMoreResults = () => {
       const gifTag = suggestedTags[e.target.id].toUpperCase();
       cleanSearchHistory();
       printSearchTitle(gifTag);
-      obtainNames(gifTag);
+
       renderResultGifs(SEARCH_URL, `?q=${gifTag}`);
-      printResultButton();
+      // printResultButton();
     };
   });
 };

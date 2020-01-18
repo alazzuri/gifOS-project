@@ -1,5 +1,6 @@
-!function () {
-    resetSearchField();
-    printSuggestedGifs();
-    getTrendingGifs()
-}();
+!(function() {
+  resetSearchField();
+  printSuggestedGifs();
+  getTrendingGifs();
+  createGif.init();
+})();

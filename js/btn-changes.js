@@ -141,6 +141,15 @@ function handleArrowBack() {
     : ($ARROW_BACK.className = "arrow-back");
 }
 
+function showErrorMsg(error) {
+  const $ERROR_WINDOW = document.querySelector("#error-msg");
+  const $ERROR_DESCRIPTION = document.querySelector("#error-description");
+  $ERROR_WINDOW.className !== "hidden"
+    ? ($ERROR_WINDOW.className = "hidden")
+    : (($ERROR_WINDOW.className = "error-window"),
+      ($ERROR_DESCRIPTION.textContent = error));
+}
+
 function printResultButton(input) {
   const $BUTTON_CONTAINER = document.querySelector("#related_buttons");
   const $BUTTONTEXT = document.createElement("button");

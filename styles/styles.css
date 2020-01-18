@@ -1415,7 +1415,7 @@ html {
       align-self: flex-end;
 }
 
-.error-button {
+.error-window {
   border: 1px solid;
   width: 300px;
   height: auto;
@@ -1440,7 +1440,7 @@ html {
   color: #110038;
 }
 
-.error-button figcaption {
+.error-window figcaption {
   width: 100%;
   height: 24px;
   padding-left: 4px;
@@ -1453,18 +1453,18 @@ html {
           align-items: center;
 }
 
-.error-button figcaption span {
+.error-window figcaption span {
   color: white;
 }
 
-.error-button p {
+.error-window p {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
   padding: 5px;
 }
 
-.error-button button {
+.error-window button {
   margin-bottom: 5px;
 }
 
@@ -1480,6 +1480,7 @@ html {
       -ms-flex-pack: center;
           justify-content: center;
   margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .error-title img {

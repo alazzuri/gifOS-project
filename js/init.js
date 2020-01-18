@@ -1,5 +1,6 @@
 !(function() {
-  resetSearchField();
+  domHandling.resetSearchField();
+  domHandling.handlerEvents();
   suggestedGifs.printSuggestedGifs();
   renderGifs.getTrendingGifs();
   createGif.init();

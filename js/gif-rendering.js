@@ -15,8 +15,6 @@ const giphyApi = {
 };
 
 const renderGifs = {
-  resultsTitle: document.querySelector("#gif-container-title"),
-
   cleanRenderedGifs: () => {
     const $GIFS_TO_REMOVE = document.querySelectorAll(".result-gif");
     $GIFS_TO_REMOVE.forEach(element => element.remove());
@@ -39,9 +37,9 @@ const renderGifs = {
         !printedTags.includes(gifDescription) &&
         gifDescription.length > 3
       ) {
-        printResultButton(gifDescription);
+        domHandling.printRelatedButtons(gifDescription);
         printedTags.push(gifDescription);
-        renderGifs.resultsTitle.scrollIntoView();
+        domHandling.resultsTitle.scrollIntoView();
       }
       if (spanCounter < 4 && +gifWidth > +gifHeigth * 1.2) {
         renderGifs.applySpan(gifCounter);
@@ -49,7 +47,7 @@ const renderGifs = {
       }
       gifCounter++;
     });
-    resetSearchField();
+    domHandling.resetSearchField();
   },
 
   printGifs: (url, counter) => {
@@ -240,7 +238,8 @@ const suggestedGifs = {
       element.onclick = e => {
         const gifTag = suggestedGifs.suggestedTags[e.target.id].toUpperCase();
         renderGifs.cleanRenderedGifs();
-        printSearchTitle(gifTag);
+        domHandling.removeRelatedButtons();
+        domHandling.printSearchTitle(gifTag);
         renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${gifTag}`);
       };
     });
@@ -251,9 +250,10 @@ const myGuifos = {
   myGuifosBtn: document.querySelector("#my-guifos-tag"),
 
   renderMyGuifos: () => {
-    const $CONTAINER_TITLE = renderGifs.resultsTitle;
+    const $CONTAINER_TITLE = domHandling.resultsTitle;
     const totalGuifos = localStorage.length;
     renderGifs.cleanRenderedGifs();
+    domHandling.removeRelatedButtons();
     $CONTAINER_TITLE.textContent = "My Guifos";
     for (let i = 0; i < totalGuifos; i++) {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);

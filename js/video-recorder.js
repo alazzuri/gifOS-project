@@ -212,7 +212,7 @@ const createGif = {
     createGif.recordSection.className = "upload-success";
     createGif.loadingSection.className = "hidden";
     createGif.setDownloadBtn(url);
-    handleGifsSection();
+    domHandling.handleGifsSection();
     myGuifos.renderMyGuifos();
   },
 
@@ -229,10 +229,10 @@ const createGif = {
     createGif.createBtn.onclick = () => {
       createGif.createSection.className = "create-gifos";
       createGif.startSection.className = "create-gifos-start";
-      hideSuggestedGifs();
-      hideSearcSection();
-      hideNavBar();
-      handleArrowBack();
+      domHandling.handleSuggestedGifs();
+      domHandling.handleSearchSection();
+      domHandling.handleNavBar();
+      domHandling.handleArrowBack();
       myGuifos.renderMyGuifos();
     };
 
@@ -244,7 +244,7 @@ const createGif = {
       createGif.captureBtn.className = "double-btn";
       createGif.uploadedGif.className = "hidden";
       createGif.showUserVideo();
-      handleGifsSection();
+      domHandling.handleGifsSection();
     };
 
     createGif.cancelBtn.onclick = () => {
@@ -302,15 +302,15 @@ const createGif = {
 
     myGuifos.myGuifosBtn.onclick = () => {
       myGuifos.renderMyGuifos();
-      hideSuggestedGifs();
-      hideSearcSection();
-      handleArrowBack();
+      domHandling.handleSuggestedGifs();
+      domHandling.handleSearchSection();
+      domHandling.handleArrowBack();
     };
 
     createGif.abortBtn.onclick = () => {
       createGif.abortController.abort();
       createGif.recordSection.className = "hidden";
-      handleGifsSection();
+      domHandling.handleGifsSection();
       myGuifos.renderMyGuifos();
     };
   },

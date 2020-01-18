@@ -62,7 +62,7 @@
         </nav>
       </section>
       <section class="gifs-search" id="search-section">
-        <figure class="search-bar">
+        <form class="search-bar" id="search-form" autocomplete="off">
           <label for="searchbar" class="gradient-background chakra font-medium"
             >Buscar</label
           >
@@ -72,13 +72,13 @@
             placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
             class="chakra font-big"
           />
-          <button id="search" class="button-102 btn-disabled chakra font-big">
+          <button  id="search" class="button-102 btn-disabled chakra font-big" disabled>
             <span id="search-hover">
               <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
               Buscar
             </span>
           </button>
-        </figure>
+        </form>
         <figure class="hidden" id="related_buttons"></figure>
         <figure class="hidden" id="suggested-results">
           <button class="chakra font-big">
@@ -360,7 +360,7 @@
     <script src="./js/visit-counter.js"></script>
     <script src="./js/theme-handling.js"></script>
     <script src="./js/gif-rendering.js"></script>
-    <script src="./js/btn-changes.js"></script>
+    <script src="./js/DOM-handling.js"></script>
     <script src="./js/video-recorder.js"></script>
     <script src="./js/init.js"></script>
   </body>

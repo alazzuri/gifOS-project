@@ -15,7 +15,6 @@ const createGif = {
   uploadBtn: document.querySelector("#btn-upload"),
   uploadAbort: document.querySelector("#upload-abort"),
   abortBtn: document.querySelector("#btn-abort"),
-  myGuifosBtn: document.querySelector("#my-guifos-tag"),
   userVideo: document.querySelector("video"),
   timeCounter: document.querySelector("#video-time"),
   loadingSection: document.querySelector("#loading-section"),
@@ -170,7 +169,7 @@ const createGif = {
 
   postGif: async () => {
     const API_ENDPOINT = "https://upload.giphy.com/v1/gifs?";
-    const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx"; // ESTO TIENE QUE SER GLOBAL PORQUE SE USA PARA TODO.
+    const API_KEY = giphyApi.apiKey;
     const heading = new Headers();
     const uploadFile = createGif.createFormData();
     const response = await fetch(API_ENDPOINT + "api_key=" + API_KEY, {
@@ -188,7 +187,7 @@ const createGif = {
 
   getUploadedGif: async id => {
     const API_ENDPOINT = `https://api.giphy.com/v1/gifs/${id}?`;
-    const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
+    const API_KEY = giphyApi.apiKey;
     const response = await fetch(API_ENDPOINT + "&api_key=" + API_KEY);
     const json = await response.json();
     const gifUrl = await json.data.images.original.url;
@@ -214,7 +213,7 @@ const createGif = {
     createGif.loadingSection.className = "hidden";
     createGif.setDownloadBtn(url);
     handleGifsSection();
-    createGif.renderMyGuifos();
+    myGuifos.renderMyGuifos();
   },
 
   setDownloadBtn: url => {
@@ -226,17 +225,6 @@ const createGif = {
     navigator.clipboard.writeText(copyText);
   },
 
-  renderMyGuifos: () => {
-    const $CONTAINER_TITLE = document.querySelector("#gif-container-title");
-    const totalGuifos = localStorage.length;
-    cleanSearchHistory();
-    $CONTAINER_TITLE.textContent = "My Guifos";
-    for (let i = 0; i < totalGuifos; i++) {
-      const gifUrl = localStorage.getItem(`my-guifos-${i}`);
-      printGifs(gifUrl, i);
-    }
-  },
-
   BtnHandler: () => {
     createGif.createBtn.onclick = () => {
       createGif.createSection.className = "create-gifos";
@@ -245,7 +233,7 @@ const createGif = {
       hideSearcSection();
       hideNavBar();
       handleArrowBack();
-      createGif.renderMyGuifos();
+      myGuifos.renderMyGuifos();
     };
 
     createGif.startBtn.onclick = () => {
@@ -312,8 +300,8 @@ const createGif = {
       createGif.recordSection.className = "hidden";
     };
 
-    createGif.myGuifosBtn.onclick = () => {
-      createGif.renderMyGuifos();
+    myGuifos.myGuifosBtn.onclick = () => {
+      myGuifos.renderMyGuifos();
       hideSuggestedGifs();
       hideSearcSection();
       handleArrowBack();
@@ -323,7 +311,7 @@ const createGif = {
       createGif.abortController.abort();
       createGif.recordSection.className = "hidden";
       handleGifsSection();
-      createGif.renderMyGuifos();
+      myGuifos.renderMyGuifos();
     };
   },
 

@@ -1,7 +1,10 @@
+const buttonHandling = {
+  searchBtn: document.querySelector("#search")
+}; ////
+
 // CAMBIO BOTON BUSCAR
 const $SEARCHFIELD = document.querySelector("#searchbar");
-const $RESULTSFIELD = document.querySelector("#suggested-results");
-$SEARCH_BUTTON.disabled = true;
+buttonHandling.searchBtn.disabled = true;
 $PREDICTIVE1 = document.querySelector("#suggested1");
 $PREDICTIVE2 = document.querySelector("#suggested2");
 $PREDICTIVE3 = document.querySelector("#suggested3");
@@ -16,7 +19,7 @@ const getUserInput = () => {
 // RESETEAR CAMPO DE BUSQUEDA
 function resetSearchField() {
   $SEARCHFIELD.value = "";
-  $RESULTSFIELD.className = "hidden";
+  suggestedResults.resultContainer.className = "hidden";
 }
 
 // CAMBIO COLORES BOTON AL INTRODUCIR INPUT
@@ -27,22 +30,22 @@ $SEARCHFIELD.onkeyup = () => {
 function changeBtnStatus(input) {
   const $GIFOSIMG = document.querySelector("#lens");
   const $BTNHOVER = document.querySelector("#search-hover");
-  if (input !== "" && input !== " " && !input.includes("  ")) {
-    $SEARCH_BUTTON.disabled = false;
-    $SEARCH_BUTTON.classList.remove("btn-disabled");
-    $SEARCH_BUTTON.classList.add("button-pink");
+  if (input.length > 2 && !input.includes("  ")) {
+    buttonHandling.searchBtn.disabled = false;
+    buttonHandling.searchBtn.classList.remove("btn-disabled");
+    buttonHandling.searchBtn.classList.add("button-pink");
     $BTNHOVER.classList.add("dotted-border-102");
     if ($THEMESHEET.href.includes("theme1")) {
       $GIFOSIMG.src = "./assets/lupa.svg";
     } else {
       $GIFOSIMG.src = "./assets/lupa_light.svg";
     }
-    obtainNames(input);
+    suggestedResults.obtainNames(input);
   } else {
-    $RESULTSFIELD.className = "hidden";
-    $SEARCH_BUTTON.disabled = true;
-    $SEARCH_BUTTON.classList.remove("button-pink");
-    $SEARCH_BUTTON.classList.add("btn-disabled");
+    suggestedResults.resultContainer.className = "hidden";
+    buttonHandling.searchBtn.disabled = true;
+    buttonHandling.searchBtn.classList.remove("button-pink");
+    buttonHandling.searchBtn.classList.add("btn-disabled");
     $BTNHOVER.classList.remove("dotted-border-102");
     if ($THEMESHEET.href.includes("theme1")) {
       $GIFOSIMG.src = "./assets/lupa_inactive.svg";
@@ -55,11 +58,14 @@ function changeBtnStatus(input) {
 // EJECUTO BUSQUEDA AL APRETAR ENTER
 document.onkeypress = function(event) {
   if (getUserInput().length !== 0 && event.keyCode === 13) {
-    cleanSearchHistory();
+    renderGifs.cleanRenderedGifs();
     // CAMBIO TITULO CONTENEDOR
     printSearchTitle(getUserInput());
     //EJECUTO BUSQUEDA E IMPRIMO
-    renderResultGifs(SEARCH_URL, `?q=${getUserInput()}`);
+    renderGifs.renderResultGifs(
+      giphyApi.searchEndpoint,
+      `?q=${getUserInput()}`
+    );
     // printResultButton();
     changeBtnStatus(getUserInput());
   }
@@ -70,39 +76,39 @@ document.onkeypress = function(event) {
 $PREDICTIVE1.onclick = function() {
   const BUTTONTEXT = $PREDICTIVE1.innerHTML;
   //LIMPIO ARRAY
-  cleanSearchHistory();
+  renderGifs.cleanRenderedGifs();
   // CAMBIO TITULO CONTENEDOR
   printSearchTitle(BUTTONTEXT);
   //EJECUTO BUSQUEDA E IMPRIMO
-  renderResultGifs(SEARCH_URL, `?q=${BUTTONTEXT}`);
+  renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
   //   printResultButton();
 };
 
 $PREDICTIVE2.onclick = function() {
   const BUTTONTEXT = $PREDICTIVE2.innerHTML;
   //LIMPIO ARRAY
-  cleanSearchHistory();
+  renderGifs.cleanRenderedGifs();
   // CAMBIO TITULO CONTENEDOR
   printSearchTitle(BUTTONTEXT);
   //EJECUTO BUSQUEDA E IMPRIMO
-  renderResultGifs(SEARCH_URL, `?q=${BUTTONTEXT}`);
+  renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
   printResultButton();
 };
 
 $PREDICTIVE3.onclick = function() {
   const BUTTONTEXT = $PREDICTIVE3.innerHTML;
   //LIMPIO ARRAY
-  cleanSearchHistory();
+  renderGifs.cleanRenderedGifs();
   // CAMBIO TITULO CONTENEDOR
   printSearchTitle(BUTTONTEXT);
   //EJECUTO BUSQUEDA E IMPRIMO
-  renderResultGifs(SEARCH_URL, `?q=${BUTTONTEXT}`);
+  renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
   //   printResultButton();
 };
 
 // FUNCION PARA CAMBIAR ETIQUETA BUSQUEDA
 function printSearchTitle(input) {
-  const $CONTAINER_TITLE = document.querySelector("#gif-container-title");
+  const $CONTAINER_TITLE = renderGifs.resultsTitle;
   $CONTAINER_TITLE.textContent = `Resultados para: ${input}`;
 }
 
@@ -161,11 +167,11 @@ function printResultButton(input) {
   $BUTTON_CONTAINER.appendChild($BUTTONTEXT);
   $BUTTONTEXT.onclick = () => {
     const BUTTONTEXT = input.toUpperCase();
-    cleanSearchHistory();
+    renderGifs.cleanRenderedGifs();
     // CAMBIO TITULO CONTENEDOR
     printSearchTitle(BUTTONTEXT);
     //EJECUTO BUSQUEDA E IMPRIMO
-    renderResultGifs(SEARCH_URL, `?q=${BUTTONTEXT}`);
+    renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
   };
   hideSuggestedGifs();
 }
@@ -181,4 +187,11 @@ const printResultTags = splitName => {
     }
   }
   return nameToPrint;
+};
+
+buttonHandling.searchBtn.onclick = () => {
+  const userRequest = getUserInput();
+  renderGifs.cleanRenderedGifs();
+  printSearchTitle(userRequest);
+  renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${userRequest}`);
 };

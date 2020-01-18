@@ -14,6 +14,7 @@ const createGif = {
   recaptureBtn: document.querySelector("#btn-recapture"),
   uploadBtn: document.querySelector("#btn-upload"),
   uploadAbort: document.querySelector("#upload-abort"),
+  abortBtn: document.querySelector("#btn-abort"),
   myGuifosBtn: document.querySelector("#my-guifos-tag"),
   userVideo: document.querySelector("video"),
   timeCounter: document.querySelector("#video-time"),
@@ -28,6 +29,7 @@ const createGif = {
   gifStream: null,
   gifTime: null,
   blobFile: null,
+  abortController: new AbortController(),
 
   getCurrentTime: () => {
     const video = createGif.userVideo;
@@ -45,8 +47,8 @@ const createGif = {
     createGif.stream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
-        height: {ideal: 480},
-        width: {ideal: 860}
+        height: { ideal: 480 },
+        width: { ideal: 860 }
       }
     });
     video.srcObject = createGif.stream;
@@ -175,7 +177,8 @@ const createGif = {
       method: "POST",
       headers: heading,
       body: uploadFile,
-      cors: "no-cors"
+      cors: "no-cors",
+      signal: createGif.abortController.signal
     });
     const json = await response.json();
     const gifId = json.data.id;
@@ -210,6 +213,7 @@ const createGif = {
     createGif.recordSection.className = "upload-success";
     createGif.loadingSection.className = "hidden";
     createGif.setDownloadBtn(url);
+    handleGifsSection();
     createGif.renderMyGuifos();
   },
 
@@ -219,8 +223,7 @@ const createGif = {
 
   setCopyLink: url => {
     const copyText = url;
-    navigator.clipboard
-      .writeText(copyText)
+    navigator.clipboard.writeText(copyText);
   },
 
   renderMyGuifos: () => {
@@ -228,7 +231,7 @@ const createGif = {
     const totalGuifos = localStorage.length;
     cleanSearchHistory();
     $CONTAINER_TITLE.textContent = "My Guifos";
-    for (let i = 1; i <= totalGuifos; i++) {
+    for (let i = 0; i < totalGuifos; i++) {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
       printGifs(gifUrl, i);
     }
@@ -238,6 +241,11 @@ const createGif = {
     createGif.createBtn.onclick = () => {
       createGif.createSection.className = "create-gifos";
       createGif.startSection.className = "create-gifos-start";
+      hideSuggestedGifs();
+      hideSearcSection();
+      hideNavBar();
+      handleArrowBack();
+      createGif.renderMyGuifos();
     };
 
     createGif.startBtn.onclick = () => {
@@ -248,11 +256,11 @@ const createGif = {
       createGif.captureBtn.className = "double-btn";
       createGif.uploadedGif.className = "hidden";
       createGif.showUserVideo();
+      handleGifsSection();
     };
 
     createGif.cancelBtn.onclick = () => {
-      //TODO ==> COMPLETAR PASOS PARA VOLVER PARA ATRAS!
-      alert("COMPLETAR");
+      createGif.startSection.className = "hidden";
     };
 
     createGif.captureBtn.onclick = () => {
@@ -305,6 +313,16 @@ const createGif = {
     };
 
     createGif.myGuifosBtn.onclick = () => {
+      createGif.renderMyGuifos();
+      hideSuggestedGifs();
+      hideSearcSection();
+      handleArrowBack();
+    };
+
+    createGif.abortBtn.onclick = () => {
+      createGif.abortController.abort();
+      createGif.recordSection.className = "hidden";
+      handleGifsSection();
       createGif.renderMyGuifos();
     };
   },

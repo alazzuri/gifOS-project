@@ -21,8 +21,14 @@
     <header class="chakra font-small gradient-background"></header>
     <div class="container">
       <section class="navbar">
-        <a href="index.html"
-          ><img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
+        <a href="index.html">
+          <img
+            src="./assets/arrow.svg"
+            alt="arrow"
+            class="hidden"
+            id="back-arrow"
+          />
+          <img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
         </a>
         <nav>
           <a href="#" class="create-gifos button-pink button-144">
@@ -55,7 +61,7 @@
           </a>
         </nav>
       </section>
-      <section class="gifs-search">
+      <section class="gifs-search" id="search-section">
         <figure class="search-bar">
           <label for="searchbar" class="gradient-background chakra font-medium"
             >Buscar</label
@@ -73,8 +79,7 @@
             </span>
           </button>
         </figure>
-        <figure class="hidden" id="related_buttons">
-        </figure>
+        <figure class="hidden" id="related_buttons"></figure>
         <figure class="hidden" id="suggested-results">
           <button class="chakra font-big">
             <span id="suggested1"></span>
@@ -87,7 +92,7 @@
           </button>
         </figure>
       </section>
-      <section class="suggested-gifs" id="sugg-gifs">
+      <section class="suggested-gifs" id="gifs-suggested">
         <h2 class="chakra font-medium subtitle">Hoy te sugerimos:</h2>
         <figure class="gif-suggested-container">
           <figcaption class="gradient-background suggested-gif-title">
@@ -311,6 +316,7 @@
           <figure class="hidden" id="upload-abort">
             <button
               class="chakra font-big button-144 button-white abort-upload"
+              id="btn-abort"
             >
               Cancelar
             </button>
@@ -329,7 +335,7 @@
           </figure>
         </figure>
       </section>
-      <section class="result-gifs">
+      <section class="result-gifs" id="gifs-main-section">
         <h2 class="chakra font-medium subtitle" id="gif-container-title">
           Tendencias
         </h2>

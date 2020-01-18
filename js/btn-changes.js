@@ -1,10 +1,6 @@
 // CAMBIO BOTON BUSCAR
 const $SEARCHFIELD = document.querySelector("#searchbar");
 const $RESULTSFIELD = document.querySelector("#suggested-results");
-const $PREDICTIVE1 = document.querySelector("#suggested1");
-const $PREDICTIVE2 = document.querySelector("#suggested2");
-const $PREDICTIVE3 = document.querySelector("#suggested3");
-
 $SEARCH_BUTTON.disabled = true;
 
 //CAPTURAR INPUT USUARIO
@@ -108,10 +104,38 @@ function printSearchTitle(input) {
 }
 
 function hideSuggestedGifs() {
-  const $SUGGESTED_SECTION = document.querySelector("#sugg-gifs");
+  const $SUGGESTED_SECTION = document.querySelector("#gifs-suggested");
   if ($SUGGESTED_SECTION.className !== "hidden") {
     $SUGGESTED_SECTION.className = "hidden";
   }
+}
+
+function hideSearcSection() {
+  const $SEARCH_SECTION = document.querySelector("#search-section");
+  if ($SEARCH_SECTION.className !== "hidden") {
+    $SEARCH_SECTION.className = "hidden";
+  }
+}
+
+function hideNavBar() {
+  const $NAV_BAR = document.querySelector("nav");
+  if ($NAV_BAR.className !== "hidden") {
+    $NAV_BAR.className = "hidden";
+  }
+}
+
+function handleGifsSection() {
+  const $GIF_CONTAINER = document.querySelector("#gifs-main-section");
+  $GIF_CONTAINER.className !== "hidden"
+    ? ($GIF_CONTAINER.className = "hidden")
+    : ($GIF_CONTAINER.className = "result-gifs");
+}
+
+function handleArrowBack() {
+  const $ARROW_BACK = document.querySelector("#back-arrow");
+  $ARROW_BACK.className !== "hidden"
+    ? ($ARROW_BACK.className = "hidden")
+    : ($ARROW_BACK.className = "arrow-back");
 }
 
 function printResultButton(input) {

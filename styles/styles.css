@@ -460,6 +460,11 @@ html {
   text-decoration: line-through;
 }
 
+.arrow-back {
+  display: block;
+  margin-right: 7px;
+}
+
 .button-256 {
   width: 256px;
   height: 36px;
@@ -1341,6 +1346,7 @@ html {
   background: #e6e6e6;
   -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  margin-top: 85px;
 }
 
 .upload-success figcaption {
@@ -1447,6 +1453,12 @@ header {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+
+.navbar a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 nav {

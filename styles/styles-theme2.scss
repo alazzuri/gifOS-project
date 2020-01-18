@@ -38,15 +38,20 @@ body {
   border-top: 7px solid $white;
 }
 
-.theme-selector:hover {
+.theme-selector:hover,
+.double-btn:hover {
+  .dotted-border-144,
   .dotted-border-131,
   .dotted-border-36 {
-    width: 127px;
+    width: 99%;
     height: 32px;
     border: 1px dotted $dark-blue;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .dotted-pink {
     background: #ce36db;
   }
 }
@@ -120,4 +125,17 @@ body {
     border: 1px solid #4c2f99;
     box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
   }
+}
+
+.create-gifos-start,
+.create-gifos-record {
+  background: #b4b4b4;
+}
+
+.square-pink {
+  background: #ee3efe;
+}
+
+.error-window {
+  background: #b4b4b4;
 }

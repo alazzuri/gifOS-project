@@ -2,13 +2,14 @@ const SEARCH_URL = "https://api.giphy.com/v1/gifs/search";
 const TREND_URL = "https://api.giphy.com/v1/gifs/trending";
 const API_KEY = "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx";
 const $SEARCH_BUTTON = document.querySelector("#search");
+const suggestedTags = {};
 
 $SEARCH_BUTTON.onclick = () => {
   const userRequest = getUserInput();
   cleanSearchHistory();
   printSearchTitle(userRequest);
   renderResultGifs(SEARCH_URL, `?q=${userRequest}`);
-  printResultButton();
+  // printResultButton();
 };
 
 const cleanSearchHistory = () => {
@@ -25,18 +26,36 @@ const getSearchResults = (url, requestType, limit = 20) => {
   return found;
 };
 
+//TENGO QUE VER DE IMPRIMIR LOS BOTONES AZULES MAS DE TRES Y QUE TOME EL INPUT PARA PODER HACERLO
+//CON EL BOTON DE VER MAS.
 const renderResultGifs = async function(url, requestType) {
   const URLS = await getSearchResults(url, requestType);
+  const $GIFS_TITLE = document.querySelector("#gif-container-title"); // UNIFICAR PARA QUE NO SE REPITA
+  const printedTags = [];
   let gifCounter = 0;
   let spanCounter = 0;
   URLS.data.forEach(data => {
     const URL_GIF = data.images.original.url;
     const WIDHT_GIF = data.images.original.width;
+    const HEIGHT_GIF = data.images.original.height;
     const GIF_DESCRIPTION = data.title.toLowerCase();
     const RANDOM_NUMBER = Math.ceil(Math.random() * 10);
     printGifs(URL_GIF, gifCounter);
     printGifTags(GIF_DESCRIPTION, gifCounter);
-    if (RANDOM_NUMBER % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 250) {
+    if (
+      url === SEARCH_URL &&
+      !printedTags.includes(GIF_DESCRIPTION) &&
+      GIF_DESCRIPTION.length > 3
+    ) {
+      printResultButton(GIF_DESCRIPTION);
+      printedTags.push(GIF_DESCRIPTION);
+      $GIFS_TITLE.scrollIntoView();
+    }
+    if (
+      RANDOM_NUMBER % 2 === 0 &&
+      spanCounter < 4 &&
+      +WIDHT_GIF > +HEIGHT_GIF * 1.2
+    ) {
       applySpan(gifCounter);
       spanCounter++;
     }
@@ -125,9 +144,11 @@ const getSuggestedGifs = async function(gifContainer, topic, tag, counter) {
   });
 };
 
-const printGifTitle = (gifName, tag, counter) => {
+const printGifTitle = (gif, tag, counter) => {
   const gifTitle = document.querySelector(tag + counter);
-  const NAMES = gifName.title.toLowerCase();
+  const NAMES = gif.title.toLowerCase();
+  // ACA CREO EL OBJETO PARA GUARDAR LOS TAGS SUGERIDOS.
+  suggestedTags[`suggested-link-${counter}`] = NAMES;
   const SPLIT_NAME = NAMES.split(" ");
   gifTitle.textContent = `#${printName(SPLIT_NAME)}`;
 };
@@ -173,7 +194,8 @@ const printSuggestedGifs = () => {
     "star wars",
     "silicon valley",
     "disney",
-    "marvel"
+    "marvel",
+    "the mandalorian"
   ];
   let usedTopics = [];
   let counter = 1;
@@ -193,9 +215,24 @@ const printSuggestedGifs = () => {
         counter++;
       }
     } else {
+      printMoreResults();
       return true;
     }
   }
+};
+
+const printMoreResults = () => {
+  const linkButtons = document.querySelectorAll(".suggested-links");
+  linkButtons.forEach(element => {
+    element.onclick = e => {
+      const gifTag = suggestedTags[e.target.id].toUpperCase();
+      cleanSearchHistory();
+      printSearchTitle(gifTag);
+
+      renderResultGifs(SEARCH_URL, `?q=${gifTag}`);
+      // printResultButton();
+    };
+  });
 };
 
 const getTrendingGifs = async function() {

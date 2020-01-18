@@ -45,9 +45,13 @@ body {
   border-top: 7px solid #ffffff;
 }
 
+.theme-selector:hover .dotted-border-144,
 .theme-selector:hover .dotted-border-131,
-.theme-selector:hover .dotted-border-36 {
-  width: 127px;
+.theme-selector:hover .dotted-border-36,
+.double-btn:hover .dotted-border-144,
+.double-btn:hover .dotted-border-131,
+.double-btn:hover .dotted-border-36 {
+  width: 99%;
   height: 32px;
   border: 1px dotted #110038;
   display: -webkit-box;
@@ -59,6 +63,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.theme-selector:hover .dotted-pink,
+.double-btn:hover .dotted-pink {
   background: #ce36db;
 }
 
@@ -144,5 +152,18 @@ body {
   border: 1px solid #4c2f99;
   -webkit-box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
+}
+
+.create-gifos-start,
+.create-gifos-record {
+  background: #b4b4b4;
+}
+
+.square-pink {
+  background: #ee3efe;
+}
+
+.error-window {
+  background: #b4b4b4;
 }
 /*# sourceMappingURL=styles-theme2.css.map */

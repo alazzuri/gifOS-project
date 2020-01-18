@@ -1016,6 +1016,7 @@ html {
   margin-top: 78px;
   -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  padding: 3px;
 }
 
 .create-gifos-start figcaption {
@@ -1412,6 +1413,77 @@ html {
   margin-bottom: 44px;
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+
+.error-button {
+  border: 1px solid;
+  width: 300px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+          box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  color: #110038;
+}
+
+.error-button figcaption {
+  width: 100%;
+  height: 24px;
+  padding-left: 4px;
+  margin-top: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.error-button figcaption span {
+  color: white;
+}
+
+.error-button p {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.error-button button {
+  margin-bottom: 5px;
+}
+
+.error-title {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 10px;
+}
+
+.error-title img {
+  margin-right: 5px;
 }
 
 header {

@@ -30,12 +30,14 @@ const getSearchResults = (url, requestType, limit = 20) => {
 //CON EL BOTON DE VER MAS.
 const renderResultGifs = async function(url, requestType) {
   const URLS = await getSearchResults(url, requestType);
+  const $GIFS_TITLE = document.querySelector("#gif-container-title"); // UNIFICAR PARA QUE NO SE REPITA
   const printedTags = [];
   let gifCounter = 0;
   let spanCounter = 0;
   URLS.data.forEach(data => {
     const URL_GIF = data.images.original.url;
     const WIDHT_GIF = data.images.original.width;
+    const HEIGHT_GIF = data.images.original.height;
     const GIF_DESCRIPTION = data.title.toLowerCase();
     const RANDOM_NUMBER = Math.ceil(Math.random() * 10);
     printGifs(URL_GIF, gifCounter);
@@ -47,8 +49,13 @@ const renderResultGifs = async function(url, requestType) {
     ) {
       printResultButton(GIF_DESCRIPTION);
       printedTags.push(GIF_DESCRIPTION);
+      $GIFS_TITLE.scrollIntoView();
     }
-    if (RANDOM_NUMBER % 2 === 0 && spanCounter < 4 && +WIDHT_GIF > 250) {
+    if (
+      RANDOM_NUMBER % 2 === 0 &&
+      spanCounter < 4 &&
+      +WIDHT_GIF > +HEIGHT_GIF * 1.2
+    ) {
       applySpan(gifCounter);
       spanCounter++;
     }

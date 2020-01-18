@@ -2,6 +2,9 @@
 const $SEARCHFIELD = document.querySelector("#searchbar");
 const $RESULTSFIELD = document.querySelector("#suggested-results");
 $SEARCH_BUTTON.disabled = true;
+$PREDICTIVE1 = document.querySelector("#suggested1");
+$PREDICTIVE2 = document.querySelector("#suggested2");
+$PREDICTIVE3 = document.querySelector("#suggested3");
 
 //CAPTURAR INPUT USUARIO
 

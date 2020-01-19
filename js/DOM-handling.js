@@ -6,6 +6,18 @@ const domHandling = {
   suggestedResult2: document.querySelector("#suggested2"),
   suggestedResult3: document.querySelector("#suggested3"),
   resultsTitle: document.querySelector("#gif-container-title"),
+  createBtn: document.querySelector("#create-gif"),
+  startBtn: document.querySelector("#start-preview"),
+  cancelBtn: document.querySelector("#create-abort"),
+  captureBtn: document.querySelector("#btn-capture"),
+  readyBtn: document.querySelector("#btn-ready"),
+  playBtn: document.querySelector("#btn-play"),
+  recaptureBtn: document.querySelector("#btn-recapture"),
+  uploadBtn: document.querySelector("#btn-upload"),
+  copyBtn: document.querySelector("#copy-btn"),
+  finishBtn: document.querySelector("#finish-btn"),
+  abortBtn: document.querySelector("#btn-abort"),
+  downloadBtn: document.querySelector("#download-btn"),
 
   getUserInput: () => {
     const input = domHandling.searchbar.value;
@@ -74,6 +86,19 @@ const domHandling = {
     $BUTTONS.forEach(element => element.remove());
   },
 
+  printResultTags: splitName => {
+    let nameToPrint = "";
+    counter = 0;
+    for (let i = 0; i < splitName.length; i++) {
+      if (nameToPrint.length < 20 && splitName[counter] !== "gif") {
+        const tagToPrint = splitName[counter];
+        nameToPrint = nameToPrint + `${tagToPrint}`;
+        counter++;
+      }
+    }
+    return nameToPrint;
+  },
+
   handleSuggestedGifs: () => {
     const $SUGGESTED_SECTION = document.querySelector("#gifs-suggested");
     $SUGGESTED_SECTION.className !== "hidden"
@@ -109,6 +134,172 @@ const domHandling = {
       : ($ARROW_BACK.className = "arrow-back");
   },
 
+  handleCreateSection: () => {
+    const $CREATE_SECTION = document.querySelector("#create-gif-section");
+    $CREATE_SECTION.className !== "hidden"
+      ? ($CREATE_SECTION.className = "hidden")
+      : ($CREATE_SECTION.className = "create-gifos");
+  },
+
+  handleStartWindows: () => {
+    const $START_WINDOWS = document.querySelector("#start-creating");
+    $START_WINDOWS.className !== "hidden"
+      ? ($START_WINDOWS.className = "hidden")
+      : ($START_WINDOWS.className = "create-gifos-start");
+  },
+
+  handleRecordField: () => {
+    const $RECORD_SECTION = document.querySelector("#record-field");
+    $RECORD_SECTION.className === "hidden"
+      ? ($RECORD_SECTION.className = "create-gifos-record")
+      : ($RECORD_SECTION.className = "hidden");
+  },
+
+  handleCkeckWindows: () => {
+    if (domHandling.captureBtn.className === "hidden") {
+      createGif.userVideo.style.display = "inline-block";
+      domHandling.captureBtn.className = "double-btn";
+      domHandling.handleWindowsTitle("Un Chequeo Antes de Empezar");
+    } else {
+      domHandling.captureBtn.className = "hidden";
+    }
+  },
+
+  handleRecordWindows: () => {
+    const $RECORD_CONTROL = document.querySelector("#record-control");
+    if ($RECORD_CONTROL.className === "hidden") {
+      $RECORD_CONTROL.className = "recording-section";
+      domHandling.captureBtn.className = "hidden";
+      domHandling.readyBtn.className = "double-btn";
+      domHandling.handleWindowsTitle("Capturando Tu Guifo");
+    } else {
+      $RECORD_CONTROL.className = "hidden";
+    }
+  },
+
+  getCurrentTime: () => {
+    const $TIME_COUNTER = document.querySelector("#video-time");
+    const video = createGif.userVideo;
+    video.currentTime = 0;
+    video.ontimeupdate = () => {
+      createGif.gifTime = video.currentTime;
+      $TIME_COUNTER.textContent = domHandling.renderTime(createGif.gifTime);
+    };
+  },
+
+  renderTime: miliseconds => {
+    dateObj = new Date(miliseconds * 1000);
+    hours = dateObj.getUTCHours();
+    minutes = dateObj.getUTCMinutes();
+    seconds = dateObj.getSeconds();
+
+    timeString =
+      "00:" +
+      hours.toString().padStart(2, "0") +
+      ":" +
+      minutes.toString().padStart(2, "0") +
+      ":" +
+      seconds.toString().padStart(2, "0");
+
+    return timeString;
+  },
+
+  handlePreviewWindows: () => {
+    const $CAPTURE_CONFIRM = document.querySelector("#capture-confirm");
+    const $BUTTONS_CONTAINER = document.querySelector("#upload-btn-container");
+    if ($CAPTURE_CONFIRM.className === "hidden") {
+      $CAPTURE_CONFIRM.className = "capture-confirm";
+      $BUTTONS_CONTAINER.className = "upload-gif-btn-container";
+      domHandling.readyBtn.className = "hidden";
+      domHandling.handleWindowsTitle("Vista Previa");
+    } else {
+      $CAPTURE_CONFIRM.className = "hidden";
+    }
+  },
+
+  showTimeBar: () => {
+    const timeSquares = document.querySelectorAll(".time-square");
+    const totalTime = createGif.gifTime;
+    const timePerSquare = +totalTime / (timeSquares.length - 1);
+    let counter = 0;
+    const resetBar = () => {
+      timeSquares.forEach(element => element.classList.remove("square-pink"));
+    };
+
+    resetBar();
+
+    createGif.userVideo.ontimeupdate = () => {
+      const $TIME_COUNTER = document.querySelector("#video-time");
+      const elapsedTime = createGif.userVideo.currentTime;
+      $TIME_COUNTER.textContent = domHandling.renderTime(elapsedTime);
+      if (
+        elapsedTime > timePerSquare * counter &&
+        counter < timeSquares.length
+      ) {
+        timeSquares[counter].classList.add("square-pink");
+        counter++;
+      }
+    };
+
+    createGif.userVideo.onended = () => {
+      resetBar();
+      createGif.userVideo.ontimeupdate = () => false;
+      createGif.userVideo.onended = () => false;
+    };
+  },
+
+  handleUploadWindows: () => {
+    const $LOADING_SECTION = document.querySelector("#loading-section");
+    const $UPLOAD_ABORT = document.querySelector("#upload-abort");
+    if ($LOADING_SECTION.className === "hidden") {
+      createGif.userVideo.style.display = "none";
+      $LOADING_SECTION.className = "loading-section";
+      $UPLOAD_ABORT.classList.toggle("hidden");
+      domHandling.handleWindowsTitle("Subiendo Guifo");
+    } else {
+      $LOADING_SECTION.className = "hidden";
+      $UPLOAD_ABORT.classList.toggle("hidden");
+    }
+  },
+
+  animateLoadingBar: () => {
+    const loadingSquares = document.querySelectorAll(".loading-square");
+    const barLenght = loadingSquares.length;
+    let intervalCounter = 0;
+    const printSquare = () => {
+      if (intervalCounter < barLenght) {
+        loadingSquares[intervalCounter].classList.add("square-pink");
+        intervalCounter++;
+      } else {
+        loadingSquares.forEach(element => {
+          element.classList.remove("square-pink");
+        });
+        intervalCounter = 0;
+        setTimeout(() => {
+          clearInterval(interval);
+          //TODO = AGREGAR MENSAJE DE ERROR
+        }, 30000);
+      }
+    };
+    const interval = setInterval(printSquare, 100);
+  },
+
+  showSuccessWindows: url => {
+    const $CONFIRM_WINDOWS = document.querySelector("#confirm-window");
+    const $RECORD_SECTION = document.querySelector("#record-field");
+    $UPLOADED_GIF = document.querySelector("#final-guifo");
+    $CONFIRM_WINDOWS.className = "upload-confirm";
+    $UPLOADED_GIF.className = "uploaded-guifo";
+    $UPLOADED_GIF.src = `${url}`;
+    $RECORD_SECTION.className = "upload-success";
+    createGif.userVideo.className = "hidden";
+    domHandling.handleUploadWindows();
+    domHandling.handleWindowsTitle("Guifo Subido Con Éxito");
+    domHandling.setDownloadBtn(url);
+    domHandling.handleGifsSection();
+    myGuifos.renderMyGuifos();
+  },
+
   showErrorMsg: error => {
     const $ERROR_WINDOW = document.querySelector("#error-msg");
     const $ERROR_DESCRIPTION = document.querySelector("#error-description");
@@ -118,17 +309,18 @@ const domHandling = {
         ($ERROR_DESCRIPTION.textContent = error));
   },
 
-  printResultTags: splitName => {
-    let nameToPrint = "";
-    counter = 0;
-    for (let i = 0; i < splitName.length; i++) {
-      if (nameToPrint.length < 20 && splitName[counter] !== "gif") {
-        const tagToPrint = splitName[counter];
-        nameToPrint = nameToPrint + `${tagToPrint}`;
-        counter++;
-      }
-    }
-    return nameToPrint;
+  handleWindowsTitle: title => {
+    const $WINDOWS_TITLE = document.querySelector("#record-title");
+    $WINDOWS_TITLE.textContent = title;
+  },
+
+  setDownloadBtn: url => {
+    domHandling.downloadBtn.href = `${url}`;
+  },
+
+  setCopyLink: url => {
+    const copyText = url;
+    navigator.clipboard.writeText(copyText);
   },
 
   handlerEvents: () => {
@@ -172,5 +364,81 @@ const domHandling = {
       domHandling.printSearchTitle(BUTTONTEXT);
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
     };
+
+    domHandling.createBtn.onclick = () => {
+      domHandling.handleCreateSection();
+      domHandling.handleStartWindows();
+      domHandling.handleSuggestedGifs();
+      domHandling.handleSearchSection();
+      domHandling.handleNavBar();
+      domHandling.handleArrowBack();
+      myGuifos.renderMyGuifos();
+    };
+
+    domHandling.startBtn.onclick = () => {
+      domHandling.handleStartWindows();
+      domHandling.handleRecordField();
+      domHandling.handleCkeckWindows();
+      createGif.showUserVideo();
+      domHandling.handleGifsSection();
+    };
+
+    domHandling.cancelBtn.onclick = () => {
+      domHandling.handleStartWindows();
+    };
+
+    domHandling.captureBtn.onclick = () => {
+      domHandling.handleRecordWindows();
+      createGif.startRecord();
+    };
+
+    domHandling.readyBtn.onclick = () => {
+      domHandling.handlePreviewWindows();
+      createGif.stopRecord();
+    };
+
+    domHandling.playBtn.onclick = () => {
+      createGif.userVideo.play();
+      domHandling.showTimeBar();
+    };
+
+    domHandling.recaptureBtn.onclick = () => {
+      domHandling.handleCkeckWindows();
+      domHandling.handleRecordWindows();
+      domHandling.handlePreviewWindows();
+      createGif.showUserVideo();
+    };
+
+    domHandling.uploadBtn.onclick = () => {
+      domHandling.handleRecordWindows();
+      domHandling.handlePreviewWindows();
+      domHandling.handleUploadWindows();
+      createGif.userVideo.src = null;
+      domHandling.animateLoadingBar();
+      createGif.postGif();
+    };
+
+    domHandling.abortBtn.onclick = () => {
+      createGif.abortController.abort();
+      domHandling.handleRecordField();
+      domHandling.handleGifsSection();
+      myGuifos.renderMyGuifos();
+    };
+
+    domHandling.copyBtn.onclick = () => {
+      $UPLOADED_GIF = document.querySelector("#final-guifo");
+      domHandling.setCopyLink($UPLOADED_GIF.src);
+    };
+
+    domHandling.finishBtn.onclick = () => {
+      domHandling.handleRecordField();
+    };
+
+    myGuifos.myGuifosBtn.onclick = () => {
+      myGuifos.renderMyGuifos();
+      domHandling.handleSuggestedGifs();
+      domHandling.handleSearchSection();
+      domHandling.handleArrowBack();
+    };
   }
-}; ////
+};

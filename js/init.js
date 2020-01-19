@@ -3,5 +3,4 @@
   domHandling.handlerEvents();
   suggestedGifs.printSuggestedGifs();
   renderGifs.getTrendingGifs();
-  createGif.init();
 })();

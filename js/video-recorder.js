@@ -1,45 +1,11 @@
 const createGif = {
-  createSection: document.querySelector("#create-gif-section"),
-  startSection: document.querySelector("#start-creating"),
-  recordSection: document.querySelector("#record-field"),
-  recordControl: document.querySelector("#record-control"),
-  recordSectionTitle: document.querySelector("#record-title"),
-  createBtn: document.querySelector("#create-gif"),
-  startBtn: document.querySelector("#start-preview"),
-  cancelBtn: document.querySelector("#create-abort"),
-  captureBtn: document.querySelector("#btn-capture"),
-  playBtn: document.querySelector("#btn-play"),
-  captureConfirm: document.querySelector("#capture-confirm"),
-  readyBtn: document.querySelector("#btn-ready"),
-  recaptureBtn: document.querySelector("#btn-recapture"),
-  uploadBtn: document.querySelector("#btn-upload"),
-  uploadAbort: document.querySelector("#upload-abort"),
-  abortBtn: document.querySelector("#btn-abort"),
   userVideo: document.querySelector("video"),
-  timeCounter: document.querySelector("#video-time"),
-  loadingSection: document.querySelector("#loading-section"),
-  confirmWindow: document.querySelector("#confirm-window"),
-  uploadedGif: document.querySelector("#final-guifo"),
-  downloadBtn: document.querySelector("#download-btn"),
-  copyBtn: document.querySelector("#copy-btn"),
-  finishBtn: document.querySelector("#finish-btn"),
   stream: null,
   recorder: null,
   gifStream: null,
   gifTime: null,
   blobFile: null,
   abortController: new AbortController(),
-
-  getCurrentTime: () => {
-    const video = createGif.userVideo;
-    video.currentTime = 0;
-    video.ontimeupdate = () => {
-      createGif.gifTime = video.currentTime;
-      createGif.timeCounter.textContent = createGif.renderTime(
-        createGif.gifTime
-      );
-    };
-  },
 
   showUserVideo: async () => {
     const video = createGif.userVideo;
@@ -69,7 +35,7 @@ const createGif = {
     await createGif.gifStream.startRecording();
     createGif.recorder.stream = createGif.stream;
     createGif.gifStream.stream = createGif.stream;
-    createGif.getCurrentTime();
+    domHandling.getCurrentTime();
   },
 
   stopRecord: async () => {
@@ -89,75 +55,6 @@ const createGif = {
     await createGif.gifStream.destroy();
     createGif.recorder = null;
     createGif.gifStream = null;
-  },
-
-  renderTime: miliseconds => {
-    dateObj = new Date(miliseconds * 1000);
-    hours = dateObj.getUTCHours();
-    minutes = dateObj.getUTCMinutes();
-    seconds = dateObj.getSeconds();
-
-    timeString =
-      "00:" +
-      hours.toString().padStart(2, "0") +
-      ":" +
-      minutes.toString().padStart(2, "0") +
-      ":" +
-      seconds.toString().padStart(2, "0");
-
-    return timeString;
-  },
-
-  showProgressBar: () => {
-    const timeSquares = document.querySelectorAll(".time-square");
-    const totalTime = createGif.gifTime;
-    const timePerSquare = +totalTime / (timeSquares.length - 1);
-    let counter = 0;
-    const resetBar = () => {
-      timeSquares.forEach(element => element.classList.remove("square-pink"));
-    };
-
-    resetBar();
-
-    createGif.userVideo.ontimeupdate = () => {
-      const elapsedTime = createGif.userVideo.currentTime;
-      createGif.timeCounter.textContent = createGif.renderTime(elapsedTime);
-      if (
-        elapsedTime > timePerSquare * counter &&
-        counter < timeSquares.length
-      ) {
-        timeSquares[counter].classList.add("square-pink");
-        counter++;
-      }
-    };
-
-    createGif.userVideo.onended = () => {
-      resetBar();
-      createGif.userVideo.ontimeupdate = () => false;
-      createGif.userVideo.onended = () => false;
-    };
-  },
-
-  animateLoadingBar: () => {
-    const loadingSquares = document.querySelectorAll(".loading-square");
-    const barLenght = loadingSquares.length;
-    let intervalCounter = 0;
-    const printSquare = () => {
-      if (intervalCounter < barLenght) {
-        loadingSquares[intervalCounter].classList.add("square-pink");
-        intervalCounter++;
-      } else {
-        loadingSquares.forEach(element => {
-          element.classList.remove("square-pink");
-        });
-        intervalCounter = 0;
-        setTimeout(() => {
-          clearInterval(interval);
-          //TODO = AGREGAR MENSAJE DE ERROR
-        }, 30000);
-      }
-    };
-    const interval = setInterval(printSquare, 100);
   },
 
   createFormData: () => {
@@ -194,128 +91,11 @@ const createGif = {
     //MANDAMOS EL GIF A LOCAL STORAGE
     createGif.saveGif(gifUrl);
     //MOSTRAMOS VENTADA DE CONFIRMACION
-    createGif.showSuccessWindows(gifUrl);
+    domHandling.showSuccessWindows(gifUrl);
   },
 
   saveGif: url => {
     const newId = localStorage.length;
     localStorage.setItem(`my-guifos-${newId}`, url);
-  },
-
-  showSuccessWindows: url => {
-    createGif.recordSectionTitle.textContent = "Guifo Subido Con Éxito";
-    createGif.userVideo.className = "hidden";
-    createGif.uploadAbort.className = "hidden";
-    createGif.uploadedGif.className = "uploaded-guifo";
-    createGif.uploadedGif.src = `${url}`;
-    createGif.confirmWindow.className = "upload-confirm";
-    createGif.recordSection.className = "upload-success";
-    createGif.loadingSection.className = "hidden";
-    createGif.setDownloadBtn(url);
-    domHandling.handleGifsSection();
-    myGuifos.renderMyGuifos();
-  },
-
-  setDownloadBtn: url => {
-    createGif.downloadBtn.href = `${url}`;
-  },
-
-  setCopyLink: url => {
-    const copyText = url;
-    navigator.clipboard.writeText(copyText);
-  },
-
-  BtnHandler: () => {
-    createGif.createBtn.onclick = () => {
-      createGif.createSection.className = "create-gifos";
-      createGif.startSection.className = "create-gifos-start";
-      domHandling.handleSuggestedGifs();
-      domHandling.handleSearchSection();
-      domHandling.handleNavBar();
-      domHandling.handleArrowBack();
-      myGuifos.renderMyGuifos();
-    };
-
-    createGif.startBtn.onclick = () => {
-      createGif.recordSectionTitle.textContent = "Un Chequeo Antes de Empezar";
-      createGif.startSection.className = "hidden";
-      createGif.recordSection.className = "create-gifos-record";
-      createGif.userVideo.style.display = "inline-block";
-      createGif.captureBtn.className = "double-btn";
-      createGif.uploadedGif.className = "hidden";
-      createGif.showUserVideo();
-      domHandling.handleGifsSection();
-    };
-
-    createGif.cancelBtn.onclick = () => {
-      createGif.startSection.className = "hidden";
-    };
-
-    createGif.captureBtn.onclick = () => {
-      createGif.recordSectionTitle.textContent = "Capturando Tu Guifo";
-      createGif.captureBtn.className = "hidden";
-      createGif.recordControl.className = "recording-section";
-      createGif.readyBtn.className = "double-btn";
-      createGif.startRecord();
-    };
-
-    createGif.readyBtn.onclick = () => {
-      createGif.recordSectionTitle.textContent = "Vista Previa";
-      createGif.readyBtn.className = "hidden";
-      createGif.captureConfirm.className = "capture-confirm";
-      createGif.stopRecord();
-    };
-
-    createGif.playBtn.onclick = () => {
-      createGif.userVideo.play();
-      createGif.showProgressBar();
-    };
-
-    createGif.recaptureBtn.onclick = () => {
-      createGif.recordSectionTitle.textContent = "Un Chequeo Antes de Empezar";
-      createGif.recordControl.className = "hidden";
-      createGif.captureBtn.className = "double-btn";
-      createGif.captureConfirm.className = "hidden";
-      createGif.showUserVideo();
-    };
-
-    createGif.uploadBtn.onclick = () => {
-      createGif.recordSectionTitle.textContent = "Subiendo Guifo";
-      createGif.recordControl.className = "hidden";
-      createGif.captureConfirm.className = "hidden";
-      createGif.userVideo.style.display = "none";
-      createGif.loadingSection.className = "loading-section";
-      createGif.uploadAbort.classList.toggle("hidden");
-      createGif.userVideo.src = null;
-      createGif.animateLoadingBar();
-      createGif.postGif();
-    };
-
-    createGif.copyBtn.onclick = () => {
-      createGif.setCopyLink(createGif.uploadedGif.src);
-    };
-
-    createGif.finishBtn.onclick = () => {
-      createGif.confirmWindow.className = "hidden";
-      createGif.recordSection.className = "hidden";
-    };
-
-    myGuifos.myGuifosBtn.onclick = () => {
-      myGuifos.renderMyGuifos();
-      domHandling.handleSuggestedGifs();
-      domHandling.handleSearchSection();
-      domHandling.handleArrowBack();
-    };
-
-    createGif.abortBtn.onclick = () => {
-      createGif.abortController.abort();
-      createGif.recordSection.className = "hidden";
-      domHandling.handleGifsSection();
-      myGuifos.renderMyGuifos();
-    };
-  },
-
-  init: () => {
-    createGif.BtnHandler();
   }
 };

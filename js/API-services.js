@@ -17,20 +17,24 @@ const giphyApi = {
   },
 
   postGif: async () => {
-    const API_ENDPOINT = giphyApi.uploadEndpoint;
-    const API_KEY = giphyApi.apiKey;
-    const heading = new Headers();
-    const uploadFile = createGif.createFormData();
-    const response = await fetch(API_ENDPOINT + "api_key=" + API_KEY, {
-      method: "POST",
-      headers: heading,
-      body: uploadFile,
-      cors: "no-cors",
-      signal: giphyApi.abortController.signal
-    });
-    const json = await response.json();
-    const gifId = json.data.id;
-    giphyApi.getUploadedGif(gifId);
+    try {
+      const API_ENDPOINT = giphyApi.uploadEndpoint;
+      const API_KEY = giphyApi.apiKey;
+      const heading = new Headers();
+      const uploadFile = createGif.createFormData();
+      const response = await fetch(API_ENDPOINT + "api_key=" + API_KEY, {
+        method: "POST",
+        headers: heading,
+        body: uploadFile,
+        cors: "no-cors",
+        signal: giphyApi.abortController.signal
+      });
+      const json = await response.json();
+      const gifId = json.data.id;
+      giphyApi.getUploadedGif(gifId);
+    } catch (error) {
+      domHandling.showErrorMsg(error);
+    }
   },
 
   getUploadedGif: async id => {

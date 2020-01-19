@@ -1,4 +1,7 @@
 const domHandling = {
+  themeBtn: document.querySelector("#drop-down"),
+  dayBtn: document.querySelector(".theme-day"),
+  nightBtn: document.querySelector(".theme-night"),
   searchForm: document.querySelector("#search-form"),
   searchbar: document.querySelector("#searchbar"),
   searchBtn: document.querySelector("#search"),
@@ -19,6 +22,35 @@ const domHandling = {
   abortBtn: document.querySelector("#btn-abort"),
   downloadBtn: document.querySelector("#download-btn"),
 
+  openThemeSelector: () => {
+    const $THEME_SELECTOR = document.querySelector("#theme-list");
+    $THEME_SELECTOR.classList.toggle("themes-list");
+    if ($THEME_SELECTOR.className.includes("themes-list")) {
+      window.onclick = e => {
+        !e.target.closest(".theme-selector")
+          ? domHandling.openThemeSelector()
+          : true;
+      };
+    } else {
+      window.onclick = () => true;
+    }
+  },
+
+  applyTheme: selectedTheme => {
+    const $S_SPAN_DAY = document.querySelector("#day-theme");
+    const $S_SPAN_NIGHT = document.querySelector("#night-theme");
+    const $GIFOS_LOGO = document.querySelector("#gifos-img");
+    if (selectedTheme.className.includes("theme-day")) {
+      $S_SPAN_DAY.className = "underlined";
+      $S_SPAN_NIGHT.classList.remove("underlined");
+      $GIFOS_LOGO.src = "./assets/gifOF_logo.png";
+    } else if (selectedTheme.className.includes("theme-night")) {
+      $S_SPAN_NIGHT.className = "underlined";
+      $S_SPAN_DAY.classList.remove("underlined");
+      $GIFOS_LOGO.src = "./assets/gifOF_logo_dark.png";
+    }
+  },
+
   getUserInput: () => {
     const input = domHandling.searchbar.value;
     return input;
@@ -29,6 +61,7 @@ const domHandling = {
   },
 
   changeBtnStatus: input => {
+    const $STYLESHEET = styleTheme.styleTag;
     const $LENS_IMG = document.querySelector("#lens");
     const $BTN_HOVER = document.querySelector("#search-hover");
     if (input.length > 2 && !input.includes("  ")) {
@@ -36,7 +69,7 @@ const domHandling = {
       domHandling.searchBtn.classList.remove("btn-disabled");
       domHandling.searchBtn.classList.add("button-pink");
       $BTN_HOVER.classList.add("dotted-border-102");
-      if ($THEMESHEET.href.includes("theme1")) {
+      if ($STYLESHEET.href.includes("theme1")) {
         $LENS_IMG.src = "./assets/lupa.svg";
       } else {
         $LENS_IMG.src = "./assets/lupa_light.svg";
@@ -48,7 +81,7 @@ const domHandling = {
       domHandling.searchBtn.classList.remove("button-pink");
       domHandling.searchBtn.classList.add("btn-disabled");
       $BTN_HOVER.classList.remove("dotted-border-102");
-      if ($THEMESHEET.href.includes("theme1")) {
+      if ($STYLESHEET.href.includes("theme1")) {
         $LENS_IMG.src = "./assets/lupa_inactive.svg";
       } else {
         $LENS_IMG.src = "./assets/Combined_Shape.svg";
@@ -324,6 +357,22 @@ const domHandling = {
   },
 
   handlerEvents: () => {
+    domHandling.themeBtn.onclick = () => {
+      domHandling.openThemeSelector();
+    };
+
+    domHandling.dayBtn.onclick = () => {
+      styleTheme.changeSheet(domHandling.dayBtn);
+      domHandling.applyTheme(domHandling.dayBtn);
+      domHandling.changeBtnStatus(domHandling.getUserInput());
+    };
+
+    domHandling.nightBtn.onclick = () => {
+      styleTheme.changeSheet(domHandling.nightBtn);
+      domHandling.applyTheme(domHandling.nightBtn);
+      domHandling.changeBtnStatus(domHandling.getUserInput());
+    };
+
     domHandling.searchbar.oninput = () => {
       domHandling.changeBtnStatus(domHandling.getUserInput());
     };

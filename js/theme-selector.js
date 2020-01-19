@@ -1,1 +1,0 @@
-const $THEMESHEET = document.querySelector(".theme-stylesheet");

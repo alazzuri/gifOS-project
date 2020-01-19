@@ -415,11 +415,11 @@ const domHandling = {
       domHandling.handleUploadWindows();
       createGif.userVideo.src = null;
       domHandling.animateLoadingBar();
-      createGif.postGif();
+      giphyApi.postGif();
     };
 
     domHandling.abortBtn.onclick = () => {
-      createGif.abortController.abort();
+      giphyApi.abortController.abort();
       domHandling.handleRecordField();
       domHandling.handleGifsSection();
       myGuifos.renderMyGuifos();

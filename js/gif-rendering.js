@@ -1,19 +1,3 @@
-const giphyApi = {
-  searchEndpoint: "https://api.giphy.com/v1/gifs/search",
-  trendEndpoint: "https://api.giphy.com/v1/gifs/trending",
-  apiKey: "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx",
-
-  getSearchResults: (url, requestType, limit = 20) => {
-    const API_KEY = giphyApi.apiKey;
-    const found = fetch(
-      url + requestType + "&api_key=" + API_KEY + "&limit=" + limit
-    ).then(response => {
-      return response.json();
-    });
-    return found;
-  }
-};
-
 const renderGifs = {
   cleanRenderedGifs: () => {
     const $GIFS_TO_REMOVE = document.querySelectorAll(".result-gif");

@@ -308,13 +308,15 @@ const domHandling = {
           element.classList.remove("square-pink");
         });
         intervalCounter = 0;
-        setTimeout(() => {
-          clearInterval(interval);
-          //TODO = AGREGAR MENSAJE DE ERROR
-        }, 30000);
       }
     };
-    const interval = setInterval(printSquare, 100);
+    const interval = setInterval(printSquare, 600);
+    setTimeout(() => {
+      clearInterval(interval);
+      domHandling.showErrorMsg(
+        "No se ha podido completar la carga. Intente nuevamente"
+      );
+    }, 30000);
   },
 
   showSuccessWindows: url => {
@@ -336,10 +338,14 @@ const domHandling = {
   showErrorMsg: error => {
     const $ERROR_WINDOW = document.querySelector("#error-msg");
     const $ERROR_DESCRIPTION = document.querySelector("#error-description");
+    const $ACCEPT_BUTTON = document.querySelector("#error-acept");
     $ERROR_WINDOW.className !== "hidden"
       ? ($ERROR_WINDOW.className = "hidden")
       : (($ERROR_WINDOW.className = "error-window"),
         ($ERROR_DESCRIPTION.textContent = error));
+    $ACCEPT_BUTTON.onclick = () => {
+      $ERROR_WINDOW.className = "hidden";
+    };
   },
 
   handleWindowsTitle: title => {

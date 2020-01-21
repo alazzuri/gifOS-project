@@ -428,6 +428,11 @@ html {
   }
 }
 
+.grayscale {
+  -webkit-filter: grayscale(90%) blur(3px);
+          filter: grayscale(90%) blur(3px);
+}
+
 .chakra {
   font-family: "Chakra Petch", sans-serif;
 }
@@ -1342,12 +1347,18 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 3;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   background: #e6e6e6;
   -webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
   margin-top: 85px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+          transform: translate(-50%, -30%);
 }
 
 .upload-success figcaption {

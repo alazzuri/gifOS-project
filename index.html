@@ -72,7 +72,11 @@
             placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
             class="chakra font-big"
           />
-          <button  id="search" class="button-102 btn-disabled chakra font-big" disabled>
+          <button
+            id="search"
+            class="button-102 btn-disabled chakra font-big"
+            disabled
+          >
             <span id="search-hover">
               <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
               Buscar
@@ -211,7 +215,6 @@
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
           <video src="" id="video"></video>
-          <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo" />
           <figure class="hidden" id="loading-section">
             <img src="./assets/globe_img.png" alt="" />
             <strong class="chakra font-big">Estamos subiendo tu guifo…</strong>
@@ -287,7 +290,10 @@
                   <span class="time-square"></span>
                 </div>
               </figure>
-              <figure class="upload-gif-btn-container" id="upload-btn-container">
+              <figure
+                class="upload-gif-btn-container"
+                id="upload-btn-container"
+              >
                 <button
                   class="chakra font-big button-144 button-white"
                   id="btn-recapture"
@@ -321,18 +327,6 @@
               Cancelar
             </button>
           </figure>
-          <figure class="hidden" id="confirm-window">
-            <strong>Guifo creado con éxito</strong>
-            <button class="button-white button-256" id="copy-btn">
-              Copiar Enlace Guifo
-            </button>
-            <button class="button-white button-256">
-              <a href="#" target="_blank" id="download-btn">Descargar Guifo</a>
-            </button>
-            <button class="button-pink button-144" id="finish-btn">
-              Listo
-            </button>
-          </figure>
         </figure>
       </section>
       <section class="result-gifs" id="gifs-main-section">
@@ -349,12 +343,33 @@
           <img src="./assets/msg_error-0.png" alt="window" />
           <strong class="chakra font-big">Fatal Error</strong>
         </div>
-        <p class="chakra font-medium" id="error-description">
-        </p>
+        <p class="chakra font-medium" id="error-description"></p>
         <button class="chakra font-big button-144 button-pink" id="error-acept">
           Aceptar
         </button>
+      </figure>
     </div>
+    <section class="hidden" id="success-field">
+      <figcaption class="gradient-background">
+        <span class="chakra font-medium bold" id="success-title">
+          Guifo Subido con Exito</span
+        >
+        <img src="./assets/close.svg" alt="close" />
+      </figcaption>
+      <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo" />
+      <figure class="hidden" id="confirm-window">
+        <strong>Guifo creado con éxito</strong>
+        <button class="button-white button-256" id="copy-btn">
+          Copiar Enlace Guifo
+        </button>
+        <button class="button-white button-256">
+          <a href="#" target="_blank" id="download-btn">Descargar Guifo</a>
+        </button>
+        <button class="button-pink button-144" id="finish-btn">
+          Listo
+        </button>
+      </figure>
+    </section>
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="./js/visit-counter.js"></script>
     <script src="./js/API-services.js"></script>

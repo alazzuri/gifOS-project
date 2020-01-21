@@ -310,13 +310,13 @@ const domHandling = {
         intervalCounter = 0;
       }
     };
-    const interval = setInterval(printSquare, 600);
+    const interval = setInterval(printSquare, 800);
     setTimeout(() => {
       clearInterval(interval);
-      domHandling.showErrorMsg(
-        "No se ha podido completar la carga. Intente nuevamente"
-      );
-    }, 30000);
+      loadingSquares.forEach(element => {
+        element.classList.remove("square-pink");
+      });
+    }, 17000);
   },
 
   handleSuccessWindows: url => {

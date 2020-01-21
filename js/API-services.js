@@ -34,6 +34,11 @@ const giphyApi = {
       giphyApi.getUploadedGif(gifId);
     } catch (error) {
       domHandling.showErrorMsg(error);
+      domHandling.handleUploadWindows();
+      domHandling.handleRecordField();
+      domHandling.handleStartWindows();
+      domHandling.handleGifsSection();
+      myGuifos.renderMyGuifos();
     }
   },
 

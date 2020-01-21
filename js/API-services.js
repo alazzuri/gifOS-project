@@ -44,6 +44,6 @@ const giphyApi = {
     const json = await response.json();
     const gifUrl = await json.data.images.original.url;
     createGif.saveGif(gifUrl);
-    domHandling.showSuccessWindows(gifUrl);
+    domHandling.handleSuccessWindows(gifUrl);
   }
 };

@@ -319,20 +319,24 @@ const domHandling = {
     }, 30000);
   },
 
-  showSuccessWindows: url => {
+  handleSuccessWindows: url => {
+    const $SUCCESS_SECTION = document.querySelector("#success-field");
     const $CONFIRM_WINDOWS = document.querySelector("#confirm-window");
-    const $RECORD_SECTION = document.querySelector("#record-field");
-    $UPLOADED_GIF = document.querySelector("#final-guifo");
-    $CONFIRM_WINDOWS.className = "upload-confirm";
-    $UPLOADED_GIF.className = "uploaded-guifo";
-    $UPLOADED_GIF.src = `${url}`;
-    $RECORD_SECTION.className = "upload-success";
-    createGif.userVideo.className = "hidden";
-    domHandling.handleUploadWindows();
-    domHandling.handleWindowsTitle("Guifo Subido Con Éxito");
-    domHandling.setDownloadBtn(url);
-    domHandling.handleGifsSection();
-    myGuifos.renderMyGuifos();
+    const $UPLOADED_GIF = document.querySelector("#final-guifo");
+    if ($SUCCESS_SECTION.className === "hidden") {
+      $SUCCESS_SECTION.className = "upload-success";
+      $CONFIRM_WINDOWS.className = "upload-confirm";
+      $UPLOADED_GIF.className = "uploaded-guifo";
+      $UPLOADED_GIF.src = `${url}`;
+      domHandling.handleUploadWindows();
+      domHandling.setDownloadBtn(url);
+      domHandling.handleGifsSection();
+      myGuifos.renderMyGuifos();
+      domHandling.toggleGrayscale();
+    } else {
+      $SUCCESS_SECTION.className = "hidden";
+      domHandling.toggleGrayscale();
+    }
   },
 
   showErrorMsg: error => {
@@ -346,6 +350,11 @@ const domHandling = {
     $ACCEPT_BUTTON.onclick = () => {
       $ERROR_WINDOW.className = "hidden";
     };
+  },
+
+  toggleGrayscale: () => {
+    const $CONTAINER = document.querySelector(".container");
+    $CONTAINER.classList.toggle("grayscale");
   },
 
   handleWindowsTitle: title => {
@@ -487,6 +496,8 @@ const domHandling = {
 
     domHandling.finishBtn.onclick = () => {
       domHandling.handleRecordField();
+      domHandling.handleStartWindows();
+      domHandling.handleSuccessWindows();
     };
 
     myGuifos.myGuifosBtn.onclick = () => {

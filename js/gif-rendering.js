@@ -71,7 +71,7 @@ const renderGifs = {
         counter++;
       }
     }
-    if (nameToPrint === "# " || nameToPrint === "" || nameToPrint === " ") {
+    if (nameToPrint.length < 5) {
       nameToPrint = "#trending #popular";
       return nameToPrint;
     } else {

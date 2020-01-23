@@ -188,7 +188,7 @@ const domHandling = {
       : ($RECORD_SECTION.className = "hidden");
   },
 
-  handleCkeckWindows: () => {
+  handleCheckWindows: () => {
     if (domHandling.captureBtn.className === "hidden") {
       createGif.userVideo.style.display = "inline-block";
       domHandling.captureBtn.className = "double-btn";
@@ -371,6 +371,14 @@ const domHandling = {
     navigator.clipboard.writeText(copyText);
   },
 
+  showCopyPopUp: () => {
+    const popUp = document.querySelector("#copy-msg");
+    popUp.className = "copy-popup";
+    setTimeout(() => {
+      popUp.className = "hidden";
+    }, 1000);
+  },
+
   handlerEvents: () => {
     domHandling.themeBtn.onclick = () => {
       domHandling.openThemeSelector();
@@ -400,7 +408,6 @@ const domHandling = {
         giphyApi.searchEndpoint,
         `?q=${domHandling.getUserInput()}`
       );
-      domHandling.resetSearchField();
 
       event.preventDefault();
     };
@@ -442,7 +449,7 @@ const domHandling = {
     domHandling.startBtn.onclick = () => {
       domHandling.handleStartWindows();
       domHandling.handleRecordField();
-      domHandling.handleCkeckWindows();
+      domHandling.handleCheckWindows();
       createGif.showUserVideo();
       domHandling.handleGifsSection();
     };
@@ -467,7 +474,7 @@ const domHandling = {
     };
 
     domHandling.recaptureBtn.onclick = () => {
-      domHandling.handleCkeckWindows();
+      domHandling.handleCheckWindows();
       domHandling.handleRecordWindows();
       domHandling.handlePreviewWindows();
       createGif.showUserVideo();
@@ -492,6 +499,7 @@ const domHandling = {
     domHandling.copyBtn.onclick = () => {
       $UPLOADED_GIF = document.querySelector("#final-guifo");
       domHandling.setCopyLink($UPLOADED_GIF.src);
+      domHandling.showCopyPopUp();
     };
 
     domHandling.finishBtn.onclick = () => {

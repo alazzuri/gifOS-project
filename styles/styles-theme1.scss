@@ -130,3 +130,9 @@ $dark-blue: #110038;
 .error-window {
   background: #e6e6e6;
 }
+
+.copy-popup h4 {
+  background: #4180f6;
+  border: 1px solid #4c2f99;
+  box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+}

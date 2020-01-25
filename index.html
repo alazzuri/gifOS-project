@@ -66,22 +66,24 @@
           <label for="searchbar" class="gradient-background chakra font-medium"
             >Buscar</label
           >
-          <input
-            type="text"
-            id="searchbar"
-            placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
-            class="chakra font-big"
-          />
-          <button
-            id="search"
-            class="button-102 btn-disabled chakra font-big"
-            disabled
-          >
-            <span id="search-hover">
-              <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
-              Buscar
-            </span>
-          </button>
+          <figure>
+            <input
+              type="text"
+              id="searchbar"
+              placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
+              class="chakra font-big"
+            />
+            <button
+              id="search"
+              class="button-102 btn-disabled chakra font-big"
+              disabled
+            >
+              <span id="search-hover">
+                <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
+                Buscar
+              </span>
+            </button>
+          </figure>
         </form>
         <figure class="hidden" id="related_buttons"></figure>
         <figure class="hidden" id="suggested-results">
@@ -98,66 +100,76 @@
       </section>
       <section class="suggested-gifs" id="gifs-suggested">
         <h2 class="chakra font-medium subtitle">Hoy te sugerimos:</h2>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-1"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 1"
-            class="gif-img"
-            id="suggested-gif-1"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-1"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-2"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 2"
-            class="gif-img"
-            id="suggested-gif-2"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-2"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-3"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 3"
-            class="gif-img"
-            id="suggested-gif-3"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-3"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-4"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 4"
-            class="gif-img"
-            id="suggested-gif-4"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-4"> Ver Mas... </a>
-          </button>
-        </figure>
+        <div>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-1"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 1"
+              class="gif-img"
+              id="suggested-gif-1"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-1"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-2"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 2"
+              class="gif-img"
+              id="suggested-gif-2"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-2"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-3"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 3"
+              class="gif-img"
+              id="suggested-gif-3"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-3"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-4"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 4"
+              class="gif-img"
+              id="suggested-gif-4"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-4"> Ver Mas... </a>
+            </button>
+          </figure>
+        </div>
       </section>
       <section class="hidden" id="create-gif-section">
         <figure class="hidden" id="start-creating">

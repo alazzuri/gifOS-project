@@ -4,7 +4,7 @@ const giphyApi = {
   uploadEndpoint: "https://upload.giphy.com/v1/gifs?",
   apiKey: "eiVo3MScNwrZJfkUOIP0WHzIV8uOQesx",
   idEndpoint: "https://api.giphy.com/v1/gifs/",
-  abortController: new AbortController(),
+  abortController: null,
 
   getSearchResults: (url, requestType, limit = 20) => {
     const API_KEY = giphyApi.apiKey;
@@ -17,6 +17,7 @@ const giphyApi = {
   },
 
   postGif: async () => {
+    giphyApi.abortController = new AbortController();
     try {
       const API_ENDPOINT = giphyApi.uploadEndpoint;
       const API_KEY = giphyApi.apiKey;
@@ -34,10 +35,13 @@ const giphyApi = {
       giphyApi.getUploadedGif(gifId);
     } catch (error) {
       domHandling.showErrorMsg(error);
-      domHandling.handleUploadWindows();
-      domHandling.handleRecordField();
-      domHandling.handleStartWindows();
-      domHandling.handleGifsSection();
+      domHandling.handleDisplayAttribute([
+        "#loading-section",
+        "#record-field",
+        "#upload-abort",
+        "#start-creating",
+        "#gifs-main-section"
+      ]);
       myGuifos.renderMyGuifos();
     }
   },
@@ -49,6 +53,7 @@ const giphyApi = {
     const json = await response.json();
     const gifUrl = await json.data.images.original.url;
     createGif.saveGif(gifUrl);
-    domHandling.handleSuccessWindows(gifUrl);
+    observer.notify(gifUrl);
+    // domHandling.handleSuccessWindows(gifUrl);
   }
 };

@@ -243,6 +243,5 @@ const myGuifos = {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
       renderGifs.printGifs(gifUrl, i);
     }
-    $CONTAINER_TITLE.scrollIntoView();
   }
 };

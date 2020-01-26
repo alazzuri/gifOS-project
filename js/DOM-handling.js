@@ -17,6 +17,7 @@ const domHandling = {
   playBtn: document.querySelector("#btn-play"),
   recaptureBtn: document.querySelector("#btn-recapture"),
   uploadBtn: document.querySelector("#btn-upload"),
+  loadingInterval: null,
   copyBtn: document.querySelector("#copy-btn"),
   finishBtn: document.querySelector("#finish-btn"),
   abortBtn: document.querySelector("#btn-abort"),
@@ -25,10 +26,12 @@ const domHandling = {
   openThemeSelector: () => {
     const $THEME_SELECTOR = document.querySelector("#theme-list");
     $THEME_SELECTOR.classList.toggle("hidden");
-    if ($THEME_SELECTOR.className.includes("themes-list")) {
+    if (!$THEME_SELECTOR.className.includes("hidden")) {
       window.onclick = e => {
         !e.target.closest(".theme-selector")
-          ? domHandling.openThemeSelector()
+          ? (domHandling.openThemeSelector(),
+            observer.unsubscribe([styleTheme.changeSheet]),
+            observer.unsubscribe([domHandling.applyTheme]))
           : true;
       };
     } else {
@@ -49,6 +52,7 @@ const domHandling = {
       $S_SPAN_DAY.classList.remove("underlined");
       $GIFOS_LOGO.src = "./assets/gifOF_logo_dark.png";
     }
+    domHandling.changeBtnStatus(domHandling.getUserInput());
   },
 
   getUserInput: () => {
@@ -146,14 +150,6 @@ const domHandling = {
     });
   },
 
-  //REEMPLAZAR
-  handleDisplayAttribute: elements => {
-    elements.forEach(item => {
-      const domElement = document.querySelector(item);
-      domElement.classList.toggle("hidden");
-    });
-  },
-
   getCurrentTime: () => {
     const $TIME_COUNTER = document.querySelector("#video-time");
     const video = createGif.userVideo;
@@ -215,9 +211,11 @@ const domHandling = {
   animateLoadingBar: () => {
     const loadingSquares = document.querySelectorAll(".loading-square");
     const barLenght = loadingSquares.length;
-    const removeSquares = loadingSquares.forEach(element => {
-      element.classList.remove("square-pink");
-    })
+    const removeSquares = () => {
+      loadingSquares.forEach(element => {
+        element.classList.remove("square-pink");
+      });
+    };
     let intervalCounter = 0;
     const printSquare = () => {
       if (intervalCounter < barLenght) {
@@ -230,20 +228,26 @@ const domHandling = {
         intervalCounter = 0;
       }
     };
+    clearInterval(domHandling.loadingInterval);
+    removeSquares();
     const interval = setInterval(printSquare, 800);
-    setTimeout(() => {
-      clearInterval(interval);
-      removeSquares();
-    }, 17000);
+    domHandling.loadingInterval = interval;
   },
 
   startCreatingGif: () => {
     domHandling.displayElements([
       "#back-arrow",
       "#create-gif-section",
-      "#start-creating"
+      "#start-creating",
+      "#gifs-main-section"
     ]);
-    domHandling.hideElements(["nav", "#search-section", "#gifs-suggested"]);
+    domHandling.hideElements([
+      "nav",
+      "#search-section",
+      "#gifs-suggested",
+      "#record-field",
+      "#success-field"
+    ]);
     myGuifos.renderMyGuifos();
   },
 
@@ -319,6 +323,7 @@ const domHandling = {
       "#upload-abort"
     ]);
     domHandling.handleWindowsTitle("Vista Previa");
+    createGif.stopRecord();
   },
 
   uploadGif: () => {
@@ -345,20 +350,18 @@ const domHandling = {
     domHandling.handleWindowsTitle("Subiendo tu Guifo");
     createGif.userVideo.src = null;
     domHandling.animateLoadingBar();
-    observer.subscribe(domHandling.showSuccessWindows);
-    // giphyApi.postGif();
+    observer.subscribe([domHandling.showSuccessWindows]);
+    observer.unsubscribe([domHandling.uploadGif]);
+    giphyApi.postGif();
   },
 
   showSuccessWindows: url => {
     const $UPLOADED_GIF = document.querySelector("#final-guifo");
     domHandling.displayElements(["#success-field", "#confirm-window"]);
-    /// LLAMAR COMPONENTE PANTALLA INICIAL
-
     $UPLOADED_GIF.src = `${url}`;
     domHandling.setDownloadBtn(url);
     domHandling.toggleGrayscale();
-    //PARTE DEL COMPONENTE INICIAL
-    myGuifos.renderMyGuifos();
+    observer.unsubscribe([domHandling.showSuccessWindows]);
   },
 
   showErrorMsg: error => {
@@ -402,115 +405,169 @@ const domHandling = {
   },
 
   goToMyGuifos: () => {
-    //CAMBIAR
-    domHandling.handleDisplayAttribute([
-      "#gifs-suggested",
+    domHandling.displayElements([
+      "#gifs-main-section",
       "#search-section",
       "#back-arrow"
+    ]);
+    domHandling.hideElements([
+      "nav",
+      "#search-section",
+      "#gifs-suggested",
+      "#record-field",
+      "#create-gif-section"
     ]);
     myGuifos.renderMyGuifos();
   },
 
+  goHome: () => {
+    domHandling.displayElements([
+      "nav",
+      "#search-section",
+      "#gifs-suggested",
+      "#gifs-main-section",
+      "#search-section"
+    ]);
+    domHandling.hideElements([
+      "#back-arrow",
+      "#record-field",
+      "#create-gif-section"
+    ]);
+    domHandling.resultsTitle.textContent = "Tendencias";
+    suggestedGifs.printSuggestedGifs();
+    renderGifs.getTrendingGifs();
+  },
+
   handlerEvents: () => {
     domHandling.themeBtn.onclick = () => {
-      domHandling.openThemeSelector();
+      observer.subscribe([domHandling.openThemeSelector]);
+      observer.notify();
+      observer.unsubscribe([domHandling.openThemeSelector]);
     };
 
     domHandling.dayBtn.onclick = () => {
-      styleTheme.changeSheet(domHandling.dayBtn);
-      domHandling.applyTheme(domHandling.dayBtn);
-      domHandling.changeBtnStatus(domHandling.getUserInput());
+      observer.subscribe([styleTheme.changeSheet, domHandling.applyTheme]);
+      observer.notify(domHandling.dayBtn);
+      observer.unsubscribe([styleTheme.changeSheet, domHandling.applyTheme]);
     };
 
     domHandling.nightBtn.onclick = () => {
-      styleTheme.changeSheet(domHandling.nightBtn);
-      domHandling.applyTheme(domHandling.nightBtn);
-      domHandling.changeBtnStatus(domHandling.getUserInput());
+      observer.subscribe([styleTheme.changeSheet, domHandling.applyTheme]);
+      observer.notify(domHandling.nightBtn);
+      observer.unsubscribe([styleTheme.changeSheet, domHandling.applyTheme]);
     };
 
     domHandling.searchbar.oninput = () => {
-      domHandling.changeBtnStatus(domHandling.getUserInput());
+      observer.unsubscribe([domHandling.openThemeSelector]);
+      observer.subscribe([domHandling.changeBtnStatus]);
+      observer.notify(domHandling.getUserInput());
+      observer.unsubscribe([domHandling.changeBtnStatus]);
     };
 
     domHandling.searchForm.onsubmit = event => {
-      renderGifs.cleanRenderedGifs();
-      domHandling.removeRelatedButtons();
-      domHandling.printSearchTitle(domHandling.getUserInput());
+      observer.unsubscribe([domHandling.openThemeSelector]);
+      observer.subscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
+      observer.notify(domHandling.getUserInput());
       renderGifs.renderResultGifs(
         giphyApi.searchEndpoint,
         `?q=${domHandling.getUserInput()}`
       );
-
+      observer.unsubscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
+      observer.subscribe([domHandling.changeBtnStatus]);
+      observer.notify(domHandling.getUserInput);
       event.preventDefault();
     };
 
     domHandling.suggestedResult1.onclick = () => {
-      const BUTTONTEXT = domHandling.suggestedResult1.innerHTML;
-      renderGifs.cleanRenderedGifs();
-      domHandling.removeRelatedButtons();
-      domHandling.printSearchTitle(BUTTONTEXT);
+      const BUTTONTEXT = domHandling.suggestedResult1.textContent;
+      observer.subscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
+      observer.notify(BUTTONTEXT);
+      observer.unsubscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
+      observer.subscribe([domHandling.changeBtnStatus]);
+      observer.notify(domHandling.getUserInput);
     };
 
     domHandling.suggestedResult2.onclick = () => {
-      const BUTTONTEXT = domHandling.suggestedResult2.innerHTML;
-      renderGifs.cleanRenderedGifs();
-      domHandling.removeRelatedButtons();
-      domHandling.printSearchTitle(BUTTONTEXT);
+      const BUTTONTEXT = domHandling.suggestedResult2.textContent;
+      observer.subscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
+      observer.notify(BUTTONTEXT);
+      observer.unsubscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
+      observer.subscribe([domHandling.changeBtnStatus]);
+      observer.notify(domHandling.getUserInput);
     };
 
     domHandling.suggestedResult3.onclick = () => {
-      const BUTTONTEXT = domHandling.suggestedResult3.innerHTML;
-      renderGifs.cleanRenderedGifs();
-      domHandling.removeRelatedButtons();
-      domHandling.printSearchTitle(BUTTONTEXT);
+      const BUTTONTEXT = domHandling.suggestedResult3.textContent;
+      observer.subscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
+      observer.notify(BUTTONTEXT);
+      observer.unsubscribe([
+        renderGifs.cleanRenderedGifs,
+        domHandling.removeRelatedButtons,
+        domHandling.printSearchTitle
+      ]);
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
+      observer.subscribe([domHandling.changeBtnStatus]);
+      observer.notify(domHandling.getUserInput);
     };
 
     domHandling.createBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#create-gif-section",
-        "#start-creating",
-        "#gifs-suggested",
-        "#search-section",
-        "nav",
-        "#back-arrow"
-      ]);
-      myGuifos.renderMyGuifos();
+      observer.subscribe([domHandling.startCreatingGif]);
+      observer.notify();
+      observer.unsubscribe([domHandling.startCreatingGif]);
     };
 
     domHandling.startBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#start-creating",
-        "#record-field",
-        "#btn-capture",
-        "#gifs-main-section"
-      ]);
+      observer.subscribe([domHandling.checkVideo]);
+      observer.notify();
+      observer.unsubscribe([domHandling.checkVideo]);
     };
 
     domHandling.cancelBtn.onclick = () => {
-      domHandling.handleDisplayAttribute(["#start-creating"]);
+      observer.subscribe([domHandling.goHome]);
+      observer.notify();
+      observer.unsubscribe([domHandling.goHome]);
     };
 
     domHandling.captureBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#record-control",
-        "#btn-capture",
-        "#btn-ready"
-      ]);
-      domHandling.handleWindowsTitle("Capturando Tu Guifo");
-      createGif.startRecord();
+      observer.subscribe([domHandling.captureGif]);
+      observer.notify();
+      observer.unsubscribe([domHandling.captureGif]);
     };
 
     domHandling.readyBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#capture-confirm",
-        "#upload-btn-container",
-        "#btn-ready"
-      ]);
-      domHandling.handleWindowsTitle("Vista Previa");
-      createGif.stopRecord();
+      observer.subscribe([domHandling.showPreview]);
+      observer.notify();
+      observer.unsubscribe([domHandling.showPreview]);
     };
 
     domHandling.playBtn.onclick = () => {
@@ -519,32 +576,16 @@ const domHandling = {
     };
 
     domHandling.recaptureBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#btn-capture",
-        "#record-control",
-        "#capture-confirm",
-        "#upload-btn-container"
-      ]);
-      domHandling.handleWindowsTitle("Un Chequeo Antes de Empezar");
+      observer.subscribe([domHandling.startCreatingGif]);
+      observer.notify();
+      observer.unsubscribe([domHandling.startCreatingGif]);
       createGif.userVideo.src = null;
-      createGif.showUserVideo();
     };
 
     domHandling.uploadBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#record-control",
-        "#btn-ready",
-        "#capture-confirm",
-        "#upload-btn-container",
-        "#loading-section",
-        "#upload-abort",
-        "video"
-      ]);
-      domHandling.handleWindowsTitle("Subiendo Guifo");
+      observer.subscribe([domHandling.uploadGif]);
+      observer.notify();
       createGif.userVideo.src = null;
-      domHandling.animateLoadingBar();
-      observer.subscribe(domHandling.showSuccessWindows);
-      giphyApi.postGif();
     };
 
     domHandling.abortBtn.onclick = () => {
@@ -553,24 +594,24 @@ const domHandling = {
 
     domHandling.copyBtn.onclick = () => {
       $UPLOADED_GIF = document.querySelector("#final-guifo");
-      domHandling.setCopyLink($UPLOADED_GIF.src);
-      domHandling.showCopyPopUp();
+      observer.subscribe([domHandling.setCopyLink, domHandling.showCopyPopUp]);
+      observer.notify($UPLOADED_GIF.src);
+      observer.unsubscribe([
+        domHandling.setCopyLink,
+        domHandling.showCopyPopUp
+      ]);
     };
 
     domHandling.finishBtn.onclick = () => {
-      domHandling.handleDisplayAttribute([
-        "#record-field",
-        "#start-creating",
-        "#success-field",
-        "#confirm-window"
-      ]);
+      observer.subscribe([domHandling.startCreatingGif]);
       domHandling.toggleGrayscale();
-      observer.unsuscribe(domHandling.showSuccessWindows);
+      observer.notify();
     };
 
     myGuifos.myGuifosBtn.onclick = () => {
+      observer.subscribe([domHandling.goToMyGuifos]);
       observer.notify();
-      observer.unsuscribe(domHandling.goToMyGuifos);
+      observer.unsubscribe([domHandling.goToMyGuifos]);
     };
   }
 };
@@ -579,13 +620,17 @@ const observer = {
   subscriptors: [],
 
   subscribe: subscriptor => {
-    observer.subscriptors.push(subscriptor);
+    subscriptor.forEach(item => {
+      observer.subscriptors.push(item);
+    });
   },
 
-  unsuscribe: subscriptor => {
-    observer.subscriptors = observer.subscriptors.filter(
-      item => item != subscriptor
-    );
+  unsubscribe: subscriptor => {
+    subscriptor.forEach(element => {
+      observer.subscriptors = observer.subscriptors.filter(
+        item => item !== element
+      );
+    });
   },
 
   notify: event => {

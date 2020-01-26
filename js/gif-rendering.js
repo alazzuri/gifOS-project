@@ -80,6 +80,7 @@ const renderGifs = {
   },
 
   getTrendingGifs: async () => {
+    renderGifs.cleanRenderedGifs();
     const TRENDING_GIFS = await renderGifs.renderResultGifs(
       giphyApi.trendEndpoint,
       "?"

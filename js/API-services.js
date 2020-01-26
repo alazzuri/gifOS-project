@@ -34,14 +34,9 @@ const giphyApi = {
       const gifId = json.data.id;
       giphyApi.getUploadedGif(gifId);
     } catch (error) {
+      observer.unsubscribe([domHandling.showSuccessWindows]);
       domHandling.showErrorMsg(error);
-      domHandling.handleDisplayAttribute([
-        "#loading-section",
-        "#record-field",
-        "#upload-abort",
-        "#start-creating",
-        "#gifs-main-section"
-      ]);
+      domHandling.startCreatingGif();
       myGuifos.renderMyGuifos();
     }
   },
@@ -54,6 +49,5 @@ const giphyApi = {
     const gifUrl = await json.data.images.original.url;
     createGif.saveGif(gifUrl);
     observer.notify(gifUrl);
-    // domHandling.handleSuccessWindows(gifUrl);
   }
 };

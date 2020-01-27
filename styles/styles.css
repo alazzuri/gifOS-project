@@ -468,6 +468,8 @@ html {
 .arrow-back {
   display: block;
   margin-right: 7px;
+  max-width: 24px;
+  max-height: 24px;
 }
 
 .button-256 {
@@ -1694,6 +1696,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav {

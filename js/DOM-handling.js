@@ -43,14 +43,20 @@ const domHandling = {
     const $S_SPAN_DAY = document.querySelector("#day-theme");
     const $S_SPAN_NIGHT = document.querySelector("#night-theme");
     const $GIFOS_LOGO = document.querySelector("#gifos-img");
+    const $CAMERA_IMG = document.querySelector("#camera-img");
+    const $ARROW_BACK = document.querySelector("#back-arrow");
     if (selectedTheme.className.includes("theme-day")) {
       $S_SPAN_DAY.className = "underlined";
       $S_SPAN_NIGHT.classList.remove("underlined");
       $GIFOS_LOGO.src = "./assets/gifOF_logo.png";
+      $CAMERA_IMG.src = "./assets/camera.svg/";
+      $ARROW_BACK.src = "./assets/arrow.svg";
     } else if (selectedTheme.className.includes("theme-night")) {
       $S_SPAN_NIGHT.className = "underlined";
       $S_SPAN_DAY.classList.remove("underlined");
       $GIFOS_LOGO.src = "./assets/gifOF_logo_dark.png";
+      $CAMERA_IMG.src = "./assets/camera_light.svg";
+      $ARROW_BACK.src = "./assets/arrow_white.svg";
     }
     domHandling.changeBtnStatus(domHandling.getUserInput());
   },

@@ -80,7 +80,6 @@ const renderGifs = {
   },
 
   getTrendingGifs: async () => {
-    renderGifs.cleanRenderedGifs();
     const TRENDING_GIFS = await renderGifs.renderResultGifs(
       giphyApi.trendEndpoint,
       "?"
@@ -244,5 +243,6 @@ const myGuifos = {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
       renderGifs.printGifs(gifUrl, i);
     }
+    $CONTAINER_TITLE.scrollIntoView();
   }
 };

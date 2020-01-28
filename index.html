@@ -25,7 +25,7 @@
           <img
             src="./assets/arrow.svg"
             alt="arrow"
-            class="hidden"
+            class="arrow-back hidden"
             id="back-arrow"
           />
           <img src="./assets/gifOF_logo.png" alt="Gifos-logo" id="gifos-img" />
@@ -47,7 +47,7 @@
                 <span class="arrow-down"></span>
               </span>
             </button>
-            <ul class="hidden" id="theme-list">
+            <ul class="themes-list hidden" id="theme-list">
               <li class="button-150 theme-day">
                 <span class="underlined" id="day-theme">S</span>ailor Day
               </li>
@@ -66,22 +66,24 @@
           <label for="searchbar" class="gradient-background chakra font-medium"
             >Buscar</label
           >
-          <input
-            type="text"
-            id="searchbar"
-            placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
-            class="chakra font-big"
-          />
-          <button
-            id="search"
-            class="button-102 btn-disabled chakra font-big"
-            disabled
-          >
-            <span id="search-hover">
-              <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
-              Buscar
-            </span>
-          </button>
+          <figure>
+            <input
+              type="text"
+              id="searchbar"
+              placeholder="Busca gifs, hashtags, temas, busca lo que quieras…"
+              class="chakra font-big"
+            />
+            <button
+              id="search"
+              class="button-102 btn-disabled chakra font-big"
+              disabled
+            >
+              <span id="search-hover">
+                <img src="./assets/lupa_inactive.svg" alt="lupa" id="lens" />
+                Buscar
+              </span>
+            </button>
+          </figure>
         </form>
         <figure class="hidden" id="related_buttons"></figure>
         <figure class="hidden" id="suggested-results">
@@ -98,69 +100,79 @@
       </section>
       <section class="suggested-gifs" id="gifs-suggested">
         <h2 class="chakra font-medium subtitle">Hoy te sugerimos:</h2>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-1"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 1"
-            class="gif-img"
-            id="suggested-gif-1"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-1"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-2"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 2"
-            class="gif-img"
-            id="suggested-gif-2"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-2"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-3"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 3"
-            class="gif-img"
-            id="suggested-gif-3"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-3"> Ver Mas... </a>
-          </button>
-        </figure>
-        <figure class="gif-suggested-container">
-          <figcaption class="gradient-background suggested-gif-title">
-            <span class="chakra font-medium" id="suggested-title-4"></span>
-            <img src="./assets/close.svg" alt="close" />
-          </figcaption>
-          <img
-            src="./assets/gif-loading-image.gif"
-            alt="Sugerido 4"
-            class="gif-img"
-            id="suggested-gif-4"
-          />
-          <button class="button-81 chakra font-medium see-more suggested-links">
-            <a class="dotted-border-81" id="suggested-link-4"> Ver Mas... </a>
-          </button>
-        </figure>
+        <div>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-1"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 1"
+              class="gif-img"
+              id="suggested-gif-1"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-1"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-2"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 2"
+              class="gif-img"
+              id="suggested-gif-2"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-2"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-3"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 3"
+              class="gif-img"
+              id="suggested-gif-3"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-3"> Ver Mas... </a>
+            </button>
+          </figure>
+          <figure class="gif-suggested-container">
+            <figcaption class="gradient-background suggested-gif-title">
+              <span class="chakra font-medium" id="suggested-title-4"></span>
+              <img src="./assets/close.svg" alt="close" />
+            </figcaption>
+            <img
+              src="./assets/gif-loading-image.gif"
+              alt="Sugerido 4"
+              class="gif-img"
+              id="suggested-gif-4"
+            />
+            <button
+              class="button-81 chakra font-medium see-more suggested-links"
+            >
+              <a class="dotted-border-81" id="suggested-link-4"> Ver Mas... </a>
+            </button>
+          </figure>
+        </div>
       </section>
-      <section class="hidden" id="create-gif-section">
-        <figure class="hidden" id="start-creating">
+      <section class="create-gifos hidden" id="create-gif-section">
+        <figure class="create-gifos-start hidden" id="start-creating">
           <figcaption class="gradient-background">
             <span class="chakra font-medium bold">Crear Guifos</span>
           </figcaption>
@@ -207,7 +219,7 @@
             </div>
           </div>
         </figure>
-        <figure class="hidden" id="record-field">
+        <figure class="create-gifos-record hidden" id="record-field">
           <figcaption class="gradient-background">
             <span class="chakra font-medium bold" id="record-title">
               Un Chequeo Antes de Empezar</span
@@ -215,7 +227,7 @@
             <img src="./assets/close.svg" alt="close" />
           </figcaption>
           <video src="" id="video"></video>
-          <figure class="hidden" id="loading-section">
+          <figure class="loading-section hidden" id="loading-section">
             <img src="./assets/globe_img.png" alt="" />
             <strong class="chakra font-big">Estamos subiendo tu guifo…</strong>
             <div class="loading-bar">
@@ -247,10 +259,14 @@
               minutos
             </p>
           </figure>
-          <div class="hidden" id="btn-capture">
+          <div class="double-btn hidden" id="btn-capture">
             <button class="button-36 button-pink">
               <span class="dotted-border-36 dotted-pink">
-                <img src="./assets/camera.svg" alt="camera_logo" />
+                <img
+                  src="./assets/camera.svg"
+                  alt="camera_logo"
+                  id="camera-img"
+                />
               </span>
             </button>
             <button class="button-pink button-144">
@@ -259,11 +275,11 @@
               >
             </button>
           </div>
-          <div class="hidden" id="record-control">
+          <div class="recording-section hidden" id="record-control">
             <figure class="time-counter chakra font-big" id="video-time">
               00:00:00
             </figure>
-            <div class="hidden" id="capture-confirm">
+            <div class="capture-confirm hidden" id="capture-confirm">
               <figure class="player-bar">
                 <button class="button-pink button-36 button-play" id="btn-play">
                   <span class="dotted-border-36 dotted-pink">
@@ -291,7 +307,7 @@
                 </div>
               </figure>
               <figure
-                class="upload-gif-btn-container"
+                class="upload-gif-btn-container hidden"
                 id="upload-btn-container"
               >
                 <button
@@ -308,7 +324,7 @@
                 </button>
               </figure>
             </div>
-            <div class="double-btn" id="btn-ready">
+            <div class="double-btn hidden" id="btn-ready">
               <button class="button-36 btn-red">
                 <span class="dotted-border-36">
                   <img src="./assets/recording.svg" alt="recording_logo" />
@@ -349,15 +365,20 @@
         </button>
       </figure>
     </div>
-    <section class="hidden" id="success-field">
+    <section class="upload-success hidden" id="success-field">
       <figcaption class="gradient-background">
         <span class="chakra font-medium bold" id="success-title">
           Guifo Subido con Exito</span
         >
         <img src="./assets/close.svg" alt="close" />
       </figcaption>
-      <img src="" alt="uploaded-guifo" class="hidden" id="final-guifo" />
-      <figure class="hidden" id="confirm-window">
+      <img
+        src=""
+        alt="uploaded-guifo"
+        class=" uploaded-guifo"
+        id="final-guifo"
+      />
+      <figure class="upload-confirm hidden" id="confirm-window">
         <strong>Guifo creado con éxito</strong>
         <button class="button-white button-256" id="copy-btn">
           Copiar Enlace Guifo

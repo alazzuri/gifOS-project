@@ -22,6 +22,16 @@ const domHandling = {
   abortBtn: document.querySelector("#btn-abort"),
   downloadBtn: document.querySelector("#download-btn"),
 
+  checkDevice: () => {
+    const userAgent = navigator.userAgent;
+    const mobileDevices = ["iPhone", "iPad", "iPod", "Android"];
+    let response = null;
+    mobileDevices.forEach(item => {
+      userAgent.includes(item) ? (response = true) : false;
+    });
+    return response;
+  },
+
   openThemeSelector: () => {
     const $THEME_SELECTOR = document.querySelector("#theme-list");
     $THEME_SELECTOR.classList.toggle("themes-list");
@@ -437,13 +447,13 @@ const domHandling = {
     };
 
     domHandling.createBtn.onclick = () => {
-      domHandling.handleCreateSection();
-      domHandling.handleStartWindows();
-      domHandling.handleSuggestedGifs();
-      domHandling.handleSearchSection();
-      domHandling.handleNavBar();
-      domHandling.handleArrowBack();
-      myGuifos.renderMyGuifos();
+      domHandling.checkDevice()
+        ? domHandling.showErrorMsg(
+            "Funcionalidad no compatible con dispositivos móviles"
+          )
+        : (observer.subscribe([domHandling.startCreatingGif]),
+          observer.notify(),
+          observer.unsubscribe([domHandling.startCreatingGif]));
     };
 
     domHandling.startBtn.onclick = () => {

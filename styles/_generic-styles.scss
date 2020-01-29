@@ -514,7 +514,7 @@ html {
   margin-top: 78px;
   box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
   padding: 3px;
-  figcaption {
+  h2 {
     height: 24px;
     padding-left: 4px;
     margin: 3px;
@@ -798,13 +798,13 @@ html {
   strong {
     margin-bottom: 16px;
   }
-  button {
+  a {
     margin-bottom: 111px;
   }
-  button:first-of-type {
+  #copy-btn {
     margin-bottom: 14px;
   }
-  button:last-of-type {
+  #finish-btn {
     margin-bottom: 44px;
     align-self: flex-end;
   }

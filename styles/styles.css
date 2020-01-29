@@ -1142,7 +1142,7 @@ html {
   padding: 3px;
 }
 
-.create-gifos-start figcaption {
+.create-gifos-start h2 {
   height: 24px;
   padding-left: 4px;
   margin: 3px;
@@ -1154,7 +1154,7 @@ html {
           align-items: center;
 }
 
-.create-gifos-start figcaption span {
+.create-gifos-start h2 span {
   color: #ffffff;
 }
 
@@ -1530,15 +1530,15 @@ html {
   margin-bottom: 16px;
 }
 
-.upload-confirm button {
+.upload-confirm a {
   margin-bottom: 111px;
 }
 
-.upload-confirm button:first-of-type {
+.upload-confirm #copy-btn {
   margin-bottom: 14px;
 }
 
-.upload-confirm button:last-of-type {
+.upload-confirm #finish-btn {
   margin-bottom: 44px;
   -ms-flex-item-align: end;
       align-self: flex-end;

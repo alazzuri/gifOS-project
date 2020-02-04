@@ -1,20 +1,39 @@
 $chakra: "Chakra Petch", sans-serif;
 $white: #ffffff;
 $dark-blue: #110038;
+$light-blue: #4180f6;
+$pink-light: #f7c9f3;
+$pink-dark: #e6bbe2;
+$grey-light: #e6e6e6;
+
+@mixin grey-boxes-shadow {
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+}
+
+@mixin btn-border-shadow {
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
+}
+
+@mixin btn-blue {
+  background: $light-blue;
+  border: 1px solid #4c2f99;
+  box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+}
 
 .gradient-background {
-  background-image: linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%);
+  background-image: linear-gradient(270deg, $pink-light 0%, $light-blue 100%);
 }
 
 .button-pink {
-  background: #f7c9f3;
+  background: $pink-light;
   box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 $white;
   border: 1px solid $dark-blue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; /// SACAR A GENERIC STYLES
+  justify-content: center; /// SACAR A GENERIC STYLES
+  align-items: center; /// SACAR A GENERIC STYLES
   & :hover {
-    background: #e6bbe2;
+    background: $pink-dark;
   }
 }
 
@@ -35,19 +54,19 @@ $dark-blue: #110038;
     width: 99%;
     height: 32px;
     border: 1px dotted $dark-blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; // SACAR A GENERAL
+    justify-content: center; // SACAR A GENERAL
+    align-items: center; // SACAR A GENERAL
   }
 
   .dotted-pink {
-    background: #e6bbe2;
+    background: $pink-dark;
   }
 }
 
 .themes-list {
-  background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+  background: $grey-light;
+  @include grey-boxes-shadow();
 }
 
 .theme-day {
@@ -58,34 +77,31 @@ $dark-blue: #110038;
 
 .theme-night {
   background: #f0f0f0;
-  border: 1px solid #808080;
-  box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
+  @include btn-border-shadow();
 }
 
 .subtitle {
-  border: 1px solid #e6bbe2;
+  border: 1px solid $pink-dark;
   box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
 }
 
 .search-bar {
-  background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+  background: $grey-light;
+  @include grey-boxes-shadow();
 }
 
 .btn-disabled {
-  background: #e6e6e6;
-  border: 1px solid #808080;
-  box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
+  background: $grey-light;
   color: #b4b4b4;
+  @include btn-border-shadow();
 }
 
 .suggested-results {
-  background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+  background: $grey-light;
+  @include grey-boxes-shadow();
   button {
     background: #f0f0f0;
-    border: 1px solid #808080;
-    box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 $white;
+    @include btn-border-shadow();
     span:hover {
       background: #dbdbdb;
     }
@@ -93,12 +109,10 @@ $dark-blue: #110038;
 }
 
 .gif-suggested-container {
-  background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+  background: $grey-light;
+  @include grey-boxes-shadow();
   a {
-    background: #4180f6;
-    border: 1px solid #4c2f99;
-    box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+    @include btn-blue();
     span:hover {
       background: #3a72db;
     }
@@ -106,33 +120,29 @@ $dark-blue: #110038;
 }
 
 .result-gif:hover {
-  background: #e6e6e6;
-  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
+  background: $grey-light;
+  @include grey-boxes-shadow();
 }
 
 .related-results {
   button {
-    background: #4180f6;
-    border: 1px solid #4c2f99;
-    box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+    @include btn-blue();
   }
 }
 
 .create-gifos-start,
 .create-gifos-record {
-  background: #e6e6e6;
+  background: $grey-light;
 }
 
 .square-pink {
-  background: #f7c9f3;
+  background: $pink-light;
 }
 
 .error-window {
-  background: #e6e6e6;
+  background: $grey-light;
 }
 
 .copy-popup h4 {
-  background: #4180f6;
-  border: 1px solid #4c2f99;
-  box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+  @include btn-blue();
 }

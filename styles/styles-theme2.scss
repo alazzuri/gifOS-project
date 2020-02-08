@@ -104,11 +104,11 @@ body {
 .gif-suggested-container {
   background: #b4b4b4;
   box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
-  button {
+  a {
     background: #2e32fb;
     border: 1px solid #4c2f99;
     box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
-    span:hover {
+    :hover {
       background: #2629cc;
     }
   }

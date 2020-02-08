@@ -36,8 +36,8 @@ const renderGifs = {
 
   printGifs: (url, counter) => {
     const $GIFS_CONTAINER = document.querySelector(".result-gifs-container");
-    $IMG_CONTAINER = document.createElement("figure");
-    $GIF_IMG = document.createElement("img");
+    const $IMG_CONTAINER = document.createElement("figure");
+    const $GIF_IMG = document.createElement("img");
     $IMG_CONTAINER.className = "result-gif";
     $IMG_CONTAINER.setAttribute("id", `result-${counter}`);
     $GIF_IMG.style.backgroundColor = `rgb(${Math.random() * 200},
@@ -63,7 +63,7 @@ const renderGifs = {
 
   createTag: name => {
     let nameToPrint = "";
-    counter = 0;
+    let counter = 0;
     for (let i = 0; i < name.length; i++) {
       if (nameToPrint.length < 20 && name[counter] !== "gif") {
         const tagToPrint = name[counter];
@@ -203,7 +203,7 @@ const suggestedGifs = {
 
   printName: splitName => {
     let nameToPrint = "";
-    nameCounter = 0;
+    let nameCounter = 0;
     for (let i = 0; i < splitName.length; i++) {
       if (nameToPrint.length < 20 && splitName[nameCounter] !== "gif") {
         const receivedWord = splitName[nameCounter];

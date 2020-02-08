@@ -92,10 +92,10 @@
 
 .btn-disabled {
   background: #e6e6e6;
+  color: #b4b4b4;
   border: 1px solid #808080;
   -webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
           box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
-  color: #b4b4b4;
 }
 
 .suggested-results {
@@ -127,6 +127,7 @@
   -webkit-box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
 }
+
 
 .gif-suggested-container a :hover {
   background: #3a72db;

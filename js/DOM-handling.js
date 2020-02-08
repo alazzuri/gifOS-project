@@ -518,6 +518,7 @@ const domHandling = {
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
       observer.subscribe([domHandling.changeBtnStatus]);
       observer.notify(domHandling.getUserInput);
+      observer.unsubscribe([domHandling.changeBtnStatus]);
     };
 
     domHandling.suggestedResult2.onclick = () => {
@@ -536,6 +537,7 @@ const domHandling = {
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
       observer.subscribe([domHandling.changeBtnStatus]);
       observer.notify(domHandling.getUserInput);
+      observer.unsubscribe([domHandling.changeBtnStatus]);
     };
 
     domHandling.suggestedResult3.onclick = () => {
@@ -554,6 +556,7 @@ const domHandling = {
       renderGifs.renderResultGifs(giphyApi.searchEndpoint, `?q=${BUTTONTEXT}`);
       observer.subscribe([domHandling.changeBtnStatus]);
       observer.notify(domHandling.getUserInput);
+      observer.unsubscribe([domHandling.changeBtnStatus]);
     };
 
     domHandling.createBtn.onclick = () => {

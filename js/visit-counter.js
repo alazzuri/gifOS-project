@@ -1,6 +1,7 @@
 const $VISIT_COUNTER = document.querySelector("header");
 const startNumber = 10000000;
 let previousVisit =
+
   +localStorage.getItem("previous-visit") !== 0 &&
   +localStorage.getItem("previous-visit") !== null
     ? localStorage.getItem("previous-visit")
@@ -13,3 +14,4 @@ $VISIT_COUNTER.textContent = `¡Bienvenidos/as a Guifos.com! ——————D
 visitas: ${numberToPrint}`;
 
 localStorage.setItem("previous-visit", `${+previousVisit + 1}`);
+

@@ -360,6 +360,18 @@ html {
           align-items: center;
 }
 
+.button-pink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .btn-disabled {
   letter-spacing: 0;
   line-height: 18px;
@@ -1207,11 +1219,11 @@ html {
   margin-bottom: 111px;
 }
 
-.upload-confirm button:first-of-type {
+.upload-confirm #copy-btn {
   margin-bottom: 14px;
 }
 
-.upload-confirm button:last-of-type {
+.upload-confirm #finish-btn {
   margin-bottom: 44px;
   -ms-flex-item-align: end;
       align-self: flex-end;

@@ -27,7 +27,7 @@ const giphyApi = {
         method: "POST",
         headers: heading,
         body: uploadFile,
-        cors: "no-cors",
+        cors: "cors",
         signal: giphyApi.abortController.signal
       });
       const json = await response.json();

@@ -105,10 +105,10 @@ body {
 
 .btn-disabled {
   background: #b4b4b4;
+  color: #8f8f8f;
   border: 1px solid #808080;
   -webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
           box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
-  color: #8f8f8f;
 }
 
 .suggested-results {
@@ -125,24 +125,24 @@ body {
 }
 
 .gif-suggested-container {
-  background: #b4b4b4;
+  ackground: #b4b4b4;
   -webkit-box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
 }
 
-.gif-suggested-container button {
+.gif-suggested-container a {
   background: #2e32fb;
   border: 1px solid #4c2f99;
   -webkit-box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
 }
 
-.gif-suggested-container button span:hover {
+.gif-suggested-container a :hover {
   background: #2629cc;
 }
 
 .result-gif:hover {
-  background-color: #b4b4b4;
+  ackground: #b4b4b4;
   -webkit-box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
           box-shadow: inset -2px -2px 0 0 #5c5c5c, inset 2px 2px 0 0 #ffffff;
 }

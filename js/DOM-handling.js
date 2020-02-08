@@ -617,6 +617,7 @@ const domHandling = {
 
     domHandling.copyBtn.onclick = () => {
       $UPLOADED_GIF = document.querySelector("#final-guifo");
+      observer.unsubscribe([domHandling.showSuccessWindows]);
       observer.subscribe([domHandling.setCopyLink, domHandling.showCopyPopUp]);
       observer.notify($UPLOADED_GIF.src);
       observer.unsubscribe([

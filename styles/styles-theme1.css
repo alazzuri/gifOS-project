@@ -128,7 +128,8 @@
           box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
 }
 
-.gif-suggested-container a span:hover {
+
+.gif-suggested-container a :hover {
   background: #3a72db;
 }
 

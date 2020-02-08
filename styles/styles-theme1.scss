@@ -109,11 +109,14 @@ $grey-light: #e6e6e6;
 }
 
 .gif-suggested-container {
-  background: $grey-light;
-  @include grey-boxes-shadow();
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 $white;
   a {
-    @include btn-blue();
-    span:hover {
+    background: #4180f6;
+    border: 1px solid #4c2f99;
+    box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 $white;
+    :hover {
+
       background: #3a72db;
     }
   }

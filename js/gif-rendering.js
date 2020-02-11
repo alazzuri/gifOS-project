@@ -242,7 +242,9 @@ const myGuifos = {
     $CONTAINER_TITLE.textContent = "My Guifos";
     for (let i = 0; i < totalGuifos; i++) {
       const gifUrl = localStorage.getItem(`my-guifos-${i}`);
-      renderGifs.printGifs(gifUrl, i);
+      gifUrl !== undefined && gifUrl !== null
+        ? renderGifs.printGifs(gifUrl, i)
+        : false;
     }
   }
 };
